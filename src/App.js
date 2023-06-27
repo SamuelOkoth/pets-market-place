@@ -48,9 +48,6 @@ function App() {
         <Route exact path="/signin" element={<SignIn />} />
         <Route exact path="/resetpassword" element={<ResetPassword />} />
         <Route exact path="/postyourad" element={<PostAdd />} />
-        {/* <Route exact path="/privacyandpolicy" element={<Signup />} /> */}
-        {/* <Route exact path="/privacyandpolicy" element={<Signup />} /> */}
-        {/* <Route exact path="/privacyandpolicy" element={<Signup />} /> */}
       </Routes>
       <Subscribe/>
       <Footer/>

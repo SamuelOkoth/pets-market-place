@@ -6,27 +6,27 @@ const Popular = () => {
     {
       id: 1,
       count: 20,
-      jobTitle: "UI/UX designer"
+      petName: "Dogs"
     },
     {
       id: 2,
       count: 18,
-      jobTitle: "HR Manager"
+      petName: "Cats"
     },
     {
       id: 3,
       count: 10,
-      jobTitle: "Product Manager"
+      petName: "Rabbits"
     },
     {
       id: 4,
       count: 15,
-      jobTitle: "Sales manager"
+      petName: "Pigeons"
     },
     {
       id: 5,
       count: 28,
-      jobTitle: "Developer"
+      petName: "Parrot"
     }
   ];
   return (
@@ -41,7 +41,7 @@ const Popular = () => {
                   {popularDetails.count}
                 </div>
                 <Link to="#" className="primary-link stretched-link">
-                  <h6 className="fs-14 mb-0">{popularDetails.jobTitle}</h6>
+                  <h6 className="fs-14 mb-0">{popularDetails.petName}</h6>
                 </Link>
               </div>
             </li>
