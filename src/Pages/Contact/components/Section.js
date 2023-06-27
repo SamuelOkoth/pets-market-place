@@ -23,13 +23,7 @@ const Section = () => {
                       <li className="breadcrumb-item">
                         <Link to="#">Contact</Link>
                       </li>
-                      <li
-                        className="breadcrumb-item active"
-                        aria-current="page"
-                      >
-                        {" "}
-                        Contact{" "}
-                      </li>
+                     
                     </ol>
                   </nav>
                 </div>

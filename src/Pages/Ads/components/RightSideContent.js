@@ -15,9 +15,9 @@ const RightSideContent = () => {
       <div className="side-bar ms-lg-4">
         <Card className="job-overview">
           <CardBody className="p-4">
-            <h6 className="fs-17">Job Overview</h6>
+            <h6 className="fs-17">Ad Overview</h6>
             <ul className="list-unstyled mt-4 mb-0">
-              <li>
+              {/* <li>
                 <div className="d-flex mt-4">
                   <i className="uil uil-user icon bg-primary-subtle text-primary"></i>
                   <div className="ms-3">
@@ -25,12 +25,12 @@ const RightSideContent = () => {
                     <p className="text-muted mb-0">Product Designer</p>
                   </div>
                 </div>
-              </li>
+              </li> */}
               <li>
                 <div className="d-flex mt-4">
                   <i className="uil uil-star-half-alt icon bg-primary-subtle text-primary"></i>
                   <div className="ms-3">
-                    <h6 className="fs-14 mb-2">Experience</h6>
+                    <h6 className="fs-14 mb-2">Age</h6>
                     <p className="text-muted mb-0"> 0-3 Years</p>
                   </div>
                 </div>
@@ -48,29 +48,13 @@ const RightSideContent = () => {
                 <div className="d-flex mt-4">
                   <i className="uil uil-usd-circle icon bg-primary-subtle text-primary"></i>
                   <div className="ms-3">
-                    <h6 className="fs-14 mb-2">Offered Salary</h6>
-                    <p className="text-muted mb-0">$35k - $45k</p>
+                    <h6 className="fs-14 mb-2">Offered Price</h6>
+                    <p className="text-muted mb-0">35k - 45k</p>
                   </div>
                 </div>
               </li>
-              <li>
-                <div className="d-flex mt-4">
-                  <i className="uil uil-graduation-cap icon bg-primary-subtle text-primary"></i>
-                  <div className="ms-3">
-                    <h6 className="fs-14 mb-2">Qualification</h6>
-                    <p className="text-muted mb-0">Bachelor Degree</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="d-flex mt-4">
-                  <i className="uil uil-building icon bg-primary-subtle text-primary"></i>
-                  <div className="ms-3">
-                    <h6 className="fs-14 mb-2">Industry</h6>
-                    <p className="text-muted mb-0">Private</p>
-                  </div>
-                </div>
-              </li>
+             
+             
               <li>
                 <div className="d-flex mt-4">
                   <i className="uil uil-history icon bg-primary-subtle text-primary"></i>
@@ -83,23 +67,23 @@ const RightSideContent = () => {
             </ul>
             <div className="mt-3">
               <Link
-                to="#applyNow"
+                to="#sendMessage"
                 onClick={openModal}
                 className="btn btn-primary btn-hover w-100 mt-2"
               >
-                Apply Now <i className="uil uil-arrow-right"></i>
+                Message Now  <i className="uil uil-arrow-right"></i>
               </Link>
               <Link
-                to="/bookmarkjobs"
+                to="/favoriteads"
                 className="btn btn-soft-warning btn-hover w-100 mt-2"
               >
-                <i className="uil uil-bookmark"></i> Add Bookmark
+                <i className="uil uil-bookmark"></i> Add In Favorite List
               </Link>
             </div>
           </CardBody>
         </Card>
 
-        <Card className="company-profile mt-4">
+        {/* <Card className="company-profile mt-4">
           <CardBody className="p-4">
             <div className="text-center">
               <img src={jobImages2} alt="" className="img-fluid rounded-3" />
@@ -162,7 +146,7 @@ const RightSideContent = () => {
               </Link>
             </div>
           </CardBody>
-        </Card>
+        </Card> */}
 
         <div className="mt-4">
           <h6 className="fs-16 mb-3">Job location</h6>
@@ -176,9 +160,9 @@ const RightSideContent = () => {
         </div>
         <div
           className="modal fade"
-          id="applyNow"
+          id="sendMessage"
           tabIndex="-1"
-          aria-labelledby="applyNow"
+          aria-labelledby="sendMessage"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
@@ -186,7 +170,7 @@ const RightSideContent = () => {
               <ModalBody className="modal-body p-5">
                 <div className="text-center mb-4">
                   <h5 className="modal-title" id="staticBackdropLabel">
-                    Apply For This Job
+                    Fast Message
                   </h5>
                 </div>
                 <div className="position-absolute end-0 top-0 p-3">
@@ -198,28 +182,7 @@ const RightSideContent = () => {
                     aria-label="Close"
                   ></button>
                 </div>
-                <div className="mb-3">
-                  <Label for="nameControlInput" className="form-label">
-                    Name
-                  </Label>
-                  <Input
-                    type="text"
-                    className="form-control"
-                    id="nameControlInput"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Label for="emailControlInput2" className="form-label">
-                    Email Address
-                  </Label>
-                  <Input
-                    type="email"
-                    className="form-control"
-                    id="emailControlInput2"
-                    placeholder="Enter your email"
-                  />
-                </div>
+              
                 <div className="mb-3">
                   <Label for="messageControlTextarea" className="form-label">
                     Message
@@ -231,18 +194,9 @@ const RightSideContent = () => {
                     placeholder="Enter your message"
                   ></textarea>
                 </div>
-                <div className="mb-4">
-                  <Label className="form-label" for="inputGroupFile01">
-                    Resume Upload
-                  </Label>
-                  <Input
-                    type="file"
-                    className="form-control"
-                    id="inputGroupFile01"
-                  />
-                </div>
+               
                 <button type="submit" className="btn btn-primary w-100">
-                  Send Application
+                  Send Message
                 </button>
               </ModalBody>
             </Modal>

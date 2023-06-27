@@ -16,30 +16,31 @@ const About = () => {
                 <h6 className="sub-title">About Us</h6>
                 <h2 className="title mb-4">
                   Why <span className="text-warning fw-bold">35,000+</span>{" "}
-                  People Trust On Jobcy?
+                  People Trust On Pets HelpFul?
                 </h2>
                 <p className="text-muted">
-                  Start working with Jobcy that can provide everything you need
-                  to generate awareness, drive traffic, connect. Dummy text is
-                  text that is used in the publishing industry or by web
-                  designers to occupy the space which will later be filled with
-                  'real' content.
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Culpa delectus recusandae totam? Lorem, ipsum dolor sit amet
+                  consectetur adipisicing elit. Culpa delectus recusandae totam?
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Culpa delectus recusandae totam? Lorem, ipsum dolor sit amet
+                  consectetur adipisicing elit. Culpa delectus recusandae totam?
                 </p>
 
                 <Row mt={4} pt={2}>
                   <Col md={6}>
                     <ul className="list-unstyled about-list text-muted mb-0 mb-md-3">
-                      <li> Digital Marketing Solutions</li>
-                      <li> Our Talented & Experienced Marketing Agency</li>
-                      <li> Creative Design</li>
-                      <li> New jobs Innovation</li>
+                      <li> Sell Pets</li>
+                      <li> Sell Pets</li>
+                      <li> Sell Pets</li>
+                      <li> Sell Pets</li>
                     </ul>
                   </Col>
                   <Col md={6}>
                     <ul className="list-unstyled about-list text-muted">
-                      <li> Create Resume</li>
-                      <li> 5000+ Comnpanies</li>
-                      <li> Our Blog</li>
+                      <li> Sell Pets</li>
+                      <li> Sell Pets</li>
+                      <li> Sell Pets</li>
                       <li> and more...</li>
                     </ul>
                   </Col>

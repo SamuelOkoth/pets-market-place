@@ -12,7 +12,7 @@ import Tags from "./components/Tags";
 import SocialConnect from "./components/SocialConnect";
 
 const BlogDetails = () => {
-  document.title = "Blog Details | Jobcy - Job Listing Template | Themesdesign";
+  document.title = "Blog Details ";
 
   return (
     <React.Fragment>
