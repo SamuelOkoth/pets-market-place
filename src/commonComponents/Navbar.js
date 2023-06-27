@@ -310,9 +310,9 @@ const NavBar = (props) => {
                   height="35"
                   className="rounded-circle me-1"
                 />{" "}
-                <span className="d-none d-md-inline-block fw-medium">
+                {/* <span className="d-none d-md-inline-block fw-medium">
                   Hi, Jennifer
-                </span>
+                </span> */}
               </DropdownToggle>
               <DropdownMenu
                 className="dropdown-menu-end"
@@ -341,6 +341,9 @@ const NavBar = (props) => {
                 </li>
               </DropdownMenu>
             </Dropdown>
+            <Link to="/postyourad" className="btn btn-primary w-100">
+               Post Your Ad
+              </Link>
           </ul>
         </Container>
       </nav>

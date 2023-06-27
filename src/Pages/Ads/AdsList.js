@@ -6,12 +6,14 @@ import Fliter from "./components/Fliter";
 import Sidebar from "./components/SideBar";
 import Ad from "./components/Ad";
 import Pagination from "./components/Pagination";
+import HeroSwiper from "./components/HeroSwiper"
 
 const AdsList = () => {
   document.title = "Ads List | Pets HelpFul";
   return (
     <React.Fragment>
       {/* <Section /> */}
+      <HeroSwiper/>
       <section className="section">
         <Container>
           <Row>
