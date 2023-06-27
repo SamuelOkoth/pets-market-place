@@ -7,7 +7,7 @@ const Selected = () => {
       <Row className="align-items-center">
         <Col lg={8}>
           <div className="mb-4 mb-lg-0">
-            <h6 className="mb-0"> My Job Listings </h6>
+            <h6 className="mb-0"> My Ads Listings </h6>
           </div>
         </Col>
         <Col lg={4}>

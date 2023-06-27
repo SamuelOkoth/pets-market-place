@@ -20,26 +20,26 @@ const PostForm = () => {
                 <Col lg={12}>
                   <div className="mb-4">
                     <Label htmlFor="jobtitle" className="form-label">
-                      Job Title
+                      Pet Name
                     </Label>
                     <Input
                       type="text"
                       className="form-control"
                       id="jobtitle"
-                      placeholder="Title"
+                      placeholder="Name"
                     />
                   </div>
                 </Col>
                 <Col lg={12}>
                   <div className="mb-4">
                     <Label htmlFor="jobdescription" className="form-label">
-                      Job Description
+                      Pet Description
                     </Label>
                     <textarea
                       className="form-control"
                       id="jobdescription"
                       rows="3"
-                      placeholder="Enter Job Description"
+                      placeholder="Enter Pet Description"
                     ></textarea>
                   </div>
                 </Col>
@@ -69,101 +69,37 @@ const PostForm = () => {
                     />
                   </div>
                 </Col>
-                <Col lg={6}>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="choices-single-categories"
-                      className="form-label"
-                    >
-                      Categories
-                    </label>
-                    <select
-                      className="form-select"
-                      data-trigger=""
-                      name="choices-single-categories"
-                      id="choices-single-categories"
-                      aria-label="Default select example"
-                    >
-                      <option value="ne">Digital & Creative</option>
-                      <option value="df">Retail</option>
-                      <option value="od">Management</option>
-                      <option value="rd">Human Resources</option>
-                    </select>
-                  </div>
-                </Col>
+               
                 <Col lg={6}>
                   <div className="mb-4">
                     <label htmlFor="jobtype" className="form-label">
-                      Job Type
+                      Pet Type
                     </label>
                     <Input
                       type="text"
                       className="form-control"
                       id="jobtype"
-                      placeholder="Job type"
+                      placeholder="Pet type"
                     />
                   </div>
                 </Col>
-                <Col lg={6}>
-                  <div className="mb-4">
-                    <label htmlFor="designation" className="form-label">
-                      Designation
-                    </label>
-                    <Input
-                      type="text"
-                      className="form-control"
-                      id="designation"
-                      placeholder="Designation"
-                    />
-                  </div>
-                </Col>
+               
                 <Col lg={6}>
                   <div className="mb-4">
                     <label htmlFor="salary" className="form-label">
-                      Salary($)
+                      Price($)
                     </label>
                     <Input
                       type="number"
                       className="form-control"
                       id="salary"
-                      placeholder="Salary"
+                      placeholder="Price"
                     />
                   </div>
                 </Col>
-                <Col lg={6}>
-                  <div className="mb-4">
-                    <label htmlFor="qualification" className="form-label">
-                      Qualification
-                    </label>
-                    <Input
-                      type="text"
-                      className="form-control"
-                      id="qualification"
-                      placeholder="Qualification"
-                    />
-                  </div>
-                </Col>
-                <Col lg={6}>
-                  <div className="mb-4">
-                    <label htmlFor="skills" className="form-label">
-                      Job Skills{" "}
-                    </label>
-                    <Input
-                      type="text"
-                      className="form-control"
-                      id="skills"
-                      placeholder="Job skills"
-                    />
-                  </div>
-                </Col>
-                <Col lg={12}>
-                  <div className="mb-4">
-                    <label htmlFor="lastdate" className="form-label">
-                      Application Deadline Date
-                    </label>
-                    <Input type="date" className="form-control" id="lastdate" />
-                  </div>
-                </Col>
+               
+                
+                
                 <Col lg={6}>
                   <div className="mb-4">
                     <label
@@ -214,7 +150,7 @@ const PostForm = () => {
                 </Col>
                 <Col lg={12}>
                   <div className="d-flex flex-wrap align-items-start gap-1 justify-content-end">
-                    <Link to="#" className="btn btn-success">
+                    <Link to="/myprofile" className="btn btn-success">
                       Back
                     </Link>
                     <Link to="#" className="btn btn-primary">
