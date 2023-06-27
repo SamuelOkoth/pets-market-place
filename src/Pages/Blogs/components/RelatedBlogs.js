@@ -70,7 +70,7 @@ const BlogPost = () => {
                     </Link>
                     <p className="card-text text-white-50">
                       {" "}
-                      <Link to="/blogauther" className="text-white-50">
+                      <Link to="/blogdetails" className="text-white-50">
                         {blogPostDetails.blogAuther}
                       </Link>{" "}
                       - {blogPostDetails.blogDate}

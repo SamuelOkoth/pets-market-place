@@ -110,7 +110,7 @@ const BlogCard = () => {
                 <ul className="list-inline d-flex justify-content-between mb-3">
                   <li className="list-inline-item">
                     <p className="text-muted mb-0">
-                      <Link to="/blogauther" className="text-muted fw-medium">
+                      <Link to="/blogdetails" className="text-muted fw-medium">
                         {blogTextDetails.blogAuther}
                       </Link>{" "}
                       - {blogTextDetails.blogDate}
@@ -128,7 +128,7 @@ const BlogCard = () => {
                 </Link>
                 <p className="text-muted">{blogTextDetails.blogContent}</p>
                 <div>
-                  <Link to="/blog-details" className="form-text text-primary">
+                  <Link to="/blogdetails" className="form-text text-primary">
                     Read More <i className="uil uil-angle-right-b"></i>
                   </Link>
                 </div>

@@ -4,7 +4,7 @@ import PrivacyAndPolicyPage from "./components/PrivacyAndPolicyPage";
 
 const PrivacyAndPolicy = () => {
   document.title =
-    "Privacy & Policy | Jobcy - Job Listing Template | Themesdesign";
+    "Privacy & Policy | Pets HelpFul";
   return (
     <React.Fragment>
       <Section />

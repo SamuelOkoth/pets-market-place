@@ -8,7 +8,7 @@ import Tags from "./components/Tags";
 import SocialConnect from "./components/SocialConnect";
 
 const BlogGrid = () => {
-  document.title = "Blog Grid | Jobcy - Job Listing Template | Themesdesign";
+  document.title = "Blogs | Pets HelpFull";
 
   return (
     <React.Fragment>

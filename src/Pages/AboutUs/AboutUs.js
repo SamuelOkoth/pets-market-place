@@ -7,7 +7,7 @@ import Cta from "./components/Cta";
 import CompanyTestimonal from "./components/CompanyTestimonal";
 
 const AboutUs = () => {
-  document.title = "About Us | Jobcy - Job Listing Template | Themesdesign";
+  document.title = "About Us | Pets HelpFul";
   return (
     <React.Fragment>
       <Section />
