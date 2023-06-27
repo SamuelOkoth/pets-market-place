@@ -10,7 +10,7 @@ import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
-  document.title = "Sign In | Jobcy - Job Listing Template | Themesdesign";
+  document.title = "Sign In | Pets HelpFul";
   return (
     <React.Fragment>
       <div>
@@ -29,11 +29,15 @@ const SignIn = () => {
                                 src={lightLogo}
                                 alt=""
                                 className="logo-light"
+                                style={{ 
+                                  height:"100px" }}
                               />
                               <img
                                 src={darkLogo}
                                 alt=""
                                 className="logo-dark"
+                                style={{ 
+                                  height:"100px" }}
                               />
                             </Link>
                             <div className="mt-5">
@@ -51,9 +55,47 @@ const SignIn = () => {
                               <div className="text-center mb-4">
                                 <h5>Welcome Back !</h5>
                                 <p className="text-white-70">
-                                  Sign in to continue to Jobcy.
+                                  Sign in to continue to Pets HelpFul.
                                 </p>
                               </div>
+                              <div>
+                                <ul className="blog-social-menu list-inline mb-0 text-center">
+                                  <li className="list-inline-item">
+                                    <Link
+                                      to="#"
+                                      className="social-link bg-primary-subtle text-primary"
+                                    >
+                                      <i className="uil uil-facebook-f"></i>
+                                    </Link>
+                                  </li>
+                                  <li className="list-inline-item">
+                                    <Link
+                                      to="#"
+                                      className="social-link bg-success-subtle text-success"
+                                    >
+                                      <i className="uil uil-whatsapp"></i>
+                                    </Link>
+                                  </li>
+                                  <li className="list-inline-item">
+                                    <Link
+                                      to="#"
+                                      className="social-link bg-primary-subtle text-primary"
+                                    >
+                                      <i className="uil uil-linkedin-alt"></i>
+                                    </Link>
+                                  </li>
+                                  <li className="list-inline-item">
+                                    <Link
+                                      to="#"
+                                      className="social-link bg-danger-subtle text-danger"
+                                    >
+                                      <i className="uil uil-envelope"></i>
+                                    </Link>
+                                  </li>
+                                </ul>
+                              </div>
+                              <br />
+                              <p className="text-center ">or</p>
                               <Form action="/" className="auth-form">
                                 <div className="mb-3">
                                   <label

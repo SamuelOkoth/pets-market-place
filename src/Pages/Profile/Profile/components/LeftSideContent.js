@@ -20,15 +20,7 @@ const LeftSideContent = () => {
               />
               <h5 className="mb-0">Jennifer Dickens</h5>
               <p className="text-muted">Developer</p>
-              <ul className="list-inline d-flex justify-content-center align-items-center ">
-                <li className="list-inline-item text-warning fs-19">
-                  <i className="mdi mdi-star"></i>
-                  <i className="mdi mdi-star"></i>
-                  <i className="mdi mdi-star"></i>
-                  <i className="mdi mdi-star"></i>
-                  <i className="mdi mdi-star-half-full"></i>
-                </li>
-              </ul>
+              
               <ul className="candidate-detail-social-menu list-inline mb-0">
                 <li className="list-inline-item">
                   <Link
@@ -62,47 +54,6 @@ const LeftSideContent = () => {
               </ul>
             </div>
 
-            <div className="mt-4 border-bottom pb-4">
-              <h5 className="fs-17 fw-bold mb-3">Documents</h5>
-              <ul className="profile-document list-unstyled mb-0">
-                <li>
-                  <div className="profile-document-list d-flex align-items-center mt-4 ">
-                    <div className="icon flex-shrink-0">
-                      <i className="uil uil-file"></i>
-                    </div>
-                    <div className="ms-3">
-                      <h6 className="fs-16 mb-0">Resume.pdf</h6>
-                      <p className="text-muted mb-0">1.25 MB</p>
-                    </div>
-                    <div className="ms-auto">
-                      <Link to="#" download className="fs-20 text-muted">
-                        <i className="uil uil-import"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="profile-document-list d-flex align-items-center mt-4 ">
-                    <div className="icon flex-shrink-0">
-                      <i className="uil uil-file"></i>
-                    </div>
-                    <div className="ms-3">
-                      <h6 className="fs-16 mb-0">Cover-letter.pdf</h6>
-                      <p className="text-muted mb-0">1.25 MB</p>
-                    </div>
-                    <div className="ms-auto">
-                      <Link
-                        to="#"
-                        download="dark-logo"
-                        className="fs-20 text-muted"
-                      >
-                        <i className="uil uil-import"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
 
             <div className="mt-4">
               <h5 className="fs-17 fw-bold mb-3">Contacts</h5>

@@ -30,7 +30,7 @@ const RightSideContent = () => {
     <React.Fragment>
       <Col lg={8}>
         <Card className="profile-content-page mt-4 mt-lg-0">
-          <Nav
+          {/* <Nav
             className="profile-content-nav nav-pills border-bottom mb-4"
             id="pills-tab"
             role="tablist"
@@ -59,11 +59,11 @@ const RightSideContent = () => {
                 Settings
               </NavLink>
             </NavItem>
-          </Nav>
+          </Nav> */}
 
           <CardBody className="p-4">
             <TabContent activeTab={activeTab}>
-              <TabPane tabId="1">
+              {/* <TabPane tabId="1">
                 <div>
                   <h5 className="fs-18 fw-bold">About</h5>
                   <p className="text-muted mt-4">
@@ -220,8 +220,8 @@ const RightSideContent = () => {
                     French
                   </span>
                 </div>
-              </TabPane>
-              <TabPane tabId="2">
+              </TabPane> */}
+              <TabPane tabId="1">
                 <Form action="#">
                   <div>
                     <h5 className="fs-17 fw-semibold mb-3 mb-0">My Account</h5>
@@ -289,10 +289,9 @@ const RightSideContent = () => {
                             id="choices-single-categories"
                             aria-label="Default select example"
                           >
-                            <option value="4">Accounting</option>
-                            <option value="1">IT & Software</option>
-                            <option value="3">Marketing</option>
-                            <option value="5">Banking</option>
+                            <option value="4">Seller</option>
+                            <option value="1">Buyer</option>
+                           
                           </select>
                         </div>
                       </Col>
@@ -369,18 +368,7 @@ const RightSideContent = () => {
                           </select>
                         </div>
                       </Col>
-                      <Col lg={12}>
-                        <div className="mb-3">
-                          <Label htmlFor="attachmentscv" className="form-label">
-                            Attachments CV
-                          </Label>
-                          <Input
-                            className="form-control"
-                            type="file"
-                            id="attachmentscv"
-                          />
-                        </div>
-                      </Col>
+                    
                     </Row>
                   </div>
 

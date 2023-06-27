@@ -11,7 +11,7 @@ import { Form } from "react-bootstrap";
 
 const ResetPassword = () => {
   document.title =
-    "Reset Password | Jobcy - Job Listing Template | Themesdesign";
+    "Reset Password | Pets HelpFul";
   return (
     <React.Fragment>
       <div>
@@ -30,11 +30,15 @@ const ResetPassword = () => {
                                 src={lightLogo}
                                 alt=""
                                 className="logo-light"
+                                style={{ 
+                                  height:"100px" }}
                               />
                               <img
                                 src={darkLogo}
                                 alt=""
                                 className="logo-dark"
+                                style={{ 
+                              height:"100px" }}
                               />
                             </Link>
                             <div className="mt-5">

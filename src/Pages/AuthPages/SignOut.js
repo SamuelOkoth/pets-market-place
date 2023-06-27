@@ -8,7 +8,7 @@ import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const SignOut = () => {
-  document.title = "Sign Out | Jobcy - Job Listing Template | Themesdesign";
+  document.title = "Sign Out | Pets HelpFul";
   return (
     <React.Fragment>
       <div>
@@ -27,11 +27,15 @@ const SignOut = () => {
                                 src={lightLogo}
                                 alt=""
                                 className="logo-light"
+                                style={{ 
+                                  height:"100px" }}
                               />
                               <img
                                 src={darkLogo}
                                 alt=""
                                 className="logo-dark"
+                                style={{ 
+                                  height:"100px" }}
                               />
                             </Link>
                             <div className="mt-5">

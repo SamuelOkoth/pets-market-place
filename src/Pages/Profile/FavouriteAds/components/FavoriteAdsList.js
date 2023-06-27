@@ -5,202 +5,166 @@ import { Card, CardBody, Col, Modal, ModalBody, Row } from "reactstrap";
 import Pagination from "./Pagination";
 
 //Import Images
-import jobImage1 from "../../../../assets/images/featured-job/img-01.png";
-import jobImage2 from "../../../../assets/images/featured-job/img-02.png";
-import jobImage3 from "../../../../assets/images/featured-job/img-03.png";
-import jobImage4 from "../../../../assets/images/featured-job/img-04.png";
-import jobImage5 from "../../../../assets/images/featured-job/img-05.png";
-import jobImage6 from "../../../../assets/images/featured-job/img-06.png";
 
-const BookmarkJobListing = () => {
+import adImage1 from "../../../../assets/images/pet-ad.jpg";
+
+const JobListing = () => {
   //Delete Modal
   const [modal, setModal] = useState(false);
-  const openModal = () => setModal(!modal);
 
-  const jobListing = [
+  const openModal = () => setModal(!modal);
+ 
+  const petAdList = [
     {
       id: 1,
-      companyImg: jobImage1,
-      jobDescription: "Business Associate",
-      experience: "",
-      companyName: "Jobcy Technology Pvt.Ltd",
-      location: "California",
-      salary: "$250 - $800 / month",
-      partTime: true,
-      timing: "Part Time",
-      badges: [
-        {
-          id: 1,
-          badgeclassName: "bg-warning-subtle text-warning",
-          badgeName: "Urgent"
-        }
-      ]
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
     },
     {
       id: 2,
-      companyImg: jobImage2,
-      jobDescription: "Marketing Director",
-      experience: "2-4 Yrs Exp.",
-      companyName: "Creative Agency",
-      location: "New York",
-      salary: "$250 - $800 / month",
-      partTime: true,
-      timing: "Part Time",
-      badges: [
-        {
-          id: 1,
-          badgeclassName: "bg-info-subtle text-info",
-          badgeName: "Private"
-        }
-      ]
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
     },
     {
       id: 3,
-      companyImg: jobImage3,
-      jobDescription: "HTML Developer",
-      experience: "2-4 Yrs Exp.",
-      companyName: "Jobcy Technology Pvt.Ltd",
-      location: "California",
-      salary: "$250 - $800 / month",
-      freeLance: true,
-      timing: "Freelance",
-      badges: [
-        {
-          id: 1,
-          badgeclassName: "bg-blue-subtle text-blue",
-          badgeName: "Internship"
-        }
-      ]
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
     },
     {
       id: 4,
-      companyImg: jobImage4,
-      jobDescription: "Product Sales Specialist",
-      experience: "5+ Yrs Exp.",
-      companyName: "Jobcy Technology Pvt.Ltd",
-      location: "California",
-      salary: "$250 - $800 / month",
-      fullTime: true,
-      timing: "Freelance",
-      badges: [
-        {
-          id: 1,
-          badgeclassName: "bg-info-subtle text-info",
-          badgeName: "Private"
-        }
-      ]
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
     },
     {
       id: 5,
-      companyImg: jobImage5,
-      jobDescription: "Product Designer",
-      experience: "0-5 Yrs Exp.",
-      companyName: "Creative Agency",
-      location: "California",
-      salary: "$250 - $800 / month",
-      internship: true,
-      timing: "Internship",
-      badges: []
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
     },
     {
       id: 6,
-      companyImg: jobImage6,
-      jobDescription: "Project Manager",
-      experience: "0-2 Yrs Exp.",
-      companyName: "Jobcy Technology Pvt.Ltd",
-      location: "California",
-      salary: "$250 - $800 / month",
-      fullTime: true,
-      timing: "Freelance",
-      badges: [
-        {
-          id: 1,
-          badgeclassName: "bg-warning-subtle text-warning",
-          badgeName: "Urgent"
-        },
-        {
-          id: 2,
-          badgeclassName: "bg-info-subtle text-info",
-          badgeName: "Private"
-        }
-      ]
-    }
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
+    },
+    {
+      id: 7,
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
+    },
+    {
+      id: 8,
+      petImg: adImage1,
+      petName: "Creative Agency",
+      petOwner: "Product Director",
+      location: " Escondido,California",
+      adPostTime: "3 min ago",
+      petPrice:"12",
+      addclassNameBookmark: false,
+      age: "2 - 3 years",
+    },
   ];
   return (
     <React.Fragment>
       <Row>
         <Col lg={12}>
-          {jobListing.map((jobListingDetails, key) => (
+          {petAdList.map((petAdDetail, key) => (
             <Card className="job-box card mt-4" key={key}>
               <CardBody className="p-4">
-                <Row>
-                  <Col lg={1}>
-                    <Link to="/companydetails">
+              
+                 <Row className="align-items-center">
+                <Col md={2}>
+                  <div className="text-center mb-4 mb-md-0">
+                    <Link to="/AdDetails">
                       <img
-                        src={jobListingDetails.companyImg}
+                        src={petAdDetail.petImg}
                         alt=""
                         className="img-fluid rounded-3"
+                        style={{ height: "95px" }}
                       />
                     </Link>
-                  </Col>
+                  </div>
+                </Col>
 
-                  <Col lg={9}>
-                    <div className="mt-3 mt-lg-0">
-                      <h5 className="fs-17 mb-1">
-                        <Link to="/jobdetails" className="text-dark">
-                          {jobListingDetails.jobDescription}
-                        </Link>
-                      </h5>
-                      <ul className="list-inline mb-0">
-                        <li className="list-inline-item">
-                          <p className="text-muted fs-14 mb-0">
-                            {jobListingDetails.companyName}
-                          </p>
-                        </li>
-                        <li className="list-inline-item">
-                          <p className="text-muted fs-14 mb-0">
-                            <i className="mdi mdi-map-marker"></i>{" "}
-                            {jobListingDetails.location}
-                          </p>
-                        </li>
-                        <li className="list-inline-item">
-                          <p className="text-muted fs-14 mb-0">
-                            <i className="uil uil-wallet"></i>{" "}
-                            {jobListingDetails.salary}
-                          </p>
-                        </li>
-                      </ul>
-                      <div className="mt-2">
-                        <span
-                          className={
-                            jobListingDetails.fullTime === true
-                              ? "badge bg-success-subtle text-success fs-13 mt-1 mx-1"
-                              : jobListingDetails.partTime === true
-                              ? "badge bg-danger-subtle text-danger fs-13 mt-1 mx-1"
-                              : jobListingDetails.freeLance === true
-                              ? "badge bg-primary-subtle text-primary fs-13 mt-1 mx-1"
-                              : jobListingDetails.internship === true
-                              ? "badge bg-blue-subtle text-blue fs-13 mt-1"
-                              : ""
-                          }
-                        >
-                          {jobListingDetails.timing}
-                        </span>
-                        {(jobListingDetails.badges || []).map(
-                          (badgeInner, key) => (
-                            <span
-                              className={`badge ${badgeInner.badgeclassName} fs-13 mt-1`}
-                              key={key}
-                            >
-                              {badgeInner.badgeName}
-                            </span>
-                          )
-                        )}
-                      </div>
+                <Col md={3}>
+                  <div className="mb-2 mb-md-0">
+                    <h5 className="fs-18 mb-0">
+                      <Link to="/AdDetails" className="text-dark">
+                        {petAdDetail.petName}
+                      </Link>
+                    </h5>
+                    <p className="text-muted fs-14 mb-0">
+                      {petAdDetail.petOwner}
+                    </p>
+                  </div>
+                </Col>
+
+                <Col md={3}>
+                  <div className="d-flex mb-2">
+                    <div className="flex-shrink-0">
+                      <i className="mdi mdi-map-marker text-primary me-1"></i>
                     </div>
-                  </Col>
+                    <p className="text-muted mb-0">
+                      {petAdDetail.location}
+                    </p>
+                  </div>
+                </Col>
 
-                  <Col lg={2} className="align-self-center">
+                
+
+                <Col md={2}>
+                  <div className="d-flex mb-0">
+                    <div className="flex-shrink-0">
+                      {/* <i className="uil uil-clock-three text-primary me-1"></i> */}
+                      <i className="uil uil-wallet text-primary me-1"></i>
+                    </div>
+                    <p className="text-muted mb-0">
+                      {" "}
+                      {petAdDetail.petPrice}
+                    </p>
+                  </div>
+                </Col>
+                <Col md={2} className="align-self-center">
                     <ul className="list-inline mt-3 mb-0">
                       <li
                         className="list-inline-item"
@@ -231,7 +195,7 @@ const BookmarkJobListing = () => {
                       </li>
                     </ul>
                   </Col>
-                </Row>
+              </Row>
               </CardBody>
             </Card>
           ))}
@@ -247,10 +211,10 @@ const BookmarkJobListing = () => {
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered">
-          <Modal isOpen={modal} toggle={openModal} centered>
+          <Modal isOpen={modal} toggle={openModal} centered tabIndex="-1">
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel">
-                Delete Jobs ?
+                Delete Ads ?
               </h5>
               <button
                 type="button"
@@ -292,4 +256,4 @@ const BookmarkJobListing = () => {
   );
 };
 
-export default BookmarkJobListing;
+export default JobListing;

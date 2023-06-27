@@ -6,7 +6,7 @@ import Section from "./components/Section";
 
 const FavoriteAds = () => {
   document.title =
-    "Bookmarks Jobs | Jobcy - Job Listing Template | Themesdesign";
+    "Favorite Ads | Pets HelpFul";
   return (
     <React.Fragment>
       <Section />
