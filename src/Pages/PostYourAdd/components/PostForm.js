@@ -10,7 +10,7 @@ const PostForm = () => {
           <Row>
             <Col lg={12}>
               <div className="bg-primary-subtle text-primary p-3">
-                <h5 className="mb-0 fs-17">Post a New Job!</h5>
+                <h5 className="mb-0 fs-17">Post a New Ad!</h5>
               </div>
             </Col>
           </Row>
