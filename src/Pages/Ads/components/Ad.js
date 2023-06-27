@@ -5,13 +5,7 @@ import { Link } from "react-router-dom";
 import { Col, Label, Row, Modal, ModalBody } from "reactstrap";
 
 //Images Import
-import adImage1 from "../../../assets/images/featured-job/img-01.png";
-import adImage2 from "../../../assets/images/featured-job/img-02.png";
-import adImage3 from "../../../assets/images/featured-job/img-03.png";
-import adImage4 from "../../../assets/images/featured-job/img-04.png";
-import adImage5 from "../../../assets/images/featured-job/img-05.png";
-import adImage6 from "../../../assets/images/featured-job/img-06.png";
-import adImage7 from "../../../assets/images/featured-job/img-07.png";
+import adImage1 from "../../../assets/images/pet-ad.jpg";
 
 const Ad = () => {
   //Apply Now Model
@@ -143,7 +137,7 @@ const Ad = () => {
                 <Col md={3}>
                   <div className="mb-2 mb-md-0">
                     <h5 className="fs-18 mb-0">
-                      <Link to="/jobdetails" className="text-dark">
+                      <Link to="/AdDetails" className="text-dark">
                         {petAdDetail.petName}
                       </Link>
                     </h5>
