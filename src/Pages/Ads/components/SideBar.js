@@ -5,7 +5,7 @@ import { Button, Col, Collapse, Input, Label } from "reactstrap";
 const Sidebar = () => {
   const [toggleFirst, setToggleFirst] = useState(true);
   const [toggleSecond, setToggleSecond] = useState(true);
-  const [toggleThird, setToggleThird] = useState(true);
+  // const [toggleThird, setToggleThird] = useState(true);
   const [toggleFourth, setToggleFourth] = useState(true);
   const [toggleFifth, setToggleFifth] = useState(true);
   const [value, setValue] = React.useState(50);
@@ -92,7 +92,7 @@ const Sidebar = () => {
                   role="button"
                   id="collapseExample"
                 >
-                  Work experience
+                  Pet Age
                 </Button>
               </h2>
               <Collapse isOpen={toggleSecond}>
@@ -109,7 +109,7 @@ const Sidebar = () => {
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked1"
                       >
-                        No experience
+                        Any
                       </label>
                     </div>
                     <div className="form-check mt-2">
@@ -161,7 +161,7 @@ const Sidebar = () => {
               </Collapse>
             </div>
 
-            <div className="accordion-item mt-3">
+            {/* <div className="accordion-item mt-3">
               <h2 className="accordion-header" id="jobType">
                 <Button
                   className="accordion-button"
@@ -172,7 +172,7 @@ const Sidebar = () => {
                   role="button"
                   id="collapseExample"
                 >
-                  Type of employment
+                  Type of Pets
                 </Button>
               </h2>
               <Collapse isOpen={toggleThird}>
@@ -238,7 +238,7 @@ const Sidebar = () => {
                   </div>
                 </div>
               </Collapse>
-            </div>
+            </div> */}
 
             <div className="accordion-item mt-3">
               <h2 className="accordion-header" id="datePosted">
@@ -371,16 +371,16 @@ const Sidebar = () => {
                 <div className="accordion-body">
                   <div className="side-title">
                     <Link to="#" className="badge tag-cloud fs-13 mt-2">
-                      design
+                      Dogs
                     </Link>
                     <Link to="#" className="badge tag-cloud fs-13 mt-2">
-                      marketing
+                      Cats
                     </Link>
                     <Link to="#" className="badge tag-cloud fs-13 mt-2">
-                      business
+                      Cows
                     </Link>
                     <Link to="#" className="badge tag-cloud fs-13 mt-2">
-                      developer
+                      Goats
                     </Link>
                   </div>
                 </div>

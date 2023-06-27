@@ -2,10 +2,22 @@ import React from "react";
 import Select from "react-select";
 const Type = () => {
   const options = [
-    { label: "Accounting", value: "1" },
-    { label: "IT & Software", value: "2" },
-    { label: "Marketing", value: "3" },
-    { label: "Banking", value: "4" }
+    { label: "Hyrax", value: "1" },
+    { label: "Hamsters", value: "2" },
+    { label: "Squirrels", value: "3" },
+    { label: "Duck", value: "4" },
+    { label: "Rabbits", value: "5" },
+    { label: "Fish and turtles", value: "6" },
+    { label: "cows", value: "7" },
+    { label: "Dogs", value: "8" },
+    { label: "Horses", value: "9" },
+    { label: "Camels", value: "10" },
+    { label: "Chicken", value: "11" },
+    { label: "Cats", value: "12" },
+    { label: "Pigeons", value: "13" },
+    { label: "Parrot", value: "14" },
+    { label: "Goats", value: "15" },
+    { label: "Sheep", value: "16" },
   ];
   const colourStyles = {
     control: (styles) => ({
@@ -24,7 +36,7 @@ const Type = () => {
         styles={colourStyles}
         className="selectForm__inner"
         data-trigger
-        defaultValue={{ label: "Accounting", value: 0 }}
+        defaultValue={{ label: "Pet Type", value: 0 }}
         name="choices-single-categories"
         id="choices-single-categories"
         aria-label="Default select example"

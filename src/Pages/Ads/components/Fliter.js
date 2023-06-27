@@ -13,12 +13,12 @@ const Fliter = () => {
           <Row className="g-2">
             <Col lg={3} md={6}>
               <div className="filler-job-form">
-                <i className="uil uil-briefcase-alt"></i>
+                <i className="uil uil-search"></i>
                 <Input
                   type="search"
                   className="form-control filter-input-box"
                   id="exampleFormControlInput1"
-                  placeholder="Job, company... "
+                  placeholder="Search for goods .. "
                   style={{ marginTop: "-10px" }}
                 />
               </div>
@@ -31,7 +31,8 @@ const Fliter = () => {
             </Col>
             <Col lg={3} md={6}>
               <div className="filler-job-form">
-                <i className="uil uil-clipboard-notes"></i>
+                {/* <i className="uil uil-clipboard-notes"></i> */}
+                <i className="uil uil-exchange"></i>
                 <Type />
               </div>
             </Col>

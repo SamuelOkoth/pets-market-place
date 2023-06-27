@@ -13,9 +13,9 @@ const Subscribe = () => {
           <Row className="justify-content-between align-items-center">
             <Col lg={6}>
               <div className="text-center text-lg-start">
-                <h4 className="text-white">Get New Jobs Notification!</h4>
+                <h4 className="text-white">Get New Ads Notification!</h4>
                 <p className="text-white-50 mb-0">
-                  Subscribe & get all related jobs notification.
+                  Subscribe & get all related Ads notification.
                 </p>
               </div>
             </Col>
