@@ -158,7 +158,7 @@ const NavBar = (props) => {
           </Collapse>
 
           <ul className="header-menu list-inline d-flex align-items-center mb-0">
-            <Dropdown
+            {/* <Dropdown
               isOpen={notification}
               toggle={dropDownnotification}
               className="list-inline-item  me-4"
@@ -171,6 +171,7 @@ const NavBar = (props) => {
                 tag="a"
               >
                 <i className="mdi mdi-bell fs-22"></i>
+                <i className="mdi mdi-message-processing fs-22"></i>
                 <div className="count position-absolute">3</div>
               </DropdownToggle>
               <DropdownMenu
@@ -288,7 +289,13 @@ const NavBar = (props) => {
                   </Link>
                 </div>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
+            <Link className=" list-inline-item  me-4" to="/chat">
+              <div className="header-item noti-icon position-relative">
+                <i className="mdi mdi-message-processing fs-22"></i>
+                <div className="count position-absolute">3</div>
+              </div>
+            </Link>
             <Dropdown
               onClick={() => setUserProfile(!userProfile)}
               isOpen={userProfile}
@@ -326,7 +333,7 @@ const NavBar = (props) => {
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/favoriteads">
-                  Favorite Ads
+                    Favorite Ads
                   </Link>
                 </li>
                 <li>
@@ -342,8 +349,8 @@ const NavBar = (props) => {
               </DropdownMenu>
             </Dropdown>
             <Link to="/postyourad" className="btn btn-primary w-100">
-               Post Your Ad
-              </Link>
+              Post Your Ad
+            </Link>
           </ul>
         </Container>
       </nav>

@@ -23,6 +23,7 @@ import SignUp from "./Pages/AuthPages/SignUp";
 import SignIn from "./Pages/AuthPages/SignIn";
 import ResetPassword from "./Pages/AuthPages/ResetPassword";
 import PostAdd from "./Pages/PostYourAdd/PostAd";
+import Chat from "./Pages/Chat/Index";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route exact path="/signin" element={<SignIn />} />
         <Route exact path="/resetpassword" element={<ResetPassword />} />
         <Route exact path="/postyourad" element={<PostAdd />} />
+        <Route exact path="/chat" element={<Chat />} />
       </Routes>
       <Subscribe/>
       <Footer/>
