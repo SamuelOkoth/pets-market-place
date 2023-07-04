@@ -41,9 +41,8 @@ const HeroSwiper = () => {
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         autoHeight={true}
         pagination={{ clickable: true }}
-        style={{
-            height: "60vh",
-          }}
+       
+          className="swiper-main"
       >
         <div
           className="swiper-wrapper"
@@ -54,10 +53,8 @@ const HeroSwiper = () => {
               <img
                 src={heroSwiperDetails.heroImage}
                 alt=""
-                className="img-fluid rounded-3"
-                style={{
-                    objectFit: "cover",
-                  }}
+                className=" swiper-img"
+               
               />
             </SwiperSlide>
           ))}

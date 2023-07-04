@@ -96,8 +96,8 @@ const Footer = () => {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Maxime mollitia,
                 </p>
-                <p className="text-white mt-3">Follow Us on:</p>
-                <ul className="footer-social-menu list-inline mb-0">
+                {/* <p className="text-white mt-3">Follow Us on:</p> */}
+                {/* <ul className="footer-social-menu list-inline mb-0">
                   {footerIcons.map((footerIcondetails, key) => (
                     <li className="list-inline-item" key={key}>
                       <Link to="#">
@@ -105,7 +105,7 @@ const Footer = () => {
                       </Link>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
             </Col>
             {footer.map((footerdetails, key) => (
