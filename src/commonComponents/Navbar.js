@@ -350,6 +350,7 @@ const NavBar = (props) => {
             </Dropdown>
             <Link to="/postyourad" className="btn btn-primary w-100">
               Post Your Ad
+              {/* أضف إعلانك */}
             </Link>
           </ul>
         </Container>

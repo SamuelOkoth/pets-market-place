@@ -232,3 +232,26 @@ body[data-bs-theme="dark"] {
     background-color: #373f4a;
   }
 }
+
+.swiper-main {
+  height: 60vh !important;
+  .swiper-img {
+    object-fit: cover;
+  }
+}
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .swiper-main {
+    height: 35vh !important;
+    .swiper-img {
+      object-fit: contain;
+      // height: 100%;
+      // width: 100%;
+    }
+  }
+}
