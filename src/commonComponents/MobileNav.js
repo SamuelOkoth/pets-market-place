@@ -7,10 +7,18 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
 
 import { Link } from "react-router-dom";
 import withRouter from "./withRouter";
+
+//import images
+import flagUs from "../assets/images/flags/us.jpg";
+import flagSp from "../assets/images/flags/spain.jpg";
+import flagGr from "../assets/images/flags/germany.jpg";
+import flagIt from "../assets/images/flags/italy.jpg";
+import flagRu from "../assets/images/flags/russia.jpg";
 
 import lightLogo from "../assets/images/main-logo.png";
 import userImage2 from "../assets/images/user/img-02.jpg";
@@ -30,6 +38,10 @@ const NavBar = (props) => {
   //user Profile Dropdown
   const [userProfile, setUserProfile] = useState(false);
   const dropDownuserprofile = () => setUserProfile((prevState) => !prevState);
+
+  // Lanuage Drpdown
+  const [dropDownlang, setDropDownlang] = useState(false);
+  const dropDownlangswitcher = () => setDropDownlang((prevState) => !prevState);
 
   //scroll navbar
   const [navClass, setnavClass] = useState(false);
@@ -111,7 +123,9 @@ const NavBar = (props) => {
   return (
     <React.Fragment>
       <nav
-        className={"navbar navbar-expand-lg  p-0 d-none d-md-block " + navClass}
+        className={
+          "navbar navbar-expand-lg d-md-none p-0 mobile-nav " + navClass
+        }
         id="navigation"
       >
         <Container fluid className="custom-container">
@@ -119,6 +133,13 @@ const NavBar = (props) => {
             <img src={lightLogo} height="70" alt="" className="logo-dark" />
             {/* <img src={lightLogo} height="22" alt="" className="logo-light" /> */}
           </Link>
+          <ul className="header-menu list-inline d-flex align-items-center mb-0">
+            <Link to="/postyourad" className="btn btn-primary w-100">
+              Post Your Ad
+            </Link>
+          </ul>
+        </Container>
+        <Container fluid className="custom-container">
           <div>
             <NavbarToggler
               className="me-3"
@@ -154,148 +175,87 @@ const NavBar = (props) => {
                   Contact
                 </Link>
               </NavItem>
+              <NavItem>
+                <Link className="nav-link" to="/signup">
+                  <i className="uil uil-lock"></i>
+                  Sign Up
+                </Link>
+              </NavItem>
             </ul>
           </Collapse>
 
           <ul className="header-menu list-inline d-flex align-items-center mb-0">
-            {/* <Dropdown
-              isOpen={notification}
-              toggle={dropDownnotification}
-              className="list-inline-item  me-4"
-            >
-              <DropdownToggle
-                href="#"
-                className="header-item noti-icon position-relative"
-                id="notification"
-                type="button"
-                tag="a"
-              >
-                <i className="mdi mdi-bell fs-22"></i>
-                <i className="mdi mdi-message-processing fs-22"></i>
-                <div className="count position-absolute">3</div>
-              </DropdownToggle>
-              <DropdownMenu
-                className="dropdown-menu-sm dropdown-menu-end p-0"
-                aria-labelledby="notification"
-                end
-              >
-                <div className="notification-header border-bottom bg-light">
-                  <h6 className="mb-1"> Notification </h6>
-                  <p className="text-muted fs-13 mb-0">
-                    You have 4 unread Notification
-                  </p>
-                </div>
-                <div className="notification-wrapper dropdown-scroll">
-                  <Link
-                    to="#"
-                    className="text-dark notification-item d-block active"
-                  >
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <div className="avatar-xs bg-primary text-white rounded-circle text-center">
-                          <i className="uil uil-user-check"></i>
-                        </div>
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">
-                          22 verified registrations
-                        </h6>
-                        <p className="mb-0 fs-12 text-muted">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>3 min ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={userImage2}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">James Lemire</h6>
-                        <p className="text-muted fs-12 mb-0">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>15 min ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={jobImage4}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">
-                          Applications has been approved
-                        </h6>
-                        <p className="text-muted mb-0 fs-12">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>45 min ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={userImage1}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">Kevin Stewart</h6>
-                        <p className="text-muted mb-0 fs-12">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>1 hour ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={jobImage}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-15">Creative Agency</h6>
-                        <p className="text-muted mb-0 fs-12">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>2 hour ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-                <div className="notification-footer border-top text-center">
-                  <Link className="primary-link fs-13" to="#">
-                    <i className="mdi mdi-arrow-right-circle me-1"></i>{" "}
-                    <span>View More..</span>
-                  </Link>
-                </div>
-              </DropdownMenu>
-            </Dropdown> */}
             <Link className=" list-inline-item  me-4" to="/chat">
               <div className="header-item noti-icon position-relative">
                 <i className="mdi mdi-message-processing fs-22"></i>
                 <div className="count position-absolute">3</div>
               </div>
             </Link>
+            
+            <li className="list-inline-item align-middle">
+              <Dropdown
+                // isOpen={dropdownOpenFlag}
+                // toggle={toggle2}
+                onClick={() => setDropDownlang(!dropDownlang)}
+                isOpen={dropDownlang}
+                toggle={dropDownlangswitcher}
+                className="d-inline-block language-switch"
+              >
+                <DropdownToggle
+                  tag="button"
+                  type="button"
+                  id="dropDownlang"
+                  className="btn"
+                >
+                  <img src={flagUs} alt="" height="16" />
+                </DropdownToggle>
+
+                <DropdownMenu className="dropdown-menu-end" end>
+                  <DropdownItem
+                    to="/"
+                    className="dropdown-item notify-item language"
+                    data-lang="eng"
+                  >
+                    <img src={flagUs} alt="" className="me-1" height="12" />
+                    <span className="align-middle">English</span>
+                  </DropdownItem>
+                  <DropdownItem
+                    to="/"
+                    className="dropdown-item notify-item language"
+                    data-lang="sp"
+                  >
+                    <img src={flagSp} alt="" className="me-1" height="12" />
+                    <span className="align-middle">Spanish</span>
+                  </DropdownItem>
+                  <DropdownItem
+                    to="/"
+                    className="dropdown-item notify-item language"
+                    data-lang="gr"
+                  >
+                    <img src={flagGr} alt="" className="me-1" height="12" />
+                    <span className="align-middle">German</span>
+                  </DropdownItem>
+                  <DropdownItem
+                    to="/"
+                    className="dropdown-item notify-item language"
+                    data-lang="it"
+                  >
+                    <img src={flagIt} alt="" className="me-1" height="12" />
+                    <span className="align-middle">Italian</span>
+                  </DropdownItem>
+                  <DropdownItem
+                    to="/"
+                    className="dropdown-item notify-item language"
+                    data-lang="ru"
+                  >
+                    <img src={flagRu} alt="" className="me-1" height="12" />
+                    <span className="align-middle">Russian</span>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </li>
+
+            
             <Dropdown
               onClick={() => setUserProfile(!userProfile)}
               isOpen={userProfile}
@@ -318,8 +278,8 @@ const NavBar = (props) => {
                   className="rounded-circle me-1"
                 />{" "}
                 {/* <span className="d-none d-md-inline-block fw-medium">
-                  Hi, Jennifer
-                </span> */}
+                Hi, Jennifer
+              </span> */}
               </DropdownToggle>
               <DropdownMenu
                 className="dropdown-menu-end"
@@ -348,10 +308,7 @@ const NavBar = (props) => {
                 </li>
               </DropdownMenu>
             </Dropdown>
-            <Link to="/postyourad" className="btn btn-primary w-100">
-              Post Your Ad
-              {/* أضف إعلانك */}
-            </Link>
+        
           </ul>
         </Container>
       </nav>
