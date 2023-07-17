@@ -51,7 +51,7 @@ const TopBar = () => {
 
   return (
     <React.Fragment>
-      <div className="top-bar" style={{ zIndex: 1030 }}>
+      <div className="top-bar d-none d-md-block" style={{ zIndex: 1030 }}>
         <Container fluid className="custom-container">
           <Row className="g-0 align-items-center">
             <Col md={7}>
@@ -65,17 +65,10 @@ const TopBar = () => {
                     </Link>
                   </p>
                 </li>
-                <li className="list-inline-item">
-                  <ul className="topbar-social-menu list-inline mb-0">
-                    {(iconTobar || []).map((icon, key) => (
-                      <li className="list-inline-item" key={key}>
-                        <Link to="/" className="social-link">
-                          <i className={icon.classname}></i>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
+
+        
+
+
               </ul>
             </Col>
 

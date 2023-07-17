@@ -44,9 +44,38 @@ const PostForm = () => {
                   </div>
                 </Col>
                 <Col lg={6}>
+                <div className="mb-4">
+                  <Label htmlFor="email" className="form-label">
+                    Pet Gender 
+                  </Label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    id="petGender "
+                    placeholder="Pet Gender "
+                  />
+                </div>
+              </Col>
+              <Col lg={6}>
+                <div className="mb-4">
+                  <Label htmlFor="phoneAge" className="form-label">
+                   Pet Age
+                  </Label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    id="petAge"
+                    placeholder="Pet Age"
+                  />
+                </div>
+              </Col>
+
+
+
+                <Col lg={6}>
                   <div className="mb-4">
                     <Label htmlFor="email" className="form-label">
-                      Email Address
+                      Email Address (optional)
                     </Label>
                     <Input
                       type="email"
@@ -59,7 +88,7 @@ const PostForm = () => {
                 <Col lg={6}>
                   <div className="mb-4">
                     <Label htmlFor="phoneNumber" className="form-label">
-                      Phone Number
+                      Phone Number (optional)
                     </Label>
                     <Input
                       type="number"
@@ -87,13 +116,13 @@ const PostForm = () => {
                 <Col lg={6}>
                   <div className="mb-4">
                     <label htmlFor="salary" className="form-label">
-                      Price($)
+                      Pet Price (optional)
                     </label>
                     <Input
                       type="number"
                       className="form-control"
-                      id="salary"
-                      placeholder="Price"
+                      id="petPrice"
+                      placeholder="Pet Price"
                     />
                   </div>
                 </Col>
@@ -149,6 +178,18 @@ const PostForm = () => {
                   </div>
                 </Col>
                 <Col lg={12}>
+                <div className="mb-4">
+                  <Label htmlFor="petImages" className="form-label">
+                    Pet Images
+                  </Label>
+                  <Input
+                    type="file"
+                    className="form-control"
+                    id="petImages"
+                  />
+                </div>
+              </Col>
+                <Col lg={12}>
                   <div className="d-flex flex-wrap align-items-start gap-1 justify-content-end">
                     <Link to="/myprofile" className="btn btn-success">
                       Back
@@ -158,6 +199,8 @@ const PostForm = () => {
                     </Link>
                   </div>
                 </Col>
+
+               
               </Row>
             </div>
           </form>

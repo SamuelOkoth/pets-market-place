@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import "./assets/scss/themes.scss";
 import Navbar from "./commonComponents/Navbar";
 import Error404 from "./Pages/Error404";
-import AdsList from "./Pages/Ads/AdsList"
+import AdsList from "./Pages/Ads/AdsList";
 import AdDetails from "./Pages/Ads/AdDetails";
 import BlogsList from "./Pages/Blogs/BlogList";
 import BlogDetails from "./Pages/Blogs/BlogDetails";
@@ -24,13 +24,14 @@ import SignIn from "./Pages/AuthPages/SignIn";
 import ResetPassword from "./Pages/AuthPages/ResetPassword";
 import PostAdd from "./Pages/PostYourAdd/PostAd";
 import Chat from "./Pages/Chat/Index";
-
+import MobileNav from "./commonComponents/MobileNav";
 
 function App() {
   return (
     <React.Fragment>
-      <TopBar/>
-      <Navbar/>
+      <TopBar />
+      <Navbar />
+      <MobileNav />
       <Routes>
         <Route exact path="*" element={<Error404 />} />
         <Route exact path="/" element={<AdsList />} />
@@ -51,8 +52,8 @@ function App() {
         <Route exact path="/postyourad" element={<PostAdd />} />
         <Route exact path="/chat" element={<Chat />} />
       </Routes>
-      <Subscribe/>
-      <Footer/>
+      <Subscribe />
+      <Footer />
     </React.Fragment>
   );
 }
