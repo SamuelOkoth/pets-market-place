@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardBody, Col, Container, Input, Row } from "reactstrap";
 
 //Import Image
@@ -7,10 +8,44 @@ import darkLogo from "../../assets/images/main-logo.png";
 
 import signInImage from "../../assets/images/auth/sign-in.png";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signInSchema } from "../../utils/validations";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { Icon } from "@iconify/react";
+import { signInAsync } from "../../store/reducers/auth.reducer";
 
 const SignIn = () => {
   document.title = "Sign In | Pets HelpFul";
+
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const { handleSubmit, control, formState: { errors } } = useForm({
+    resolver: yupResolver(signInSchema)
+  });
+
+  const onSubmit = async data => {
+
+    setLoading(true);
+    try {
+      const sendData = {
+        user: {
+          email: data.username,
+          password: data.password,
+        }
+      }
+      await dispatch(signInAsync(sendData));
+      toast.success("Log in");
+    } catch (error) {
+      console.log("Error Sign Up Form:", error);
+      toast.error(error?.response?.data?.error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <React.Fragment>
       <div>
@@ -29,15 +64,17 @@ const SignIn = () => {
                                 src={lightLogo}
                                 alt=""
                                 className="logo-light"
-                                style={{ 
-                                  height:"100px" }}
+                                style={{
+                                  height: "100px"
+                                }}
                               />
                               <img
                                 src={darkLogo}
                                 alt=""
                                 className="logo-dark"
-                                style={{ 
-                                  height:"100px" }}
+                                style={{
+                                  height: "100px"
+                                }}
                               />
                             </Link>
                             <div className="mt-5">
@@ -96,7 +133,7 @@ const SignIn = () => {
                               </div>
                               <br />
                               <p className="text-center ">or</p>
-                              <Form action="/" className="auth-form">
+                              <Form onSubmit={handleSubmit(onSubmit)} className="auth-form">
                                 <div className="mb-3">
                                   <label
                                     htmlFor="usernameInput"
@@ -104,13 +141,21 @@ const SignIn = () => {
                                   >
                                     Username
                                   </label>
-                                  <Input
-                                    type="text"
-                                    className="form-control"
-                                    id="usernameInput"
-                                    placeholder="Enter your username"
-                                    required
+                                  <Controller
+                                    name="username"
+                                    control={control}
+                                    defaultValue=""
+                                    render={({ field }) => (
+                                      <Input
+                                        {...field}
+                                        type="text"
+                                        className="form-control"
+                                        id="usernameInput"
+                                        placeholder="Enter your username"
+                                      />
+                                    )}
                                   />
+                                  {errors?.username && <span className="">{errors?.username?.message}</span>}
                                 </div>
                                 <div className="mb-3">
                                   <label
@@ -119,20 +164,37 @@ const SignIn = () => {
                                   >
                                     Password
                                   </label>
-                                  <Input
-                                    type="password"
-                                    className="form-control"
-                                    id="passwordInput"
-                                    placeholder="Enter your password"
-                                    required
+                                  <Controller
+                                    name="password"
+                                    control={control}
+                                    defaultValue=""
+                                    render={({ field }) => (
+                                      <Input
+                                        {...field}
+                                        type="password"
+                                        autoComplete="true"
+                                        className="form-control"
+                                        id="passwordInput"
+                                        placeholder="Enter your password"
+                                      />
+                                    )}
                                   />
+                                  {errors?.password && <span className="">{errors?.password?.message}</span>}
                                 </div>
                                 <div className="mb-4">
                                   <div className="form-check">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      id="flexCheckDefault"
+                                    <Controller
+                                      name="remember_me"
+                                      control={control}
+                                      defaultValue=""
+                                      render={({ field }) => (
+                                        <Input
+                                          {...field}
+                                          className="form-check-input"
+                                          type="checkbox"
+                                          id="flexCheckDefault"
+                                        />
+                                      )}
                                     />
                                     <Link
                                       to="/resetpassword"
@@ -153,7 +215,7 @@ const SignIn = () => {
                                     type="submit"
                                     className="btn btn-white btn-hover w-100"
                                   >
-                                    Sign In
+                                    {loading ? <Icon icon="svg-spinners:180-ring" color="#a6652c" fontSize={16} /> : "Sign In"}
                                   </button>
                                 </div>
                               </Form>
