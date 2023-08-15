@@ -9,7 +9,9 @@ import {
   DropdownMenu,
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import withRouter from "./withRouter";
 
 import lightLogo from "../assets/images/main-logo.png";
@@ -18,8 +20,13 @@ import jobImage4 from "../assets/images/featured-job/img-04.png";
 import userImage1 from "../assets/images/user/img-01.jpg";
 import jobImage from "../assets/images/featured-job/img-01.png";
 import profileImage from "../assets/images/profile.jpg";
+import { signOutAsync } from "../store/reducers/auth.reducer";
+
 
 const NavBar = (props) => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -106,6 +113,11 @@ const NavBar = (props) => {
       }
     }
     return false;
+  }
+
+  const handleLogout = async () => {
+    await dispatch(signOutAsync())
+    navigate("/signout")
   }
 
   return (
@@ -342,9 +354,9 @@ const NavBar = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/signout">
+                  <button type="button" className="dropdown-item" to="" onClick={handleLogout}>
                     Logout
-                  </Link>
+                  </button>
                 </li>
               </DropdownMenu>
             </Dropdown>

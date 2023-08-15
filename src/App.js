@@ -25,10 +25,19 @@ import ResetPassword from "./Pages/AuthPages/ResetPassword";
 import PostAdd from "./Pages/PostYourAdd/PostAd";
 import Chat from "./Pages/Chat/Index";
 import MobileNav from "./commonComponents/MobileNav";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+import PrivateRoute from "./routes/PrivateRoute";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <React.Fragment>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        pauseOnFocusLoss={false}
+        pauseOnHover={false} />
       <TopBar />
       <Navbar />
       <MobileNav />
@@ -42,15 +51,15 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/faqs" element={<Faqs />} />
         <Route exact path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
-        <Route exact path="/manageads" element={<ManageAds />} />
-        <Route exact path="/favoriteads" element={<FavoriteAds />} />
-        <Route exact path="/myprofile" element={<MyProfile />} />
-        <Route exact path="/signout" element={<SignOut />} />
-        <Route exact path="/signup" element={<SignUp />} />
-        <Route exact path="/signin" element={<SignIn />} />
-        <Route exact path="/resetpassword" element={<ResetPassword />} />
-        <Route exact path="/postyourad" element={<PostAdd />} />
-        <Route exact path="/chat" element={<Chat />} />
+        <Route exact path="/manageads" element={<PrivateRoute><ManageAds /></PrivateRoute>} />
+        <Route exact path="/favoriteads" element={<PrivateRoute><FavoriteAds /></PrivateRoute>} />
+        <Route exact path="/myprofile" element={<PrivateRoute><MyProfile /></PrivateRoute>} />
+        <Route exact path="/signout" element={<ProtectedRoute><SignOut /></ProtectedRoute>} />
+        <Route exact path="/signup" element={<ProtectedRoute><SignUp /></ProtectedRoute>} />
+        <Route exact path="/signin" element={<ProtectedRoute><SignIn /></ProtectedRoute>} />
+        <Route exact path="/resetpassword" element={<ProtectedRoute><ResetPassword /></ProtectedRoute>} />
+        <Route exact path="/postyourad" element={<PrivateRoute><PostAdd /></PrivateRoute>} />
+        <Route exact path="/chat" element={<PrivateRoute><Chat /></PrivateRoute>} />
       </Routes>
       <Subscribe />
       <Footer />

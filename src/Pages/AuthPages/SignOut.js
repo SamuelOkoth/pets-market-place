@@ -23,27 +23,11 @@ const SignOut = () => {
                         <Col lg={6} className="text-center">
                           <CardBody className="p-4">
                             <Link to="/">
-                              <img
-                                src={lightLogo}
-                                alt=""
-                                className="logo-light"
-                                style={{ 
-                                  height:"100px" }}
-                              />
-                              <img
-                                src={darkLogo}
-                                alt=""
-                                className="logo-dark"
-                                style={{ 
-                                  height:"100px" }}
-                              />
+                              <img src={lightLogo} alt="" className="logo-light" style={{ height: "100px" }} />
+                              <img src={darkLogo} alt="" className="logo-dark" style={{ height: "100px" }} />
                             </Link>
                             <div className="mt-5">
-                              <img
-                                src={signInImage}
-                                alt=""
-                                className="img-fluid"
-                              />
+                              <img src={signInImage} alt="" className="img-fluid" />
                             </div>
                           </CardBody>
                         </Col>
@@ -56,19 +40,13 @@ const SignOut = () => {
                                   Thank you for using Jobcy
                                 </p>
                               </div>
-                              <Link
-                                to="/signin"
-                                className="btn btn-white btn-hover w-100"
-                              >
+                              <Link to="/signin" className="btn btn-white btn-hover w-100" >
                                 Sign In
                               </Link>
                               <div className="mt-3 text-center">
                                 <p className="mb-0">
                                   Don't have an account ?{" "}
-                                  <Link
-                                    to="/signup"
-                                    className="fw-medium text-white text-decoration-underline"
-                                  >
+                                  <Link to="/signup" className="fw-medium text-white text-decoration-underline" >
                                     {" "}
                                     Sign Up{" "}
                                   </Link>
