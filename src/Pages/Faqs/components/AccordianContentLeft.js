@@ -26,7 +26,7 @@ const AccordianContentLeft = () => {
         <Collapse isOpen={isCollapseFirst} id="buying-one">
           <div className="accordion-body">
             1. Temporary adoption: 25.  <br />
-2. Mating: 30. <br />
+2. Marriage: 30. <br />
 3. Free rescue. <br />
 4. Sale: 30. <br />
 5. Adoption: 20. <br />
