@@ -21,57 +21,38 @@ const AccordianContentRight = () => {
             onClick={toggleFourth}
             type="button"
           >
-            Where To Place A FAQ Page
+            Can the ad be modified or deleted?
           </button>
         </h2>
         <Collapse isOpen={isCollapseFourth} id="general-four">
           <div className="accordion-body">
-            Just as the name suggests, a FAQ page is all about simple questions
-            and answers. Gather common questions your customers have asked from
-            your support team and include them in the FAQ, Use categories to
-            organize questions related to specific topics.
+            Yes, via ad settings
           </div>
         </Collapse>
       </div>
 
-      <div className="accordion-item mt-4 border-0">
-        <h2 className="accordion-header" id="generalfive">
+     <div className="accordion-item mt-4 border-0">
+        <h2 className="accordion-header" id="generalfour">
           <button
             className="accordion-button"
             onClick={toggleFifth}
             type="button"
           >
-            Why do we use it ?
+           what types of ads is there?  
           </button>
         </h2>
-        <Collapse isOpen={isCollapseFifth} id="general-five">
+        <Collapse isOpen={isCollapseFifth} id="general-four">
           <div className="accordion-body">
-            It will be as simple as Occidental; in fact, it will be Occidental.
-            To an English person, it will seem like simplified English, as a
-            skeptical Cambridge friend of mine told me what Occidental.
+       Temporary adoption: <br />
+ Mating:  <br />
+Free rescue. <br />
+ Sale:  <br />
+Adoption: <br />
           </div>
         </Collapse>
       </div>
 
-      <div className="accordion-item mt-4 border-0">
-        <h2 className="accordion-header" id="generalsix">
-          <button
-            className="accordion-button"
-            onClick={toggleSixth}
-            type="button"
-          >
-            Where can I get some ?
-          </button>
-        </h2>
-        <Collapse isOpen={isCollapseSixth} id="general-six">
-          <div className="accordion-body">
-            To an English person, it will seem like simplified English, as a
-            skeptical Cambridge friend of mine told me what Occidental is. The
-            European languages are members of the same family. Their separate
-            existence is a myth.
-          </div>
-        </Collapse>
-      </div>
+     
     </React.Fragment>
   );
 };

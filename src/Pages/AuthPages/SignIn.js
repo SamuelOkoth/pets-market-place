@@ -102,31 +102,19 @@ const SignIn = () => {
                                       to="#"
                                       className="social-link bg-primary-subtle text-primary"
                                     >
-                                      <i className="uil uil-facebook-f"></i>
+                                   <Icon icon="ri:facebook-fill" />
                                     </Link>
                                   </li>
-                                  <li className="list-inline-item">
-                                    <Link
-                                      to="#"
-                                      className="social-link bg-success-subtle text-success"
-                                    >
-                                      <i className="uil uil-whatsapp"></i>
-                                    </Link>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <Link
-                                      to="#"
-                                      className="social-link bg-primary-subtle text-primary"
-                                    >
-                                      <i className="uil uil-linkedin-alt"></i>
-                                    </Link>
-                                  </li>
+                                  
+                                  
                                   <li className="list-inline-item">
                                     <Link
                                       to="#"
                                       className="social-link bg-danger-subtle text-danger"
                                     >
-                                      <i className="uil uil-envelope"></i>
+                                   
+                                      <Icon icon="grommet-icons:google" />
+                                     
                                     </Link>
                                   </li>
                                 </ul>

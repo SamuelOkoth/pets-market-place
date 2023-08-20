@@ -27,68 +27,10 @@ const FaqContent = () => {
     <React.Fragment>
       <section className="section">
         <Container>
-          <Row className="justify-content-center">
-            <Col lg={8}>
-              <Nav
-                className="faq-menu nav-fill nav-pills justify-content-center"
-                id="pills-tab"
-                role="tablist"
-              >
-                <NavItem>
-                  <NavLink
-                    to="#"
-                    className={classnames({ active: activeTab === "1" })}
-                    onClick={() => {
-                      TabChange("1");
-                    }}
-                    type="button"
-                  >
-                    General
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    to="#"
-                    className={classnames({ active: activeTab === "2" })}
-                    onClick={() => {
-                      TabChange("2");
-                    }}
-                    type="button"
-                  >
-                    Buying
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    to="#"
-                    className={classnames({ active: activeTab === "3" })}
-                    onClick={() => {
-                      TabChange("3");
-                    }}
-                    type="button"
-                  >
-                    Payment
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={classnames({ active: activeTab === "4" })}
-                    onClick={() => {
-                      TabChange("4");
-                    }}
-                    type="button"
-                  >
-                    Support
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </Col>
-          </Row>
+         
           <Row className="align-items-center mt-5">
             <Col lg={12}>
-              <TabContent activeTab={activeTab}>
-                <TabPane className="fade show" tabId="1">
-                  <Row>
+               <Row>
                     <Col lg={6}>
                       <div
                         className="accordion accordion-flush faq-box"
@@ -106,68 +48,7 @@ const FaqContent = () => {
                       </div>
                     </Col>
                   </Row>
-                </TabPane>
-                <TabPane className="fade show" tabId="2">
-                  <Row>
-                    <Col lg={6}>
-                      <div
-                        className="accordion accordion-flush faq-box"
-                        id="buying"
-                      >
-                        <AccordianContentLeft />
-                      </div>
-                    </Col>
-                    <Col lg={6}>
-                      <div
-                        className="accordion accordion-flush faq-box"
-                        id="buyingTwo"
-                      >
-                        <AccordianContentRight />
-                      </div>
-                    </Col>
-                  </Row>
-                </TabPane>
-                <TabPane className="fade show" tabId="3">
-                  <Row>
-                    <Col lg={6}>
-                      <div
-                        className="accordion accordion-flush faq-box"
-                        id="payment"
-                      >
-                        <AccordianContentLeft />
-                      </div>
-                    </Col>
-                    <Col lg={6}>
-                      <div
-                        className="accordion accordion-flush faq-box"
-                        id="paymentTwo"
-                      >
-                        <AccordianContentRight />
-                      </div>
-                    </Col>
-                  </Row>
-                </TabPane>
-                <TabPane className="fade show" tabId="4">
-                  <Row>
-                    <Col lg={6}>
-                      <div
-                        className="accordion accordion-flush faq-box"
-                        id="support"
-                      >
-                        <AccordianContentLeft />
-                      </div>
-                    </Col>
-                    <Col lg={6}>
-                      <div
-                        className="accordion accordion-flush faq-box"
-                        id="supportTwo"
-                      >
-                        <AccordianContentRight />
-                      </div>
-                    </Col>
-                  </Row>
-                </TabPane>
-              </TabContent>
+            
             </Col>
             <Col lg={12}>
               <div className="text-center mt-5">

@@ -21,7 +21,7 @@ const Footer = () => {
 
         {
           id: 3,
-          link: "/blog",
+          link: "/blogs",
           subTitle: "Blog",
         },
       ],
@@ -60,8 +60,8 @@ const Footer = () => {
         },
         {
           id: 3,
-          link: "/privacyandpolicy",
-          subTitle: "Privacy Policy",
+          link: "/termandconditions",
+          subTitle: "Term & Conditions",
         },
       ],
     },
