@@ -130,7 +130,7 @@ const PostForm = () => {
                     >
                       <option value="20">Missing</option>
                       <option value="25">Temporary adoption</option>
-                      <option value="30">Mating</option>
+                      <option value="30">Marriage</option>
                       <option value="0">Free rescue</option>
                       <option value="30">Sale</option>
                       <option value="20">Adoption</option>
