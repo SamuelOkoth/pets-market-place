@@ -1,10 +1,10 @@
 import React from "react";
 import Section from "./components/Section";
-import PrivacyAndPolicyPage from "./components/PrivacyAndPolicyPage";
+import PrivacyAndPolicyPage from "./components/TermAndConditionsPage";
 
-const PrivacyAndPolicy = () => {
+const TermAndConditions = () => {
   document.title =
-    "Privacy & Policy | Pets HelpFul";
+    "Term & Conditions | Pets HelpFul";
   return (
     <React.Fragment>
       <Section />
@@ -12,4 +12,4 @@ const PrivacyAndPolicy = () => {
     </React.Fragment>
   );
 };
-export default PrivacyAndPolicy;
+export default TermAndConditions;

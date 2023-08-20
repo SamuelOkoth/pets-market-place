@@ -14,7 +14,7 @@ import Contact from "./Pages/Contact/Contact";
 import TopBar from "./commonComponents/TopBar";
 import Subscribe from "./commonComponents/Subscribe";
 import Faqs from "./Pages/Faqs/Faqs";
-import PrivacyAndPolicy from "./Pages/PrivacyAndPolicy/PrivacyAndPolicy";
+import TermAndConditions from "./Pages/TermAndConditions/TermAndConditions";
 import ManageAds from "./Pages/Profile/ManageAds/ManageAds";
 import FavoriteAds from "./Pages/Profile/FavouriteAds/FavoriteAds";
 import MyProfile from "./Pages/Profile/Profile/MyProfile";
@@ -50,7 +50,7 @@ function App() {
         <Route exact path="/about" element={<AboutUs />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/faqs" element={<Faqs />} />
-        <Route exact path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
+        <Route exact path="/termandconditions" element={<TermAndConditions />} />
         <Route exact path="/manageads" element={<PrivateRoute><ManageAds /></PrivateRoute>} />
         <Route exact path="/favoriteads" element={<PrivateRoute><FavoriteAds /></PrivateRoute>} />
         <Route exact path="/myprofile" element={<PrivateRoute><MyProfile /></PrivateRoute>} />

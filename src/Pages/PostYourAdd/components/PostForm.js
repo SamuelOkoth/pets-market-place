@@ -99,7 +99,7 @@ const PostForm = () => {
                   </div>
                 </Col>
                
-                <Col lg={6}>
+                <Col lg={4}>
                   <div className="mb-4">
                     <label htmlFor="jobtype" className="form-label">
                       Pet Type
@@ -112,8 +112,33 @@ const PostForm = () => {
                     />
                   </div>
                 </Col>
+
+                 <Col lg={4}>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="choices-ad-type"
+                      className="form-label"
+                    >
+                      Type of Ad
+                    </label>
+                    <select
+                      className="form-select"
+                      data-trigger
+                      name="choices-ad-type"
+                      id="choices-ad-type"
+                      aria-label="Default select example"
+                    >
+                      <option value="20">Missing</option>
+                      <option value="25">Temporary adoption</option>
+                      <option value="30">Mating</option>
+                      <option value="0">Free rescue</option>
+                      <option value="30">Sale</option>
+                      <option value="20">Adoption</option>
+                    </select>
+                  </div>
+                </Col>
                
-                <Col lg={6}>
+                <Col lg={4}>
                   <div className="mb-4">
                     <label htmlFor="salary" className="form-label">
                       Pet Price (optional)

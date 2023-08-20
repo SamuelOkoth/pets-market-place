@@ -101,29 +101,13 @@ const SignUp = () => {
                                 </p>
                               </div>
                               <div>
-                                <ul className="blog-social-menu list-inline mb-0 text-center">
+                              <ul className="blog-social-menu list-inline mb-0 text-center">
                                   <li className="list-inline-item">
                                     <Link
                                       to="#"
                                       className="social-link bg-primary-subtle text-primary"
                                     >
-                                      <i className="uil uil-facebook-f"></i>
-                                    </Link>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <Link
-                                      to="#"
-                                      className="social-link bg-success-subtle text-success"
-                                    >
-                                      <i className="uil uil-whatsapp"></i>
-                                    </Link>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <Link
-                                      to="#"
-                                      className="social-link bg-primary-subtle text-primary"
-                                    >
-                                      <i className="uil uil-linkedin-alt"></i>
+                                      <Icon icon="ri:facebook-fill" />
                                     </Link>
                                   </li>
                                   <li className="list-inline-item">
@@ -131,7 +115,7 @@ const SignUp = () => {
                                       to="#"
                                       className="social-link bg-danger-subtle text-danger"
                                     >
-                                      <i className="uil uil-envelope"></i>
+                                      <Icon icon="grommet-icons:google" />
                                     </Link>
                                   </li>
                                 </ul>
@@ -227,7 +211,7 @@ const SignUp = () => {
                                     >
                                       I agree to the{" "}
                                       <Link
-                                        to="#"
+                                        to="/termandconditions"
                                         className="text-white text-decoration-underline"
                                       >
                                         Terms and conditions
