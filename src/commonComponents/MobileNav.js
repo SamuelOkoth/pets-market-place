@@ -14,19 +14,23 @@ import { Link } from "react-router-dom";
 import withRouter from "./withRouter";
 
 //import images
+// Import flag images
 import flagUs from "../assets/images/flags/us.jpg";
-import flagSp from "../assets/images/flags/spain.jpg";
-import flagGr from "../assets/images/flags/germany.jpg";
-import flagIt from "../assets/images/flags/italy.jpg";
-import flagRu from "../assets/images/flags/russia.jpg";
+import flagAr from "../assets/images/flags/sudia.png";
+
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+
 
 import lightLogo from "../assets/images/main-logo.png";
-import userImage2 from "../assets/images/user/img-02.jpg";
-import jobImage4 from "../assets/images/featured-job/img-04.png";
-import userImage1 from "../assets/images/user/img-01.jpg";
-import jobImage from "../assets/images/featured-job/img-01.png";
 import profileImage from "../assets/images/profile.jpg";
 
+const changeLang = (l) => {
+  return () => {
+    i18next.changeLanguage(l);
+    localStorage.setItem('lang', l);
+  };
+};
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -120,6 +124,24 @@ const NavBar = (props) => {
     return false;
   }
 
+
+
+ const [dropdownOpen, setDropdownOpen] = useState(false);
+
+
+ 
+  // Set "ar" as the default language
+  const currentLanguage = localStorage.getItem('lang') || 'ar'; // Default to 'ar' if no language is set
+
+  const languageFlags = {
+    en: flagUs,
+    ar: flagAr,
+    // Add more languages and their flag images as needed
+  };
+
+const {t} = useTranslation();
+  const toggle2 = () => setDropdownOpen((prevState) => !prevState);
+  
   return (
     <React.Fragment>
       <nav
@@ -135,7 +157,7 @@ const NavBar = (props) => {
           </Link>
           <ul className="header-menu list-inline d-flex align-items-center mb-0">
             <Link to="/postyourad" className="btn btn-primary w-100">
-              Post Your Ad
+              {t("post_your_ad")}
             </Link>
           </ul>
         </Container>
@@ -157,28 +179,28 @@ const NavBar = (props) => {
             <ul className="navbar-nav mx-auto navbar-center">
               <NavItem>
                 <Link className="nav-link" to="/">
-                  Home
+                  {t("home")}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/about">
-                  About
+                  {t("about")}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/blogs">
-                  Blog
+                  {t("blog")}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/contact">
-                  Contact
+                  {t("contact")}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/signup">
                   <i className="uil uil-lock"></i>
-                  Sign Up
+                  {t("signup_sign_up")}
                 </Link>
               </NavItem>
             </ul>
@@ -193,66 +215,34 @@ const NavBar = (props) => {
             </Link>
             
             <li className="list-inline-item align-middle">
-              <Dropdown
-                // isOpen={dropdownOpenFlag}
-                // toggle={toggle2}
-                onClick={() => setDropDownlang(!dropDownlang)}
-                isOpen={dropDownlang}
-                toggle={dropDownlangswitcher}
-                className="d-inline-block language-switch"
-              >
-                <DropdownToggle
-                  tag="button"
-                  type="button"
-                  id="dropDownlang"
-                  className="btn"
-                >
-                  <img src={flagUs} alt="" height="16" />
-                </DropdownToggle>
-
-                <DropdownMenu className="dropdown-menu-end" end>
-                  <DropdownItem
-                    to="/"
-                    className="dropdown-item notify-item language"
-                    data-lang="eng"
+                <Dropdown
+                    isOpen={dropdownOpen}
+                    toggle={toggle2}
+                    className="d-inline-block language-switch"
                   >
-                    <img src={flagUs} alt="" className="me-1" height="12" />
-                    <span className="align-middle">English</span>
-                  </DropdownItem>
-                  <DropdownItem
-                    to="/"
-                    className="dropdown-item notify-item language"
-                    data-lang="sp"
-                  >
-                    <img src={flagSp} alt="" className="me-1" height="12" />
-                    <span className="align-middle">Spanish</span>
-                  </DropdownItem>
-                  <DropdownItem
-                    to="/"
-                    className="dropdown-item notify-item language"
-                    data-lang="gr"
-                  >
-                    <img src={flagGr} alt="" className="me-1" height="12" />
-                    <span className="align-middle">German</span>
-                  </DropdownItem>
-                  <DropdownItem
-                    to="/"
-                    className="dropdown-item notify-item language"
-                    data-lang="it"
-                  >
-                    <img src={flagIt} alt="" className="me-1" height="12" />
-                    <span className="align-middle">Italian</span>
-                  </DropdownItem>
-                  <DropdownItem
-                    to="/"
-                    className="dropdown-item notify-item language"
-                    data-lang="ru"
-                  >
-                    <img src={flagRu} alt="" className="me-1" height="12" />
-                    <span className="align-middle">Russian</span>
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+                    <DropdownToggle tag="button" type="button" className="btn">
+                      <img src={languageFlags[currentLanguage]} alt="" height="16" />
+                    </DropdownToggle>
+                    <DropdownMenu className="dropdown-menu-end" end>
+                      <DropdownItem
+                        onClick={changeLang("ar")}
+                        className={`dropdown-item notify-item language ${currentLanguage === 'ar' ? 'active' : ''}`}
+                        data-lang="ar"
+                      >
+                        <img src={flagAr} alt="" className="me-1" height="12" />
+                        <span className="align-middle">عربي</span>
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={changeLang("en")}
+                        className={`dropdown-item notify-item language ${currentLanguage === 'en' ? 'active' : ''}`}
+                        data-lang="en"
+                      >
+                        <img src={flagUs} alt="" className="me-1" height="12" />
+                        <span className="align-middle">English</span>
+                      </DropdownItem>
+                      {/* Add more languages and their corresponding dropdown items */}
+                    </DropdownMenu>
+                  </Dropdown>
             </li>
 
             
@@ -288,22 +278,22 @@ const NavBar = (props) => {
               >
                 <li>
                   <Link className="dropdown-item" to="/manageads">
-                    Manage Ads
+                    {t("manage_ads")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/favoriteads">
-                    Favorite Ads
+                    {t("favorite_ads")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/myprofile">
-                    My Profile
+                    {t("my_profile")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/signout">
-                    Logout
+                    {t("logout")}
                   </Link>
                 </li>
               </DropdownMenu>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, ModalBody, Input, Label, Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 //Import Images
 import jobImages2 from "../../../assets/images/featured-job/img-02.png";
@@ -9,7 +10,7 @@ const RightSideContent = () => {
   //Apply Now Model
   const [modal, setModal] = useState(false);
   const openModal = () => setModal(!modal);
-
+const {t} =useTranslation();
   return (
     <React.Fragment>
       <div className="side-bar ms-lg-4">
@@ -17,15 +18,6 @@ const RightSideContent = () => {
           <CardBody className="p-4">
             <h6 className="fs-17">Ad Overview</h6>
             <ul className="list-unstyled mt-4 mb-0">
-              {/* <li>
-                <div className="d-flex mt-4">
-                  <i className="uil uil-user icon bg-primary-subtle text-primary"></i>
-                  <div className="ms-3">
-                    <h6 className="fs-14 mb-2">Job Title</h6>
-                    <p className="text-muted mb-0">Product Designer</p>
-                  </div>
-                </div>
-              </li> */}
               <li>
                 <div className="d-flex mt-4">
                   <i className="uil uil-star-half-alt icon bg-primary-subtle text-primary"></i>
@@ -39,7 +31,7 @@ const RightSideContent = () => {
                 <div className="d-flex mt-4">
                   <i className="uil uil-location-point icon bg-primary-subtle text-primary"></i>
                   <div className="ms-3">
-                    <h6 className="fs-14 mb-2">Location</h6>
+                    <h6 className="fs-14 mb-2">{t('location')}</h6>
                     <p className="text-muted mb-0"> New york</p>
                   </div>
                 </div>

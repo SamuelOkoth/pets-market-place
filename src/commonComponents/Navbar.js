@@ -22,6 +22,7 @@ import jobImage from "../assets/images/featured-job/img-01.png";
 import profileImage from "../assets/images/profile.jpg";
 import { signOutAsync } from "../store/reducers/auth.reducer";
 
+import { useTranslation, initReactI18next } from "react-i18next";
 
 const NavBar = (props) => {
 
@@ -119,7 +120,7 @@ const NavBar = (props) => {
     await dispatch(signOutAsync())
     navigate("/signout")
   }
-
+const { t } = useTranslation();
   return (
     <React.Fragment>
       <nav
@@ -148,22 +149,22 @@ const NavBar = (props) => {
             <ul className="navbar-nav mx-auto navbar-center">
               <NavItem>
                 <Link className="nav-link" to="/">
-                  Home
+                   {t('home')}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/about">
-                  About
+                   {t('about')}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/blogs">
-                  Blog
+                   {t('blog')}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/contact">
-                  Contact
+                   {t('contact')}
                 </Link>
               </NavItem>
             </ul>
@@ -340,29 +341,30 @@ const NavBar = (props) => {
               >
                 <li>
                   <Link className="dropdown-item" to="/manageads">
-                    Manage Ads
+                    {t("manage_ads")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/favoriteads">
-                    Favorite Ads
+                    {t("favorite_ads")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/myprofile">
-                    My Profile
+                    {t("my_profile")}
                   </Link>
                 </li>
                 <li>
                   <button type="button" className="dropdown-item" to="" onClick={handleLogout}>
-                    Logout
+                    {t("logout")}
                   </button>
                 </li>
               </DropdownMenu>
             </Dropdown>
             <Link to="/postyourad" className="btn btn-primary w-100">
-              Post Your Ad
-              {/* أضف إعلانك */}
+         
+             
+              {t('post_your_ad')}
             </Link>
           </ul>
         </Container>

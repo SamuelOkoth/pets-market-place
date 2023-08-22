@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 //import Custom Style scss
 import "./assets/scss/themes.scss";
@@ -29,8 +29,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import PrivateRoute from "./routes/PrivateRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
-
+import i18next from "i18next";
 function App() {
+  useEffect(() => {
+    let currentlang = localStorage.getItem("lang");
+    i18next.changeLanguage(currentlang);
+
+  }, []);
   return (
     <React.Fragment>
       <ToastContainer
@@ -61,7 +66,7 @@ function App() {
         <Route exact path="/postyourad" element={<PrivateRoute><PostAdd /></PrivateRoute>} />
         <Route exact path="/chat" element={<PrivateRoute><Chat /></PrivateRoute>} />
       </Routes>
-      <Subscribe />
+      {/* <Subscribe /> */} 
       <Footer />
     </React.Fragment>
   );

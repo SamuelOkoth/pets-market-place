@@ -1,92 +1,79 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const TermAndConditionsPage = () => {
+  
+  const { t } = useTranslation();
+
   const privacyandpolicyPage = [
     {
       id: 1,
-      policyTitle: "When using the website, you acknowledge and agree to the following:",
+      policyTitle: t("term_title"),
       policyRules: [
         {
           id: 1,
-          policyInnerRule:
-            " The website does not specifically advertise or sell any products. It provides a service that enables users to create and manage their own advertisements on the website."
+          policyInnerRule: t("term_content_line_1")
         },
         {
           id: 2,
-          policyInnerRule:
-            " You commit to adhering to the teachings of Islamic law and general etiquette in all your posts."
+          policyInnerRule: t("term_content_line_2")
         },
         {
           id: 3,
-          policyInnerRule:
-            " You will not use an inappropriate username."
+        policyInnerRule: t("term_content_line_3")
         },
         {
           id: 4,
-          policyInnerRule:
-            " You will not advertise using multiple accounts on the website."
+          policyInnerRule: t("term_content_line_4")
         },
         {
           id: 5,
-          policyInnerRule:
-            " You will ensure the accuracy of information provided during registration, such as contact numbers, email addresses, or any other details."
+         policyInnerRule: t("term_content_line_5")
         },
         {
           id: 6,
-          policyInnerRule:
-            "You will adhere to the website's sections and post each advertisement in the appropriate category, refraining from adding links to other websites unless it serves the purpose of the advertisement."
+           policyInnerRule: t("term_content_line_6")
         },
         {
           id: 7,
-          policyInnerRule:
-            "You will refrain from posting non-serious requests or offers and from publishing advertisements unrelated to buying and selling within the website's scope."
+        policyInnerRule: t("term_content_line_7")
         },
         {
           id: 8,
-          policyInnerRule:
-            "You will not undervalue or disrespect members' advertisements."
+           policyInnerRule: t("term_content_line_8")
         },
         {
           id: 9,
-          policyInnerRule:
-            " You will not bid on a specific advertisement using multiple accounts."
+          policyInnerRule: t("term_content_line_9")
         },
         {
           id: 10,
-          policyInnerRule:
-            "Accounts that remain unused for a full year will be deleted."
+         policyInnerRule: t("term_content_line_10")
         },
         {
           id: 11,
-          policyInnerRule:
-            "Business transactions occur directly between members without any liability on the website. The website warns against money transfers and advises direct interaction between the parties involved."
+           policyInnerRule: t("term_content_line_11")
         },
         {
           id: 12,
-          policyInnerRule:
-            "The website management receives a fee for the type of advertisement published through the website, and the advertiser is obligated to pay it. The responsibility for this fee lies with the advertiser, and the website management has the right to claim it."
+          policyInnerRule: t("term_content_line_12")
         },
         {
           id: 13,
-          policyInnerRule:
-            "The website management reserves the right to change the value of advertisements at any time."
+           policyInnerRule: t("term_content_line_13")
         },
         {
           id: 14,
-          policyInnerRule:
-            "The website may update, modify, add, or delete any of the provisions of this agreement."
+           policyInnerRule: t("term_content_line_14")
         },
         {
           id: 15,
-          policyInnerRule:
-            "By accepting the terms of the website's terms of use, you signify your agreement and commitment to all the provisions of this agreement. Any violation of these provisions gives the website management the right to impose an appropriate penalty."
+           policyInnerRule: t("term_content_line_15")
         },
         {
           id: 16,
-          policyInnerRule:
-            "You bear full legal responsibility for all your posts before official authorities, without any liability on the website."
+          policyInnerRule: t("term_content_line_16")
         }
       ]
     },

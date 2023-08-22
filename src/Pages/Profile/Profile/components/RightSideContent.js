@@ -2,229 +2,35 @@ import React, { useState } from "react";
 import {
   Col,
   Row,
-  Nav,
-  NavLink,
   TabContent,
   TabPane,
   Card,
   Input,
   Form,
-  NavItem,
   CardBody,
   Label
 } from "reactstrap";
 
-import classnames from "classnames";
-
 //Images Import
 import userImage2 from "../../../../assets/images/user/img-02.jpg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RightSideContent = () => {
   const [activeTab, setActiveTab] = useState("1");
 
-  const tabChange = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
+  const { t } = useTranslation();
+
   return (
     <React.Fragment>
       <Col lg={8}>
         <Card className="profile-content-page mt-4 mt-lg-0">
-          {/* <Nav
-            className="profile-content-nav nav-pills border-bottom mb-4"
-            id="pills-tab"
-            role="tablist"
-          >
-            <NavItem role="presentation">
-              <NavLink
-                to="#"
-                className={classnames({ active: activeTab === "1" })}
-                onClick={() => {
-                  tabChange("1");
-                }}
-                type="button"
-              >
-                Overview
-              </NavLink>
-            </NavItem>
-            <NavItem role="presentation">
-              <NavLink
-                to="#"
-                className={classnames({ active: activeTab === "2" })}
-                onClick={() => {
-                  tabChange("2");
-                }}
-                type="button"
-              >
-                Settings
-              </NavLink>
-            </NavItem>
-          </Nav> */}
-
           <CardBody className="p-4">
             <TabContent activeTab={activeTab}>
-              {/* <TabPane tabId="1">
-                <div>
-                  <h5 className="fs-18 fw-bold">About</h5>
-                  <p className="text-muted mt-4">
-                    Developer with over 5 years' experience working in both the
-                    public and private sectors. Diplomatic, personable, and
-                    adept at managing sensitive situations. Highly organized,
-                    self-motivated, and proficient with computers. Looking to
-                    boost students’ satisfactions scores for{" "}
-                    <b>International University</b>. Bachelor's degree in
-                    communications.
-                  </p>
-                  <p className="text-muted">
-                    It describes the candidate's relevant experience, skills,
-                    and achievements. The purpose of this career summary is to
-                    explain your qualifications for the job in 3-5 sentences and
-                    convince the manager to read the whole resume document.
-                  </p>
-                </div>
-                <div className="candidate-education-details mt-4">
-                  <h6 className="fs-18 fw-bold mb-0">Education</h6>
-                  <div className="candidate-education-content mt-4 d-flex">
-                    <div className="circle flex-shrink-0 bg-primary-subtle text-primary">
-                      B
-                    </div>
-                    <div className="ms-4">
-                      <h6 className="fs-16 mb-1">
-                        BCA - Bachelor of Computer Applications
-                      </h6>
-                      <p className="mb-2 text-muted">
-                        International University - (2004 - 2010)
-                      </p>
-                      <p className="text-muted">
-                        There are many variations of passages of available, but
-                        the majority alteration in some form. As a highly
-                        skilled and successfull product development and design
-                        specialist with more than 4 Years of My experience.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="candidate-education-content mt-3 d-flex">
-                    <div className="circle flex-shrink-0 bg-primary-subtle text-primary">
-                      M
-                    </div>
-                    <div className="ms-4">
-                      <h6 className="fs-16 mb-1">
-                        MCA - Master of Computer Application
-                      </h6>
-                      <p className="mb-2 text-muted">
-                        International University - (2010 - 2012)
-                      </p>
-                      <p className="text-muted">
-                        There are many variations of passages of available, but
-                        the majority alteration in some form. As a highly
-                        skilled and successfull product development and design
-                        specialist with more than 4 Years of My experience.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="candidate-education-content mt-3 d-flex">
-                    <div className="circle flex-shrink-0 bg-primary-subtle text-primary">
-                      D
-                    </div>
-                    <div className="ms-4">
-                      <h6 className="fs-16 mb-1">
-                        Design Communication Visual
-                      </h6>
-                      <p className="text-muted mb-2">
-                        International University - (2012-2015)
-                      </p>
-                      <p className="text-muted">
-                        There are many variations of passages of available, but
-                        the majority alteration in some form. As a highly
-                        skilled and successfull product development and design
-                        specialist with more than 4 Years of My experience.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="candidate-education-details mt-4">
-                  <h6 className="fs-18 fw-bold mb-0">Experiences</h6>
-                  <div className="candidate-education-content mt-4 d-flex">
-                    <div className="circle flex-shrink-0 bg-primary-subtle text-primary">
-                      {" "}
-                      W{" "}
-                    </div>
-                    <div className="ms-4">
-                      <h6 className="fs-16 mb-1">
-                        Web Design & Development Team Leader
-                      </h6>
-                      <p className="mb-2 text-muted">
-                        Creative Agency - (2013 - 2016)
-                      </p>
-                      <p className="text-muted">
-                        There are many variations of passages of available, but
-                        the majority alteration in some form. As a highly
-                        skilled and successfull product development and design
-                        specialist with more than 4 Years of My experience.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="candidate-education-content mt-4 d-flex">
-                    <div className="circle flex-shrink-0 bg-primary-subtle text-primary">
-                      {" "}
-                      P{" "}
-                    </div>
-                    <div className="ms-4">
-                      <h6 className="fs-16 mb-1">Project Manager</h6>
-                      <p className="mb-2 text-muted">
-                        Jobcy Technology Pvt.Ltd - (Pressent)
-                      </p>
-                      <p className="text-muted mb-0">
-                        There are many variations of passages of available, but
-                        the majority alteration in some form. As a highly
-                        skilled and successfull product development and design
-                        specialist with more than 4 Years of My experience.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <h5 className="fs-18 fw-bold">Skills</h5>
-                </div>
-                <div className="mt-0 d-flex flex-wrap align-items-start gap-1">
-                  <span className="badge fs-13 bg-blue-subtle text-blue mt-2">
-                    Cloud Management
-                  </span>
-                  <span className="badge fs-13 bg-blue-subtle text-blue mt-2">
-                    Responsive Design
-                  </span>
-                  <span className="badge fs-13 bg-blue-subtle text-blue mt-2">
-                    Network Architecture
-                  </span>
-                  <span className="badge fs-13 bg-blue-subtle text-blue mt-2">
-                    PHP
-                  </span>
-                  <span className="badge fs-13 bg-blue-subtle text-blue mt-2">
-                    Bootstrap
-                  </span>
-                  <span className="badge fs-13 bg-blue-subtle text-blue mt-2">
-                    UI & UX Designer
-                  </span>
-                </div>
-                <div className="mt-4">
-                  <h5 className="fs-18 fw-bold">Spoken languages</h5>
-                </div>
-                <div className="mt-0 d-flex flex-wrap align-items-start gap-1">
-                  <span className="badge fs-13 bg-success-subtle text-success mt-2">
-                    English
-                  </span>
-                  <span className="badge fs-13 bg-success-subtle text-success mt-2">
-                    German
-                  </span>
-                  <span className="badge fs-13 bg-success-subtle text-success mt-2">
-                    French
-                  </span>
-                </div>
-              </TabPane> */}
               <TabPane tabId="1">
                 <Form action="#">
                   <div>
-                    <h5 className="fs-17 fw-semibold mb-3 mb-0">My Account</h5>
+                    <h5 className="fs-17 fw-semibold mb-3 mb-0">{t("my_account")}</h5>
                     <div className="text-center">
                       <div className="mb-4 profile-user">
                         <img
@@ -252,7 +58,7 @@ const RightSideContent = () => {
                       <Col lg={6}>
                         <div className="mb-3">
                           <label htmlFor="firstName" className="form-label">
-                            First Name
+                            {t("first_name")}
                           </label>
                           <Input
                             type="text"
@@ -264,7 +70,7 @@ const RightSideContent = () => {
                       <Col lg={6}>
                         <div className="mb-3">
                           <Label htmlFor="lastName" className="form-label">
-                            Last Name
+                            {t("last_name")}
                           </Label>
                           <Input
                             type="text"
@@ -280,7 +86,7 @@ const RightSideContent = () => {
                             htmlFor="choices-single-categories"
                             className="form-label"
                           >
-                            Account Type
+                            {t("account_type")}
                           </label>
                           <select
                             className="form-select"
@@ -289,16 +95,15 @@ const RightSideContent = () => {
                             id="choices-single-categories"
                             aria-label="Default select example"
                           >
-                            <option value="4">Seller</option>
-                            <option value="1">Buyer</option>
-                           
+                            <option value="4">{t("seller")}</option>
+                            <option value="1">{t("buyer")}</option>
                           </select>
                         </div>
                       </Col>
                       <Col lg={6}>
                         <div className="mb-3">
                           <Label htmlFor="email" className="form-label">
-                            Email
+                            {t("email")}
                           </Label>
                           <Input
                             type="text"
@@ -311,7 +116,7 @@ const RightSideContent = () => {
                   </div>
 
                   <div className="mt-4">
-                    <h5 className="fs-17 fw-semibold mb-3">Profile</h5>
+                    <h5 className="fs-17 fw-semibold mb-3">{t("profile")}</h5>
                     <Row>
                       <Col lg={12}>
                         <div className="mb-3">
@@ -319,16 +124,10 @@ const RightSideContent = () => {
                             htmlFor="exampleFormControlTextarea1"
                             className="form-label"
                           >
-                            Introduce Yourself
+                            {t("introduce_yourself")}
                           </Label>
                           <textarea className="form-control" rows="5">
-                            Developer with over 5 years' experience working in
-                            both the public and private sectors. Diplomatic,
-                            personable, and adept at managing sensitive
-                            situations. Highly organized, self-motivated, and
-                            proficient with computers. Looking to boost
-                            students’ satisfactions scores for International
-                            University. Bachelor's degree in communications.
+                            Yourself
                           </textarea>
                         </div>
                       </Col>
@@ -336,7 +135,7 @@ const RightSideContent = () => {
                       <Col lg={6}>
                         <div className="mb-3">
                           <Label htmlFor="languages" className="form-label">
-                            Languages
+                            {t("languages")}
                           </Label>
                           <Input
                             type="text"
@@ -352,7 +151,7 @@ const RightSideContent = () => {
                             htmlFor="choices-single-location"
                             className="form-label"
                           >
-                            Location
+                            {t("location")}
                           </label>
                           <select
                             className="form-select"
@@ -368,17 +167,16 @@ const RightSideContent = () => {
                           </select>
                         </div>
                       </Col>
-                    
                     </Row>
                   </div>
 
                   <div className="mt-4">
-                    <h5 className="fs-17 fw-semibold mb-3">Social Media</h5>
+                    <h5 className="fs-17 fw-semibold mb-3">{t("social_media")}</h5>
                     <Row>
                       <Col lg={6}>
                         <div className="mb-3">
                           <Label htmlFor="facebook" className="form-label">
-                            Facebook
+                          Facebook
                           </Label>
                           <Input
                             type="text"
@@ -420,7 +218,7 @@ const RightSideContent = () => {
                       <Col lg={6}>
                         <div className="mb-3">
                           <Label htmlFor="whatsapp" className="form-label">
-                            Whatsapp
+                            WhatsApp
                           </Label>
                           <Input
                             type="text"
@@ -435,7 +233,7 @@ const RightSideContent = () => {
 
                   <div className="mt-4">
                     <h5 className="fs-17 fw-semibold mb-3 mb-3">
-                      Change Password
+                      {t("change_password")}
                     </h5>
                     <Row>
                       <Col lg={12}>
@@ -444,12 +242,12 @@ const RightSideContent = () => {
                             htmlFor="current-password-input"
                             className="form-label"
                           >
-                            Current password
+                            {t("current_password")}
                           </Label>
                           <Input
                             type="password"
                             className="form-control"
-                            placeholder="Enter Current password"
+                            placeholder={t("current_password")}
                             id="current-password-input"
                           />
                         </div>
@@ -461,12 +259,12 @@ const RightSideContent = () => {
                             htmlFor="new-password-input"
                             className="form-label"
                           >
-                            New password
+                            {t("new_password")}
                           </Label>
                           <Input
                             type="password"
                             className="form-control"
-                            placeholder="Enter new password"
+                            placeholder={t("new_password")}
                             id="new-password-input"
                           />
                         </div>
@@ -478,12 +276,12 @@ const RightSideContent = () => {
                             htmlFor="confirm-password-input"
                             className="form-label"
                           >
-                            Confirm Password
+                            {t("confirm_password")}
                           </Label>
                           <Input
                             type="password"
                             className="form-control"
-                            placeholder="Confirm Password"
+                            placeholder={t("confirm_password")}
                             id="confirm-password-input"
                           />
                         </div>
@@ -500,7 +298,7 @@ const RightSideContent = () => {
                             className="form-check-label"
                             htmlFor="verification"
                           >
-                            Enable Two-Step Verification via email
+                            {t("enable_verification")}
                           </Label>
                         </div>
                       </Col>
@@ -508,7 +306,7 @@ const RightSideContent = () => {
                   </div>
                   <div className="mt-4 text-end">
                     <Link to="#" className="btn btn-primary">
-                      Update
+                      {t("update")}
                     </Link>
                   </div>
                 </Form>

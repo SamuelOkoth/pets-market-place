@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { signupSchema } from "../../utils/validations";
 import signUpImage from "../../assets/images/auth/sign-up.png";
 import { signUpAsync } from "../../store/reducers/auth.reducer";
+import { useTranslation } from "react-i18next";
 
 const SignUp = () => {
 
@@ -50,6 +51,7 @@ const SignUp = () => {
   };
 
   document.title = "Sign Up | Pets HelpFul";
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <div>
@@ -94,10 +96,9 @@ const SignUp = () => {
                           <CardBody className="auth-content p-5 text-white">
                             <div className="w-100">
                               <div className="text-center">
-                                <h5>Let's Get Started</h5>
+                                <h5>{t("signup_heading")}</h5>
                                 <p className="text-white-70">
-                                  Sign Up and get access to all the features of
-                                  Pets HelpFul
+                                  {t("signup_subheading")}
                                 </p>
                               </div>
                               <div>
@@ -121,7 +122,7 @@ const SignUp = () => {
                                 </ul>
                               </div>
                               <br />
-                              <p className="text-center ">or</p>
+                              <p className="text-center ">{t("or")}</p>
 
                               <Form onSubmit={handleSubmit(onSubmit)} className="auth-form">
                                 <div className="mb-3">
@@ -129,7 +130,7 @@ const SignUp = () => {
                                     htmlFor="usernameInput"
                                     className="form-label"
                                   >
-                                    Username
+                                    {t("signup_username")}
                                   </label>
                                   <Controller
                                     name="username"
@@ -141,7 +142,7 @@ const SignUp = () => {
                                         type="text"
                                         className="form-control"
                                         id="usernameInput"
-                                        placeholder="Enter your username"
+                                        placeholder={t("signup_username")}
                                       />
                                     )}
                                   />
@@ -151,7 +152,7 @@ const SignUp = () => {
                                     htmlFor="emailInput"
                                     className="form-label"
                                   >
-                                    Email
+                                    {t("signup_email")}
                                   </label>
                                   <Controller
                                     name="email"
@@ -163,7 +164,7 @@ const SignUp = () => {
                                         type="email"
                                         className="form-control"
                                         id="emailInput"
-                                        placeholder="Enter your email"
+                                        placeholder={t("signup_email")}
                                       />
                                     )}
                                   />
@@ -171,7 +172,7 @@ const SignUp = () => {
                                 </div>
                                 <div className="mb-3">
                                   <label htmlFor="passwordInput" className="form-label">
-                                    Password
+                                    {t("signup_password")}
                                   </label>
                                   <Controller
                                     name="password"
@@ -184,7 +185,7 @@ const SignUp = () => {
                                         autoComplete="true"
                                         className="form-control"
                                         id="passwordInput"
-                                        placeholder="Enter your password"
+                                        placeholder={t("signup_password")}
                                       />
                                     )}
                                   />
@@ -209,12 +210,12 @@ const SignUp = () => {
                                       className="form-check-label"
                                       htmlFor="flexCheckDefault"
                                     >
-                                      I agree to the{" "}
+                                      {t("signup_terms")}
                                       <Link
                                         to="/termandconditions"
                                         className="text-white text-decoration-underline"
                                       >
-                                        Terms and conditions
+                                        {t("term_&_conditions")}
                                       </Link>
                                     </label>
                                   </div>
@@ -224,19 +225,18 @@ const SignUp = () => {
                                     type="submit"
                                     className="btn btn-white btn-hover w-100"
                                   >
-                                    {loading ? <Icon icon="svg-spinners:180-ring" color="#a6652c" fontSize={16} /> : "Sign Up"}
+                                    {loading ? <Icon icon="svg-spinners:180-ring" color="#a6652c" fontSize={16} /> : t('signup_sign_up')}
                                   </button>
                                 </div>
                               </Form>
                               <div className="mt-3 text-center">
                                 <p className="mb-0">
-                                  Already a member ?{" "}
+                                  {t("signup_already_member")}
                                   <Link
                                     to="/signin"
                                     className="fw-medium text-white text-decoration-underline"
                                   >
-                                    {" "}
-                                    Sign In{" "}
+                                   {t("signup_sign_in")}
                                   </Link>
                                 </p>
                               </div>

@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { Icon } from "@iconify/react";
 import { signInAsync } from "../../store/reducers/auth.reducer";
+import { useTranslation } from "react-i18next";
 
 const SignIn = () => {
   document.title = "Sign In | Pets HelpFul";
@@ -46,6 +47,8 @@ const SignIn = () => {
     }
   };
 
+  const {t}= useTranslation();
+
   return (
     <React.Fragment>
       <div>
@@ -65,7 +68,7 @@ const SignIn = () => {
                                 alt=""
                                 className="logo-light"
                                 style={{
-                                  height: "100px"
+                                  height: "100px",
                                 }}
                               />
                               <img
@@ -73,7 +76,7 @@ const SignIn = () => {
                                 alt=""
                                 className="logo-dark"
                                 style={{
-                                  height: "100px"
+                                  height: "100px",
                                 }}
                               />
                             </Link>
@@ -90,9 +93,9 @@ const SignIn = () => {
                           <CardBody className="auth-content p-5 h-100 text-white">
                             <div className="w-100">
                               <div className="text-center mb-4">
-                                <h5>Welcome Back !</h5>
+                                <h5>{t("signin_heading")}</h5>
                                 <p className="text-white-70">
-                                  Sign in to continue to Pets HelpFul.
+                                  {t("signin_subheading")}
                                 </p>
                               </div>
                               <div>
@@ -102,32 +105,31 @@ const SignIn = () => {
                                       to="#"
                                       className="social-link bg-primary-subtle text-primary"
                                     >
-                                   <Icon icon="ri:facebook-fill" />
+                                      <Icon icon="ri:facebook-fill" />
                                     </Link>
                                   </li>
-                                  
-                                  
                                   <li className="list-inline-item">
                                     <Link
                                       to="#"
                                       className="social-link bg-danger-subtle text-danger"
                                     >
-                                   
                                       <Icon icon="grommet-icons:google" />
-                                     
                                     </Link>
                                   </li>
                                 </ul>
                               </div>
                               <br />
-                              <p className="text-center ">or</p>
-                              <Form onSubmit={handleSubmit(onSubmit)} className="auth-form">
+                              <p className="text-center ">{t("signin_or")}</p>
+                              <Form
+                                onSubmit={handleSubmit(onSubmit)}
+                                className="auth-form"
+                              >
                                 <div className="mb-3">
                                   <label
                                     htmlFor="usernameInput"
                                     className="form-label"
                                   >
-                                    Username
+                                    {t("signin_username_label")}
                                   </label>
                                   <Controller
                                     name="username"
@@ -139,7 +141,7 @@ const SignIn = () => {
                                         type="text"
                                         className="form-control"
                                         id="usernameInput"
-                                        placeholder="Enter your username"
+                                        placeholder={t("signin_username_placeholder")}
                                       />
                                     )}
                                   />
@@ -150,7 +152,7 @@ const SignIn = () => {
                                     htmlFor="passwordInput"
                                     className="form-label"
                                   >
-                                    Password
+                                    {t("signin_password_label")}
                                   </label>
                                   <Controller
                                     name="password"
@@ -163,7 +165,7 @@ const SignIn = () => {
                                         autoComplete="true"
                                         className="form-control"
                                         id="passwordInput"
-                                        placeholder="Enter your password"
+                                        placeholder={t("signin_password_placeholder")}
                                       />
                                     )}
                                   />
@@ -188,13 +190,13 @@ const SignIn = () => {
                                       to="/resetpassword"
                                       className="float-end text-white"
                                     >
-                                      Forgot Password?
+                                      {t("signin_forgot_password")}
                                     </Link>
                                     <label
                                       className="form-check-label"
                                       htmlFor="flexCheckDefault"
                                     >
-                                      Remember me
+                                      {t("signin_remember_me")}
                                     </label>
                                   </div>
                                 </div>
@@ -203,19 +205,18 @@ const SignIn = () => {
                                     type="submit"
                                     className="btn btn-white btn-hover w-100"
                                   >
-                                    {loading ? <Icon icon="svg-spinners:180-ring" color="#a6652c" fontSize={16} /> : "Sign In"}
+                                    {loading ? <Icon icon="svg-spinners:180-ring" color="#a6652c" fontSize={16} /> : t("signin_button")}
                                   </button>
                                 </div>
                               </Form>
                               <div className="mt-4 text-center">
                                 <p className="mb-0">
-                                  Don't have an account ?{" "}
+                                  {t("signin_no_account")}
                                   <Link
                                     to="/signup"
                                     className="fw-medium text-white text-decoration-underline"
                                   >
-                                    {" "}
-                                    Sign Up{" "}
+                                    {t("signin_sign_up")}
                                   </Link>
                                 </p>
                               </div>

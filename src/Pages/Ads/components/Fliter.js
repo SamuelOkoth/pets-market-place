@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { Input, Row } from "reactstrap";
 import CountryOptions from "./CountryOptions";
 import Type from "./Type";
+import { useTranslation } from "react-i18next";
 
 const Fliter = () => {
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <div className="job-list-header">
@@ -38,7 +40,7 @@ const Fliter = () => {
             </Col>
             <Col lg={3} md={6}>
               <Link to="#" className="btn btn-primary w-100">
-                <i className="uil uil-filter"></i> Fliter
+                <i className="uil uil-filter"></i>  {t('filter')}
               </Link>
             </Col>
           </Row>

@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Col, Container, Nav, Row } from "reactstrap";
 
 const Section = () => {
+  const {t} = useTranslation();
   return (
     <React.Fragment>
       <section className="page-title-box">
@@ -10,7 +12,7 @@ const Section = () => {
           <Row className="justify-content-center">
             <Col md={6}>
               <div className="text-center text-white">
-                <h3 className="mb-4">Post New Ad</h3>
+                <h3 className="mb-4">{t("post_new_ad")}</h3>
                 <div className="page-next">
                   <Nav
                     className="d-inline-block"
@@ -18,16 +20,14 @@ const Section = () => {
                   >
                     <ol className="breadcrumb justify-content-center">
                       <li className="breadcrumb-item">
-                        <Link to="/">Home</Link>
+                        <Link to="/">{t("home")}</Link>
                       </li>
-                      <li className="breadcrumb-item">
-                        <Link to="#">Manage Ads</Link>
-                      </li>
+                     
                       <li
                         className="breadcrumb-item active"
                         aria-current="page"
                       >
-                        Post New Ad
+                    {t("post_new_ad")}
                       </li>
                     </ol>
                   </Nav>

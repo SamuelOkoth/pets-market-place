@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 
 //import UserImage
 import userImage3 from "../../../assets/images/user/img-03.jpg";
+import { useTranslation } from "react-i18next";
 
 const BlogDescription = () => {
+  const {t} = useTranslation();
   return (
     <React.Fragment>
       <ul className="list-inline mb-0 mt-3 text-muted">
@@ -90,7 +92,7 @@ const BlogDescription = () => {
         </p>
         <div className="d-flex align-items-center mb-4">
           <div className="flex-shrink-0">
-            <b>Tags:</b>
+            <b>{t("tags")}:</b>
           </div>
           <div className="flex-grow-1 ms-2 d-flex flex-wrap align-items-start gap-1">
             <Link
@@ -121,7 +123,7 @@ const BlogDescription = () => {
         </div>
         <ul className="blog-social-menu list-inline mb-0 text-end">
           <li className="list-inline-item">
-            <b>Share post:</b>
+            <b>{t("share_post")}:</b>
           </li>
           <li className="list-inline-item">
             <Link to="#" className="social-link bg-primary-subtle text-primary">

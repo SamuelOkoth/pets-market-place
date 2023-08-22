@@ -13,8 +13,10 @@ import ClientImage2 from "../../../assets/images/reviews/client-2.png";
 import ClientImage3 from "../../../assets/images/reviews/client-4.png";
 import ClientImage4 from "../../../assets/images/reviews/client-3.png";
 import { Col, Container, Row } from "reactstrap";
+import { useTranslation } from "react-i18next";
 
 const Testimonial = () => {
+  const { t } = useTranslation();
   const adSwiper = [
     {
     id: 1,
@@ -50,13 +52,14 @@ const Testimonial = () => {
             <Row className="justify-content-center py-5">
             <Col lg={7}>
               <div className="section-title text-center mb-5">
-                <h3 className="title mb-4">Testimonials</h3>
+                <h3 className="title mb-4">{t("testimonial")}</h3>
                 <p className="para-desc text-muted mx-auto">
-                 Our Company Testimonial
+                {t("testimonial_text")}
                 </p> 
               </div>
             </Col>
-          </Row>
+        </Row> 
+        
           </Container>
           
       <Swiper

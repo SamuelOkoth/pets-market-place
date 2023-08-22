@@ -1,23 +1,25 @@
 import React from "react";
 import Select from "react-select";
+import { useTranslation } from "react-i18next";
 const Type = () => {
+  const { t } = useTranslation();
+
   const options = [
-    { label: "Hyrax", value: "1" },
-    { label: "Hamsters", value: "2" },
-    { label: "Squirrels", value: "3" },
-    { label: "Duck", value: "4" },
-    { label: "Rabbits", value: "5" },
-    { label: "Fish and turtles", value: "6" },
-    { label: "cows", value: "7" },
-    { label: "Dogs", value: "8" },
-    { label: "Horses", value: "9" },
-    { label: "Camels", value: "10" },
-    { label: "Chicken", value: "11" },
-    { label: "Cats", value: "12" },
-    { label: "Pigeons", value: "13" },
-    { label: "Parrot", value: "14" },
-    { label: "Goats", value: "15" },
-    { label: "Sheep", value: "16" },
+    { label: t("sheep"), value: t("sheep") },
+    { label: t("goats"), value: t("goats") },
+    { label: t("parrots"), value: t("parrots") },
+    { label: t("pigeons"), value: t("pigeons") },
+    { label: t("cats"), value: t("cats") },
+    { label: t("chickens"), value: t("chickens") },
+    { label: t("apples"), value: t("apples") },
+    { label: t("horses"), value: t("horses") },
+    { label: t("dogs"), value: t("dogs") },
+    { label: t("cows"), value: t("cows") },
+    { label: t("fish_and_turtles"), value: t("fish_and_turtles") },
+    { label: t("rabbits"), value: t("rabbits") },
+    { label: t("ducks"), value: t("ducks") },
+    { label: t("squirrels"), value: t("squirrels") },
+    { label: t("hamsters"), value: t("hamsters") }
   ];
   const colourStyles = {
     control: (styles) => ({

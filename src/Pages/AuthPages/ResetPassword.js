@@ -8,12 +8,14 @@ import resetPasswordImage from "../../assets/images/auth/reset-password.png";
 import { Card, CardBody, Col, Container, Input, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
   document.title =
     "Reset Password | Pets HelpFul";
+  const {t} = useTranslation();
   return (
-    <React.Fragment>
+   <React.Fragment>
       <div>
         <div className="main-content">
           <div className="page-content">
@@ -30,15 +32,13 @@ const ResetPassword = () => {
                                 src={lightLogo}
                                 alt=""
                                 className="logo-light"
-                                style={{ 
-                                  height:"100px" }}
+                                style={{ height: "100px" }}
                               />
                               <img
                                 src={darkLogo}
                                 alt=""
                                 className="logo-dark"
-                                style={{ 
-                              height:"100px" }}
+                                style={{ height: "100px" }}
                               />
                             </Link>
                             <div className="mt-5">
@@ -53,9 +53,9 @@ const ResetPassword = () => {
                         <Col lg={6}>
                           <CardBody className="auth-content p-5 h-100 text-white">
                             <div className="text-center mb-4">
-                              <h5>Reset Password</h5>
+                              <h5>{t("reset_password_heading")}</h5>
                               <p className="text-white-50">
-                                Reset your password with Jobcy.
+                                {t("reset_password_subheading")}
                               </p>
                             </div>
                             <Form className="auth-form text-white">
@@ -63,19 +63,17 @@ const ResetPassword = () => {
                                 className="alert alert-warning text-center mb-4"
                                 role="alert"
                               >
-                                {" "}
-                                Enter your Email and instructions will be sent
-                                to you!{" "}
+                                {t("reset_password_alert")}
                               </div>
                               <div className="mb-4">
                                 <label className="form-label" htmlFor="email">
-                                  Username/Email
+                                  {t("reset_password_email_label")}
                                 </label>
                                 <Input
                                   type="email"
                                   className="form-control"
                                   id="email"
-                                  placeholder="Enter username or email"
+                                  placeholder={t("reset_password_email_placeholder")}
                                 />
                               </div>
                               <div className="mt-3">
@@ -83,19 +81,19 @@ const ResetPassword = () => {
                                   type="submit"
                                   className="btn btn-white w-100"
                                 >
-                                  Send Request
+                                  {t("reset_password_button")}
                                 </button>
                               </div>
                             </Form>
                             <div className="mt-5 text-center text-white-50">
                               <p>
-                                Remembered It ?{" "}
+                                {t("reset_password_remembered_question")}
                                 <Link
                                   to="/signin"
                                   className="fw-medium text-white text-decoration-underline"
                                 >
                                   {" "}
-                                  Go to Login{" "}
+                                  {t("reset_password_login_link")}{" "}
                                 </Link>
                               </p>
                             </div>

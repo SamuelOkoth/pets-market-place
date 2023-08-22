@@ -1,89 +1,73 @@
 import React from "react";
 import { Row, Col, Container } from "reactstrap";
 import { Link } from "react-router-dom";
+import { t } from "i18next";
 
 const Footer = () => {
   const footer = [
     {
       id: 1,
-      title: "Company",
+      title: t("company"),
       menu: [
         {
           id: 1,
           link: "/about",
-          subTitle: "About Us",
+          subTitle: t("about"),
         },
         {
           id: 2,
           link: "/contact",
-          subTitle: "Contact Us",
+          subTitle: t("contact"),
         },
 
         {
           id: 3,
           link: "/blogs",
-          subTitle: "Blog",
+          subTitle: t("blog"),
         },
       ],
     },
     {
       id: 2,
-      title: "For Ads",
+      title: t("for_ads"),
       menu: [
         {
           id: 1,
           link: "/",
-          subTitle: "Browser Pets",
+          subTitle: t("browser_pets"),
         },
 
         {
           id: 2,
           link: "/favoriteads",
-          subTitle: "Favorite Ads",
+          subTitle: t("favorite_ads"),
         },
       ],
     },
 
     {
       id: 3,
-      title: "Support",
+      title: t("support"),
       menu: [
         {
           id: 1,
           link: "/contact",
-          subTitle: "Help Center",
+          subTitle: t("help-center"),
         },
         {
           id: 2,
           link: "/faqs",
-          subTitle: "FAQ'S",
+          subTitle: t("faqs"),
         },
         {
           id: 3,
           link: "/termandconditions",
-          subTitle: "Term & Conditions",
+          subTitle: t("term_&_conditions"),
         },
       ],
     },
   ];
-  const footerIcons = [
-    {
-      id: 1,
-      socialIcon: "uil uil-facebook-f",
-    },
-    {
-      id: 2,
-      socialIcon: "uil uil-linkedin-alt",
-    },
-    {
-      id: 3,
-      socialIcon: "uil uil-google",
-    },
-    {
-      id: 4,
-      socialIcon: "uil uil-twitter",
-    },
-  ];
+
   return (
     <React.Fragment>
       <section className="bg-footer">
@@ -93,19 +77,9 @@ const Footer = () => {
               <div className="footer-item mt-4 mt-lg-0 me-lg-5">
                 <h4 className="text-white mb-4">Pets HelpFul</h4>
                 <p className="text-white-50">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maxime mollitia,
+                {t("about_text")}
                 </p>
-                {/* <p className="text-white mt-3">Follow Us on:</p> */}
-                {/* <ul className="footer-social-menu list-inline mb-0">
-                  {footerIcons.map((footerIcondetails, key) => (
-                    <li className="list-inline-item" key={key}>
-                      <Link to="#">
-                        <i className={footerIcondetails.socialIcon}></i>
-                      </Link>
-                    </li>
-                  ))}
-                </ul> */}
+               
               </div>
             </Col>
             {footer.map((footerdetails, key) => (
