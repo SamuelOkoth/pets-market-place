@@ -6,6 +6,31 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store";
 
+import i18n from "i18next";
+import {  initReactI18next } from "react-i18next";
+import tEn from "./assets/locales/en/translation.json";
+import tAr from "./assets/locales/ar/translation.json";
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources: {
+      en: {
+        translation: tEn
+      },
+       ar: {
+        translation: tAr
+      }
+    },
+    lng: "ar", 
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false 
+    }
+  });
+ 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.Fragment>

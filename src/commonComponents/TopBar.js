@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Col,
   Container,
@@ -10,44 +10,47 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-//import images
+// Import flag images
 import flagUs from "../assets/images/flags/us.jpg";
-import flagSp from "../assets/images/flags/spain.jpg";
-import flagGr from "../assets/images/flags/germany.jpg";
-import flagIt from "../assets/images/flags/italy.jpg";
-import flagRu from "../assets/images/flags/russia.jpg";
+import flagAr from "../assets/images/flags/sudia.png";
+
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+const changeLang = (l) => {
+  return () => {
+    i18next.changeLanguage(l);
+    localStorage.setItem('lang', l);
+  };
+};
 
 const TopBar = () => {
-  const iconTobar = [
-    {
-      id: 1,
-      classname: "uil uil-whatsapp",
-    },
-    {
-      id: 2,
-      classname: "uil uil-facebook-messenger-alt",
-    },
-    {
-      id: 3,
-      classname: "uil uil-instagram",
-    },
-    {
-      id: 4,
-      classname: "uil uil-envelope",
-    },
-    {
-      id: 5,
-      classname: "uil uil-twitter-alt",
-    },
-  ];
-  //Language Dropdown
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [userCountry, setUserCountry] = useState("Loading...");
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
+  useEffect(() => {
+    // Fetch user's IP address information
+    fetch("https://ipinfo.io?token=05eab31960567f")
+      .then(response => response.json())
+      .then(data => {
+        setUserCountry(data.country || "Unknown");
+      })
+      .catch(error => {
+        console.error("Error fetching IP address information:", error);
+        setUserCountry("Unknown");
+      });
+  }, []);
 
+  // Set "ar" as the default language
+  const currentLanguage = localStorage.getItem('lang') || 'ar'; // Default to 'ar' if no language is set
 
-
+  const languageFlags = {
+    en: flagUs,
+    ar: flagAr,
+    // Add more languages and their flag images as needed
+  };
+const { t } = useTranslation();
 
   return (
     <React.Fragment>
@@ -59,16 +62,12 @@ const TopBar = () => {
                 <li className="list-inline-item">
                   <p className="fs-13 mb-0">
                     {" "}
-                    <i className="mdi mdi-map-marker"></i> Your Location:{" "}
+                    <i className="mdi mdi-map-marker"></i> {t('your_country')}:{" "}
                     <Link to="#" className="text-dark">
-                      New Caledonia
+                      {userCountry}
                     </Link>
                   </p>
                 </li>
-
-        
-
-
               </ul>
             </Col>
 
@@ -77,7 +76,7 @@ const TopBar = () => {
                 <li className="list-inline-item py-2 me-2 align-middle">
                   <Link to="/signup" className="text-dark fw-medium fs-13">
                     <i className="uil uil-lock"></i>
-                    Sign Up
+                    {t("signup_sign_up")}
                   </Link>
                 </li>
                 <li className="list-inline-item align-middle">
@@ -87,50 +86,26 @@ const TopBar = () => {
                     className="d-inline-block language-switch"
                   >
                     <DropdownToggle tag="button" type="button" className="btn">
-                      <img src={flagUs} alt="" height="16" />
+                      <img src={languageFlags[currentLanguage]} alt="" height="16" />
                     </DropdownToggle>
-
                     <DropdownMenu className="dropdown-menu-end" end>
                       <DropdownItem
-                        to="/"
-                        className="dropdown-item notify-item language"
-                        data-lang="eng"
+                        onClick={changeLang("ar")}
+                        className={`dropdown-item notify-item language ${currentLanguage === 'ar' ? 'active' : ''}`}
+                        data-lang="ar"
+                      >
+                        <img src={flagAr} alt="" className="me-1" height="12" />
+                        <span className="align-middle">عربي</span>
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={changeLang("en")}
+                        className={`dropdown-item notify-item language ${currentLanguage === 'en' ? 'active' : ''}`}
+                        data-lang="en"
                       >
                         <img src={flagUs} alt="" className="me-1" height="12" />
                         <span className="align-middle">English</span>
                       </DropdownItem>
-                      <DropdownItem
-                        to="/"
-                        className="dropdown-item notify-item language"
-                        data-lang="sp"
-                      >
-                        <img src={flagSp} alt="" className="me-1" height="12" />
-                        <span className="align-middle">Spanish</span>
-                      </DropdownItem>
-                      <DropdownItem
-                        to="/"
-                        className="dropdown-item notify-item language"
-                        data-lang="gr"
-                      >
-                        <img src={flagGr} alt="" className="me-1" height="12" />
-                        <span className="align-middle">German</span>
-                      </DropdownItem>
-                      <DropdownItem
-                        to="/"
-                        className="dropdown-item notify-item language"
-                        data-lang="it"
-                      >
-                        <img src={flagIt} alt="" className="me-1" height="12" />
-                        <span className="align-middle">Italian</span>
-                      </DropdownItem>
-                      <DropdownItem
-                        to="/"
-                        className="dropdown-item notify-item language"
-                        data-lang="ru"
-                      >
-                        <img src={flagRu} alt="" className="me-1" height="12" />
-                        <span className="align-middle">Russian</span>
-                      </DropdownItem>
+                      {/* Add more languages and their corresponding dropdown items */}
                     </DropdownMenu>
                   </Dropdown>
                 </li>

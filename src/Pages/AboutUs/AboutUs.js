@@ -13,9 +13,9 @@ const AboutUs = () => {
       <Section />
       <About />
       <Counter />
-      <Features />
+      {/*<Features />
       <Cta />
-      <CompanyTestimonal />
+  <CompanyTestimonal /> */}
     </React.Fragment>
   );
 };

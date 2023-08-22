@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const Popular = () => {
@@ -29,10 +30,11 @@ const Popular = () => {
       petName: "Parrot"
     }
   ];
+  const {t} = useTranslation();
   return (
     <React.Fragment>
       <div className="wedget-popular-title mt-4">
-        <h6>Popular</h6>
+        <h6>{t("popular")}</h6>
         <ul className="list-inline">
           {(popular || []).map((popularDetails, key) => (
             <li className="list-inline-item" key={key}>

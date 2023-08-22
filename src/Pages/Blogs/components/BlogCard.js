@@ -9,7 +9,10 @@ import blogImage7 from "../../../assets/images/blog/img-07.jpg";
 import blogImage8 from "../../../assets/images/blog/img-08.jpg";
 import blogImage9 from "../../../assets/images/blog/img-09.jpg";
 
+import { useTranslation } from "react-i18next";
+
 const BlogCard = () => {
+  const {t}= useTranslation();
   const blogText = [
     {
       id: 1,
@@ -129,7 +132,7 @@ const BlogCard = () => {
                 <p className="text-muted">{blogTextDetails.blogContent}</p>
                 <div>
                   <Link to="/blogdetails" className="form-text text-primary">
-                    Read More <i className="uil uil-angle-right-b"></i>
+                    {t("read_more")} <i className="uil uil-angle-right-b"></i>
                   </Link>
                 </div>
               </CardBody>
@@ -171,7 +174,7 @@ const BlogCard = () => {
                 <p className="text-muted">{blogVideoDetails.blogContent}</p>
                 <div>
                   <Link to="/blogdetails" className="form-text text-primary">
-                    Read More <i className="uil uil-angle-right-b"></i>
+                    {t("read_more")} <i className="uil uil-angle-right-b"></i>
                   </Link>
                 </div>
               </CardBody>

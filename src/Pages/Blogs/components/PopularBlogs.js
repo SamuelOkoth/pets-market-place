@@ -6,6 +6,7 @@ import blogImage1 from "../../../assets/images/blog/img-01.jpg";
 import blogImage2 from "../../../assets/images/blog/img-02.jpg";
 import blogImage3 from "../../../assets/images/blog/img-03.jpg";
 import blogImage10 from "../../../assets/images/blog/img-10.jpg";
+import { useTranslation } from "react-i18next";
 
 const PopularBlogs = () => {
   const popularPost = [
@@ -34,11 +35,12 @@ const PopularBlogs = () => {
       postImage: blogImage10
     }
   ];
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <div className="mt-4 pt-2">
         <div className="sd-title">
-          <h6 className="fs-16 mb-3">Popular Post</h6>
+          <h6 className="fs-16 mb-3">{t("popular_post")}</h6>
         </div>
         <ul className="widget-popular-post list-unstyled my-4">
           {popularPost.map((popularPostDetails, key) => (

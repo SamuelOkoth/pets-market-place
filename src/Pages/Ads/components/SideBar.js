@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Col, Collapse, Input, Label } from "reactstrap";
-
+import { useTranslation } from "react-i18next";
 const Sidebar = () => {
   const [toggleFirst, setToggleFirst] = useState(true);
   const [toggleSecond, setToggleSecond] = useState(true);
@@ -19,6 +19,7 @@ const Sidebar = () => {
   const handleDateOnChange = () => {
     setIsDateChecked(!isDateChecked);
   };
+const {t} =useTranslation();
 
   return (
     <React.Fragment>
@@ -36,7 +37,7 @@ const Sidebar = () => {
                   role="button"
                   id="collapseExample"
                 >
-                  Location
+                  {t('location')}
                 </Button>
               </h2>
               <Collapse isOpen={toggleFirst}>
@@ -92,7 +93,7 @@ const Sidebar = () => {
                   role="button"
                   id="collapseExample"
                 >
-                  Pet Age
+                  {t('pet_age')}
                 </Button>
               </h2>
               <Collapse isOpen={toggleSecond}>
@@ -251,7 +252,7 @@ const Sidebar = () => {
                   role="button"
                   id="collapseExample"
                 >
-                  Date Posted
+                 {t('date_posted')}
                 </Button>
               </h2>
               <Collapse isOpen={toggleFourth}>
@@ -364,7 +365,7 @@ const Sidebar = () => {
                   role="button"
                   id="collapseExample"
                 >
-                  Tags Cloud
+                  {t("tags_cloud")}
                 </Button>
               </h2>
               <Collapse isOpen={toggleFifth}>

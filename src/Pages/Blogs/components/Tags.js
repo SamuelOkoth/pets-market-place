@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const Tags = () => {
+  const {t} = useTranslation();
   const tags = [
     {
       id: 1,
@@ -36,7 +38,7 @@ const Tags = () => {
     <React.Fragment>
       <div className="mt-4 pt-2">
         <div className="sd-title">
-          <h6 className="fs-16 mb-3">Latest Tags</h6>
+          <h6 className="fs-16 mb-3">{t("latest_tags")}</h6>
         </div>
         <div className="tagcloud mt-3 d-flex flex-wrap align-items-start gap-1 ">
           {tags.map((tagsDetails, key) => (

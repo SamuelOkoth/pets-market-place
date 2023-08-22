@@ -5,8 +5,10 @@ import { Card, CardBody, Col } from "reactstrap";
 //Import images
 
 import profileImage from "../../../../assets/images/profile.jpg";
+import { useTranslation } from "react-i18next";
 
 const LeftSideContent = () => {
+  const {t}= useTranslation();
   return (
     <React.Fragment>
       <Col lg={4}>
@@ -56,12 +58,12 @@ const LeftSideContent = () => {
 
 
             <div className="mt-4">
-              <h5 className="fs-17 fw-bold mb-3">Contacts</h5>
+              <h5 className="fs-17 fw-bold mb-3">{t("contact")}</h5>
               <div className="profile-contact">
                 <ul className="list-unstyled mb-0">
                   <li>
                     <div className="d-flex">
-                      <label>Email</label>
+                      <label>{t("simple_email")}</label>
                       <div>
                         <p className="text-muted text-break mb-0">
                           jennifer@gmail.com
@@ -71,7 +73,7 @@ const LeftSideContent = () => {
                   </li>
                   <li>
                     <div className="d-flex">
-                      <label>Phone Number</label>
+                      <label>{t("simple_phone_number")}</label>
                       <div>
                         <p className="text-muted mb-0">+2 345 678 0000</p>
                       </div>
@@ -79,7 +81,7 @@ const LeftSideContent = () => {
                   </li>
                   <li>
                     <div className="d-flex">
-                      <label>Location</label>
+                      <label>{t("simple_location")}</label>
                       <div>
                         <p className="text-muted mb-0">New Caledonia</p>
                       </div>

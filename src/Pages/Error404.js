@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
+import { useTranslation } from "react-i18next"; // Import the translation hook
 
 //import Images
 import Error404Image from "../assets/images/404.png";
 
 const Error404 = () => {
-  document.title = "Error 404 | Pets HelpFul";
+  const { t } = useTranslation(); // Initialize the translation hook
+  document.title = t("error404_title");
+
   return (
     <React.Fragment>
       <div>
@@ -20,18 +23,16 @@ const Error404 = () => {
                       <img src={Error404Image} alt="" className="img-fluid" />
                       <div className="mt-5">
                         <h4 className="text-uppercase mt-3">
-                          Sorry, page not found
+                          {t("error404_title")}
                         </h4>
-                        <p className="text-muted">
-                          It will be as simple as Occidental in fact, it will be
-                          Occidental
-                        </p>
+                        <p className="text-muted">{t("error404_text")}</p>
                         <div className="mt-4">
                           <Link
                             className="btn btn-primary waves-effect waves-light"
                             to="/"
                           >
-                            <i className="mdi mdi-home"></i> Back to Home
+                            <i className="mdi mdi-home"></i>{" "}
+                            {t("error404_back_to_home")}
                           </Link>
                         </div>
                       </div>

@@ -12,6 +12,7 @@ import blogImage5 from "../../../assets/images/blog/img-05.jpg";
 import blogImage6 from "../../../assets/images/blog/img-06.jpg";
 import { Link } from "react-router-dom";
 import { Card } from "reactstrap";
+import { useTranslation } from "react-i18next";
 
 const BlogPost = () => {
   const blogPost = [
@@ -39,10 +40,11 @@ const BlogPost = () => {
   ];
 
   SwiperCore.use([Autoplay, Pagination]);
+  const {t}= useTranslation();
   return (
     <React.Fragment>
       <div className="mt-5">
-        <h5 className="border-bottom pb-3"> Related Blog Posts</h5>
+        <h5 className="border-bottom pb-3"> {t("related_blog_posts")}</h5>
         <Swiper
           loop={true}
           slidesPerView={2}

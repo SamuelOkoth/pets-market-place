@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import userImage1 from "../../../assets/images/user/img-01.jpg";
 import userImage2 from "../../../assets/images/user/img-02.jpg";
 import userImage4 from "../../../assets/images/user/img-04.jpg";
+import { useTranslation } from "react-i18next";
 
 const BlogComments = () => {
+  const {t} = useTranslation();
   return (
     <React.Fragment>
-      <h5 className="border-bottom pb-3 mt-5">Comments</h5>
+      <h5 className="border-bottom pb-3 mt-5">{t("comments")}</h5>
       <div className="mt-5">
         <div className="d-sm-flex align-items-top">
           <div className="flex-shrink-0">

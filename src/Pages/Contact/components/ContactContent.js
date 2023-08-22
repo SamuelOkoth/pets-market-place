@@ -5,8 +5,9 @@ import { Col, Container, Row, Input, Label } from "reactstrap";
 //Import Images
 
 import contactImage from "../../../assets/images/contact.png";
-
+import { useTranslation } from "react-i18next";
 const ContactContent = () => {
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <section className="section">
@@ -14,10 +15,8 @@ const ContactContent = () => {
           <Row className="align-items-center mt-5">
             <Col lg={6}>
               <div className="section-title mt-4 mt-lg-0">
-                <h3 className="title">Get in touch</h3>
-                <p className="text-muted">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates impedit aspernatur eos?
-                </p>
+                <h3 className="title">{t("get_in_touch")}</h3>
+               
                 <Form
                   method="post"
                   className="contact-form mt-4"
@@ -29,52 +28,52 @@ const ContactContent = () => {
                     <Col lg={12}>
                       <div className="mb-3">
                         <Label htmlFor="nameInput" className="form-label">
-                          Name
+                          {t("form_name")}
                         </Label>
                         <Input
                           type="text"
                           name="name"
                           id="name"
                           className="form-control"
-                          placeholder="Enter your name"
+                          placeholder={t("form_plac_name")}
                         />
                       </div>
                     </Col>
                     <Col md={6}>
                       <div className="mb-3">
                         <Label htmlFor="emailInput" className="form-label">
-                          Email
+                         {t("form_email")}
                         </Label>
                         <Input
                           type="email"
                           className="form-control"
                           id="emaiol"
                           name="email"
-                          placeholder="Enter your email"
+                          placeholder={t("form_plac_email")}
                         />
                       </div>
                     </Col>
                     <Col md={6}>
                       <div className="mb-3">
                         <Label htmlFor="subjectInput" className="form-label">
-                          Subject
+                          {t("form_subject")}
                         </Label>
                         <Input
                           type="text"
                           className="form-control"
                           name="subject"
-                          placeholder="Enter your subject"
+                          placeholder={t("form_plac_subject")}
                         />
                       </div>
                     </Col>
                     <Col lg={12}>
                       <div className="mb-3">
                         <Label htmlFor="meassageInput" className="form-label">
-                          Your Message
+                          {t("form_message")}
                         </Label>
                         <textarea
                           className="form-control"
-                          placeholder="Enter your message"
+                          placeholder={t("form_plac_message")}
                           name="comments"
                           rows="3"
                         ></textarea>
@@ -88,8 +87,8 @@ const ContactContent = () => {
                       name="submit"
                       className="btn btn-primary"
                     >
-                      {" "}
-                      Send Message <i className="uil uil-message ms-1"></i>
+                  
+                      {t("form_button")} <i className="uil uil-message ms-1"></i>
                     </button>
                   </div>
                 </Form>
@@ -100,22 +99,13 @@ const ContactContent = () => {
                 <img src={contactImage} alt="" className="img-fluid" />
               </div>
               <div className="mt-4 pt-3">
-                <div className="d-flex text-muted align-items-center mt-2">
-                  <div className="flex-shrink-0 fs-22 text-primary">
-                    <i className="uil uil-map-marker"></i>
-                  </div>
-                  <div className="flex-grow-1 ms-2">
-                    <p className="mb-0">
-                      2453 Clinton StreetLittle Rock, California, USA
-                    </p>
-                  </div>
-                </div>
+             
                 <div className="d-flex text-muted align-items-center mt-2">
                   <div className="flex-shrink-0 fs-22 text-primary">
                     <i className="uil uil-envelope"></i>
                   </div>
                   <div className="flex-grow-1 ms-2">
-                    <p className="mb-0">contactus@petshelpful.com</p>
+                    <p className="mb-0">info@petshelpful.com</p>
                   </div>
                 </div>
                 <div className="d-flex text-muted align-items-center mt-2">
@@ -123,7 +113,7 @@ const ContactContent = () => {
                     <i className="uil uil-phone-alt"></i>
                   </div>
                   <div className="flex-grow-1 ms-2">
-                    <p className="mb-0">(+245) 223 1245</p>
+                    <p className="mb-0">+966 56 322 8055</p>
                   </div>
                 </div>
               </div>
@@ -131,7 +121,7 @@ const ContactContent = () => {
           </Row>
         </Container>
       </section>
-      <div className="map">
+      {/*<div className="map">
         <iframe
           title="maps"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6509157.364974411!2d-123.79641389801948!3d37.193115265681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9fe5f285e3d%3A0x8b5109a227086f55!2sCalifornia%2C%20USA!5e0!3m2!1sen!2sin!4v1628684675253!5m2!1sen!2sin"
@@ -140,7 +130,7 @@ const ContactContent = () => {
           allowFullScreen=""
           loading="lazy"
         ></iframe>
-      </div>
+  </div>*/}
     </React.Fragment>
   );
 };

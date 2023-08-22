@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useTransition } from "react";
 import { Container, Col, Row } from "reactstrap";
 import BlogTitle from "./components/BlogTitle";
 import BlogSwiper from "./components/BlogSwiper";
@@ -36,7 +36,8 @@ const BlogDetails = () => {
                 {/* <TextWidget /> */}
                 {/* <Archives /> */}
                 <Tags />
-                <SocialConnect />
+                
+                {/* <SocialConnect /> */}
               </div>
             </Col>
           </Row>

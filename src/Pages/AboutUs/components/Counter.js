@@ -1,38 +1,28 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import CountUp from "react-countup";
+import { useTranslation } from "react-i18next";
 
 const Counter = () => {
+  const {t} = useTranslation();
   return (
     <React.Fragment>
       <section className="section bg-light">
         <Container>
           <Row>
-            <Col lg={3} md={6}>
+            <Col lg={4} md={6}>
               <div className="counter-box mt-3">
                 <div className="counters counter_custom text-center">
                   <CountUp
-                    end={10000}
+                    end={3000}
                     duration={1}
                     className="counter mb-0"
                   ></CountUp>
-                  <h6 className="fs-16 mt-3 ">Available Pets</h6>
+                  <h6 className="fs-16 mt-3 ">{t("available_pets")}</h6>
                 </div>
               </div>
             </Col>
-            <Col lg={3} md={6}>
-              <div className="counter-box mt-3">
-                <div className="counters counter_custom text-center">
-                  <CountUp
-                    end={7500}
-                    duration={1}
-                    className="counter mb-0"
-                  ></CountUp>
-                  <h6 className="fs-16 mt-3">Applications</h6>
-                </div>
-              </div>
-            </Col>
-            <Col lg={3} md={6}>
+            <Col lg={4} md={6}>
               <div className="counter-box mt-3">
                 <div className="counters counter_custom text-center">
                   <CountUp
@@ -41,19 +31,19 @@ const Counter = () => {
                     duration={1}
                     className="counter mb-0"
                   ></CountUp>
-                  <h6 className="fs-16 mt-3">Positive Feedback</h6>
+                  <h6 className="fs-16 mt-3">{t("positive_feedback")}</h6>
                 </div>
               </div>
             </Col>
-            <Col lg={3} md={6}>
+            <Col lg={4} md={6}>
               <div className="counter-box mt-3">
                 <div className="counters counter_custom text-center">
                   <CountUp
-                    end={9875}
+                    end={30000}
                     duration={1}
                     className="counter mb-0"
                   ></CountUp>
-                  <h6 className="fs-16 mt-3">Members</h6>
+                  <h6 className="fs-16 mt-3">{t("members")}</h6>
                 </div>
               </div>
             </Col>

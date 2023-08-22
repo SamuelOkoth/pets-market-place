@@ -1,13 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Col, Row } from "reactstrap";
 
 const Selected = () => {
+  const {t} = useTranslation();
   return (
     <React.Fragment>
       <Row className="align-items-center">
         <Col lg={8}>
           <div className="mb-4 mb-lg-0">
-            <h6 className="mb-0"> My Ads Listings </h6>
+            <h6 className="mb-0"> {t("my_ads_listings")} </h6>
           </div>
         </Col>
         <Col lg={4}>
