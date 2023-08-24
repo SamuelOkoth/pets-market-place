@@ -1,9 +1,11 @@
 import React from "react";
 import { Row, Col, Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const footer = [
     {
       id: 1,

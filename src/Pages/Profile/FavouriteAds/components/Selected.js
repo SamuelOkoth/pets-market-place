@@ -24,10 +24,10 @@ const Selected = () => {
                     id="choices-single-filter-orderby"
                     aria-label="Default select example"
                   >
-                    <option value="df">Default</option>
-                    <option value="ne">Newest</option>
-                    <option value="od">Oldest</option>
-                    <option value="rd">Random</option>
+                <option value="df">{t('default')}</option>
+                <option value="ne">{t('newest')}</option>
+                <option value="od">{t('oldest')}</option>
+                <option value="rd">{t('random')}</option>
                   </select>
                 </div>
               </Col>
@@ -40,11 +40,11 @@ const Selected = () => {
                     id="choices-candidate-page"
                     aria-label="Default select example"
                   >
-                    <option value="df">All</option>
-                    <option value="ne">Last 2 Month</option>
-                    <option value="ne">Last 6 Month</option>
-                    <option value="ne">Last 12 Month</option>
-                    <option value="ne">Last 2 Year</option>
+                     <option value="df">{t('all')}</option>
+                <option value="ne">{t('last_2_months')}</option>
+                <option value="ne">{t('last_6_months')}</option>
+                <option value="ne">{t('last_12_months')}</option>
+                <option value="ne">{t('last_2_years')}</option>
                   </select>
                 </div>
               </Col>
