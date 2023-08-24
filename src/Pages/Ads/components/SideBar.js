@@ -60,7 +60,7 @@ const {t} =useTranslation();
                     </div>
                     <div className="area-range slidecontainer">
                       <div className="form-label mb-4">
-                        Area Range: {value}.00 miles
+                        {t("range")}: {value}.00 {t("miles")}
                         <span
                           className="example-val mt-2"
                           id="slider1-span"
@@ -110,7 +110,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked1"
                       >
-                        Any
+                        {t("any")}
                       </label>
                     </div>
                     <div className="form-check mt-2">
@@ -126,7 +126,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked2"
                       >
-                        0-3 years
+                        {t("0-3_years")}
                       </label>
                     </div>
                     <div className="form-check mt-2">
@@ -140,7 +140,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked3"
                       >
-                        3-6 years
+                        {t("3-6_years")}
                       </label>
                     </div>
                     <div className="form-check mt-2">
@@ -154,7 +154,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked4"
                       >
-                        More than 6 years
+                        {t("more_than_6_years")}
                       </label>
                     </div>
                   </div>
@@ -269,7 +269,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="checkAll"
                       >
-                        All
+                        {t("all")}
                       </Label>
                     </div>
                     <div className="form-check mt-2">
@@ -286,7 +286,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked5"
                       >
-                        Last Hour
+                        {t("last_hour")}
                       </Label>
                     </div>
                     <div className="form-check mt-2">
@@ -301,7 +301,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked6"
                       >
-                        Last 24 hours
+                        {t("last_24_hours")}
                       </Label>
                     </div>
                     <div className="form-check mt-2">
@@ -316,7 +316,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked7"
                       >
-                        Last 7 days
+                        {t("last_7_days")}
                       </Label>
                     </div>
                     <div className="form-check mt-2">
@@ -331,7 +331,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked8"
                       >
-                        Last 14 days
+                       {t("last_14_days")}
                       </Label>
                     </div>
                     <div className="form-check mt-2">
@@ -346,7 +346,7 @@ const {t} =useTranslation();
                         className="form-check-label ms-2 text-muted"
                         htmlFor="flexCheckChecked9"
                       >
-                        Last 30 days
+                        {t("last_30_days")}
                       </Label>
                     </div>
                   </div>

@@ -12,45 +12,45 @@ const Selected = () => {
             <h6 className="mb-0"> {t("my_ads_listings")} </h6>
           </div>
         </Col>
-        <Col lg={4}>
-          <div className="candidate-list-widgets">
-            <Row>
-              <Col lg={6}>
-                <div className="selection-widget">
-                  <select
-                    className="form-select"
-                    data-trigger
-                    name="choices-single-filter-orderby"
-                    id="choices-single-filter-orderby"
-                    aria-label="Default select example"
-                  >
-                    <option value="df">Default</option>
-                    <option value="ne">Newest</option>
-                    <option value="od">Oldest</option>
-                    <option value="rd">Random</option>
-                  </select>
-                </div>
-              </Col>
-              <Col lg={6}>
-                <div className="selection-widget mt-2 mt-lg-0">
-                  <select
-                    className="form-select"
-                    data-trigger
-                    name="choices-candidate-page"
-                    id="choices-candidate-page"
-                    aria-label="Default select example"
-                  >
-                    <option value="df">All</option>
-                    <option value="ne">Last 2 Month</option>
-                    <option value="ne">Last 6 Month</option>
-                    <option value="ne">Last 12 Month</option>
-                    <option value="ne">Last 2 Year</option>
-                  </select>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </Col>
+       <Col lg={4}>
+      <div className="candidate-list-widgets">
+        <Row>
+          <Col lg={6}>
+            <div className="selection-widget">
+              <select
+                className="form-select"
+                data-trigger
+                name="choices_single_filter_orderby"
+                id="choices_single_filter_orderby"
+                aria-label={t('default_select')}
+              >
+                <option value="df">{t('default')}</option>
+                <option value="ne">{t('newest')}</option>
+                <option value="od">{t('oldest')}</option>
+                <option value="rd">{t('random')}</option>
+              </select>
+            </div>
+          </Col>
+          <Col lg={6}>
+            <div className="selection-widget mt-2 mt-lg-0">
+              <select
+                className="form-select"
+                data-trigger
+                name="choices_candidate_page"
+                id="choices_candidate_page"
+                aria-label={t('candidate_select')}
+              >
+                <option value="df">{t('all')}</option>
+                <option value="ne">{t('last_2_months')}</option>
+                <option value="ne">{t('last_6_months')}</option>
+                <option value="ne">{t('last_12_months')}</option>
+                <option value="ne">{t('last_2_years')}</option>
+              </select>
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </Col>
       </Row>
     </React.Fragment>
   );

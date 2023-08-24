@@ -38,7 +38,7 @@ const Type = () => {
         styles={colourStyles}
         className="selectForm__inner"
         data-trigger
-        defaultValue={{ label: "Pet Type", value: 0 }}
+        defaultValue={{ label: t("pet_type"), value: 0 }}
         name="choices-single-categories"
         id="choices-single-categories"
         aria-label="Default select example"

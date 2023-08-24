@@ -7,8 +7,10 @@ import Pagination from "./Pagination";
 //Import Images
 
 import adImage1 from "../../../../assets/images/pet-ad.jpg";
+import { useTranslation } from "react-i18next";
 
 const JobListing = () => {
+  const {t} = useTranslation();
   //Delete Modal
   const [modal, setModal] = useState(false);
 
@@ -214,7 +216,7 @@ const JobListing = () => {
           <Modal isOpen={modal} toggle={openModal} centered tabIndex="-1">
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel">
-                Delete Ads ?
+               {("delete_ads")}
               </h5>
               <button
                 type="button"
@@ -224,17 +226,15 @@ const JobListing = () => {
                 onClick={openModal}
               ></button>
             </div>
-            <ModalBody>
+           <ModalBody>
               <div>
                 <h6 className="text-danger">
-                  <i className="uil uil-exclamation-triangle"></i> Warning: Are
-                  you sure you want to delete job Post ?
+                  <i className="uil uil-exclamation-triangle"></i> 
+                  {t("delete_ad_subtitle")}
                 </h6>
                 <p className="text-muted">
-                  {" "}
-                  Your jobs post will be permenently removed and you won't be
-                  able to see them again, including the once you're shared with
-                  your friends.
+                
+                 {t("delete_ad_text")}
                 </p>
               </div>
             </ModalBody>
@@ -244,10 +244,10 @@ const JobListing = () => {
                 onClick={openModal}
                 className="btn btn-primary btn-sm"
               >
-                Cancel
+                {t("cancel")}
               </button>
               <button type="button" className="btn btn-danger btn-sm">
-                Yes, delete
+                {t("yes_delete")}
               </button>
             </div>
           </Modal>
