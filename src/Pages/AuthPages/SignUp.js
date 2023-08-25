@@ -50,7 +50,7 @@ const SignUp = () => {
     }
   };
 
-  document.title = "Sign Up | Pets HelpFul";
+  document.title = "Sign Up | Petshelpful";
   const { t } = useTranslation();
   return (
     <React.Fragment>

@@ -4,7 +4,7 @@ import PrivacyAndPolicyPage from "./components/TermAndConditionsPage";
 
 const TermAndConditions = () => {
   document.title =
-    "Term & Conditions | Pets HelpFul";
+    "Term & Conditions | Petshelpful";
   return (
     <React.Fragment>
       <Section />

@@ -18,7 +18,7 @@ import { signInAsync } from "../../store/reducers/auth.reducer";
 import { useTranslation } from "react-i18next";
 
 const SignIn = () => {
-  document.title = "Sign In | Pets HelpFul";
+  document.title = "Sign In | Petshelpful";
 
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();

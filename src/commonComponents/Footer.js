@@ -109,7 +109,8 @@ const Footer = () => {
           <Row>
             <Col lg={12}>
               <p className="text-white-50 text-center mb-0">
-                {new Date().getFullYear()} &copy; Pets HelpFul
+                
+                2023@petshelpful
               </p>
             </Col>
           </Row>

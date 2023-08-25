@@ -9,7 +9,7 @@ import Pagination from "./components/Pagination";
 import HeroSwiper from "./components/HeroSwiper"
 
 const AdsList = () => {
-  document.title = "Ads List | Pets HelpFul";
+  document.title = "Ads List | Petshelpful";
   return (
     <React.Fragment>
       {/* <Section /> */}

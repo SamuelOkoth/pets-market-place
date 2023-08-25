@@ -8,7 +8,7 @@ import Tags from "./components/Tags";
 import SocialConnect from "./components/SocialConnect";
 
 const BlogGrid = () => {
-  document.title = "Blogs | Pets HelpFull";
+  document.title = "Blogs | Petshelpful";
 
   return (
     <React.Fragment>

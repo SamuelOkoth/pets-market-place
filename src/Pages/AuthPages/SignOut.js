@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const SignOut = () => {
-  document.title = "Sign Out | Pets HelpFul";
+  document.title = "Sign Out | Petshelpful";
   const {t} = useTranslation();
   return (
    <React.Fragment>
