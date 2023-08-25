@@ -5,7 +5,7 @@ import Section from "./components/Section";
 import Selected from "./components/Selected";
 
 const ManageAds = () => {
-  document.title = "Manage Ads | Pets Helful";
+  document.title = "Manage Ads | Petshelpful";
   return (
     <React.Fragment>
       <Section />

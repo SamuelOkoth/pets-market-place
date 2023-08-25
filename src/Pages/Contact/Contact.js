@@ -3,7 +3,7 @@ import Section from "./components/Section";
 import ContactContent from "./components/ContactContent";
 
 const Contact = () => {
-  document.title = "Contact | Pets HelpFul ";
+  document.title = "Contact | Petshelpful";
   return (
     <React.Fragment>
       <Section />

@@ -4,7 +4,7 @@ import FaqContent from "./components/FaqContent";
 import Testimonial from "./components/Testimonial";
 
 const Faqs = () => {
-  document.title = "FAQs | Pets HelpFul";
+  document.title = "FAQs | Petshelpful";
   return (
     <React.Fragment>
       

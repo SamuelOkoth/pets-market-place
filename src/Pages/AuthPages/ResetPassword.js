@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
   document.title =
-    "Reset Password | Pets HelpFul";
+    "Reset Password | Petshelpful";
   const {t} = useTranslation();
   return (
    <React.Fragment>
