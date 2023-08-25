@@ -77,7 +77,7 @@ const Footer = () => {
           <Row>
             <Col lg={3}>
               <div className="footer-item mt-4 mt-lg-0 me-lg-5">
-                <h4 className="text-white mb-4">Pets HelpFul</h4>
+                <h4 className="text-white mb-4">Petshelpful</h4>
                 <p className="text-white-50">
                 {t("about_text")}
                 </p>
