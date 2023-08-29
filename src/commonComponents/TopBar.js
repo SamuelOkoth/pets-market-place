@@ -8,7 +8,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { signOutAsync } from "../store/reducers/auth.reducer";
 
 // Import flag images
 import flagUs from "../assets/images/flags/us.jpg";
@@ -28,6 +31,24 @@ const TopBar = () => {
   const [userCountry, setUserCountry] = useState("Loading...");
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
+  const token = useSelector((state) => state.auth?.token);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const handleSignOut = async () => {
+    try {
+      await dispatch(signOutAsync());
+      toast.success("User sign out successfully");
+      navigate("/signin");
+
+    } catch (error) {
+      console.log("Error Sign Up Form:", error);
+      toast.error(error?.response?.data?.status?.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     // Fetch user's IP address information
@@ -73,12 +94,21 @@ const { t } = useTranslation();
 
             <Col md={5}>
               <ul className="list-inline mb-0 text-center text-md-end">
+                {token?
+                <li className="list-inline-item py-2 me-2 align-middle">
+                  <Link to="/signin" onClick={handleSignOut} className="text-dark fw-medium fs-13">
+                    <i className="uil uil-lock"></i>
+                    Sign Out
+                  </Link>
+                </li>
+                :
                 <li className="list-inline-item py-2 me-2 align-middle">
                   <Link to="/signup" className="text-dark fw-medium fs-13">
                     <i className="uil uil-lock"></i>
                     {t("signup_sign_up")}
                   </Link>
                 </li>
+                }
                 <li className="list-inline-item align-middle">
                   <Dropdown
                     isOpen={dropdownOpen}

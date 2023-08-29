@@ -20,3 +20,17 @@ export function signOutAsync() {
     dispatch(setToken(null));
   }
 }
+
+export function resetPasswordAsync(data) {
+  return async (dispatch, _getState) => {
+    const res = await postRequest("api/v1/password/forgot", data)
+    return res;
+  }
+}
+
+export function changePasswordAsync(data) {
+  return async (dispatch, _getState) => {
+    const res = await postRequest("api/v1/password/reset", data)
+    return res;
+  }
+}

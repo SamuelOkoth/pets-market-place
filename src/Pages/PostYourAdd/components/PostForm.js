@@ -1,7 +1,12 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Input, Label, Row } from "reactstrap";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+// Components
+import { createAdsAsync } from "../../../store/reducers/ads.reducer";
 
 const PostForm = () => {
   const options = [
@@ -253,6 +258,39 @@ const PostForm = () => {
     { value: "66a", label: "Zimbabwe" }
   ];
   const {t} = useTranslation();
+  const formRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+
+
+
+
+  const handleAdSCreate = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(formRef.current);
+    const formDataObject = {};
+    formData.forEach((value, key) => {
+      formDataObject[key] = value;
+    });
+
+    setLoading(true);
+    try {
+      const sendData = {
+        ad:formDataObject
+      }
+      await dispatch(createAdsAsync(sendData));
+      toast.success("Ad created successfully");
+      // navigate("/signin");
+    } catch (error) {
+      console.log("Error On Ad Form:", error);
+      toast.error(error?.response?.data?.error);
+    } finally {
+      setLoading(false);
+    }
+    // Handle ad creation here
+    console.log('Form Data-----------------:', formDataObject);
+  }
   return (
    <React.Fragment>
       <section className="section">
@@ -264,7 +302,8 @@ const PostForm = () => {
               </div>
             </Col>
           </Row>
-          <form className="job-post-form shadow mt-4">
+          {/* <Form onSubmit={handleSubmit(onSubmit)} className="auth-form"></Form> */}
+          <form ref={formRef} action="#" className="job-post-form shadow mt-4">
             <div className="job-post-content box-shadow-md rounded-3 p-4">
               <Row className="row">
                 <Col lg={12}>
@@ -275,8 +314,9 @@ const PostForm = () => {
                     <Input
                       type="text"
                       className="form-control"
-                      id="petName"
-                      placeholder={t("pet_name_placeholder")}
+                      id="jobtitle"
+                      placeholder="Name"
+                      name="name"
                     />
                   </div>
                 </Col>
@@ -290,6 +330,7 @@ const PostForm = () => {
                       id="petDescription"
                       rows="3"
                       placeholder={t("pet_description_placeholder")}
+                      name="description"
                     ></textarea>
                   </div>
                 </Col>
@@ -303,6 +344,7 @@ const PostForm = () => {
                       className="form-control"
                       id="petGender"
                       placeholder={t("pet_gender_placeholder")}
+                      name="gender"
                     />
                   </div>
                 </Col>
@@ -316,6 +358,7 @@ const PostForm = () => {
                       className="form-control"
                       id="petAge"
                       placeholder={t("pet_age_placeholder")}
+                      name="age"
                     />
                   </div>
                 </Col>
@@ -329,6 +372,7 @@ const PostForm = () => {
                       className="form-control"
                       id="email"
                       placeholder={t("email_placeholder")}
+                      name="email"
                     />
                   </div>
                 </Col>
@@ -342,6 +386,7 @@ const PostForm = () => {
                       className="form-control"
                       id="phoneNumber"
                       placeholder={t("phone_number_placeholder")}
+                      name="phone_number"
                     />
                   </div>
                 </Col>
@@ -355,6 +400,7 @@ const PostForm = () => {
                       className="form-control"
                       id="petType"
                       placeholder={t("pet_type_placeholder")}
+                      name="pet_type"
                     />
                   </div>
                 </Col>
@@ -367,14 +413,15 @@ const PostForm = () => {
                       className="form-select"
                       id="adType"
                       aria-label="Default select example"
+                      name="ad_type"
                     >
                        
                         <option value="20">{t("ad_type_missing")}</option>
-      <option value="25">{t("ad_type_temporary_adoption")}</option>
-      <option value="30">{t("ad_type_mating")}</option>
-      <option value="0">{t("ad_type_free_rescue")}</option>
-      <option value="30">{t("ad_type_sale")}</option>
-      <option value="20">{t("ad_type_adoption")}</option>
+                        <option value="25">{t("ad_type_temporary_adoption")}</option>
+                        <option value="30">{t("ad_type_mating")}</option>
+                        <option value="0">{t("ad_type_free_rescue")}</option>
+                        <option value="30">{t("ad_type_sale")}</option>
+                        <option value="20">{t("ad_type_adoption")}</option>
 
 
                     </select>
@@ -390,6 +437,7 @@ const PostForm = () => {
                       className="form-control"
                       id="petPrice"
                       placeholder={t("pet_price_placeholder")}
+                      name="price"
                     />
                   </div>
                 </Col>
@@ -399,16 +447,17 @@ const PostForm = () => {
                       {t("country_label")}
                     </Label>
                    <select
-        className="form-select"
-        id="country"
-        aria-label="Default select example"
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+                    className="form-select"
+                    id="country"
+                    aria-label="Default select example"
+                    name="country"
+                  >
+                    {options.map((option) => (
+                      <option key={option.value} value={option.label}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
                   </div>
                 </Col>
                 <Col lg={3}>
@@ -421,6 +470,7 @@ const PostForm = () => {
                       className="form-control"
                       id="city"
                       placeholder={t("city_placeholder")}
+                      name="city"
                     />
                   </div>
                 </Col>
@@ -434,6 +484,7 @@ const PostForm = () => {
                       className="form-control"
                       id="zipcode"
                       placeholder={t("zipcode_placeholder")}
+                      name="zipcode"
                     />
                   </div>
                 </Col>
@@ -446,6 +497,7 @@ const PostForm = () => {
                       type="file"
                       className="form-control"
                       id="petImages"
+                      name="pet_image"
                     />
                   </div>
                 </Col>
@@ -454,9 +506,8 @@ const PostForm = () => {
                     <Link to="/myprofile" className="btn btn-success">
                       {t("back_button")}
                     </Link>
-                    <Link to="#" className="btn btn-primary">
-                      {t("submit_button")}{" "}
-                      <i className="mdi mdi-send"></i>
+                    <Link to="#" onClick={handleAdSCreate} className="btn btn-primary">
+                      {t("submit_button")}{" "} <i className="mdi mdi-send"></i>
                     </Link>
                   </div>
                 </Col>
