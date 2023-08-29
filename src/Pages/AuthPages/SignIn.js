@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, Col, Container, Input, Row } from "reactstrap";
 
@@ -27,6 +27,16 @@ const SignIn = () => {
     resolver: yupResolver(signInSchema)
   });
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const resetPasswordToken = searchParams.get('account_activation_token');
+  const [activeuser, setActiveUser] = useState(false);
+
+  useEffect(() => {
+    if(resetPasswordToken) {
+      setActiveUser(true)
+    }
+  }, [resetPasswordToken]);
+
   const onSubmit = async data => {
 
     setLoading(true);
@@ -54,6 +64,9 @@ const SignIn = () => {
       <div>
         <div className="main-content">
           <div className="page-content">
+          {activeuser ? (
+            <div>Your account has been activated.</div>
+          ) : null}
             <section className="bg-auth">
               <Container>
                 <Row className="justify-content-center">
