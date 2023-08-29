@@ -22,6 +22,7 @@ import SignOut from "./Pages/AuthPages/SignOut";
 import SignUp from "./Pages/AuthPages/SignUp";
 import SignIn from "./Pages/AuthPages/SignIn";
 import ResetPassword from "./Pages/AuthPages/ResetPassword";
+import NewPassword from "./Pages/AuthPages/NewPassword";
 import PostAdd from "./Pages/PostYourAdd/PostAd";
 import Chat from "./Pages/Chat/Index";
 import MobileNav from "./commonComponents/MobileNav";
@@ -63,6 +64,7 @@ function App() {
         <Route exact path="/signup" element={<ProtectedRoute><SignUp /></ProtectedRoute>} />
         <Route exact path="/signin" element={<ProtectedRoute><SignIn /></ProtectedRoute>} />
         <Route exact path="/resetpassword" element={<ProtectedRoute><ResetPassword /></ProtectedRoute>} />
+        <Route exact path="/changepassword" element={<ProtectedRoute><NewPassword /></ProtectedRoute>} />
         <Route exact path="/postyourad" element={<PrivateRoute><PostAdd /></PrivateRoute>} />
         <Route exact path="/chat" element={<PrivateRoute><Chat /></PrivateRoute>} />
       </Routes>

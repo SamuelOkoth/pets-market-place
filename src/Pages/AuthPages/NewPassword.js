@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 //Import Image
@@ -7,33 +7,42 @@ import darkLogo from "../../assets/images/main-logo.png";
 
 import resetPasswordImage from "../../assets/images/auth/reset-password.png";
 import { Card, CardBody, Col, Container, Input, Row } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
-import { resetPasswordAsync } from "../../store/reducers/auth.reducer";
+import { changePasswordAsync } from "../../store/reducers/auth.reducer";
 
-const ResetPassword = () => {
+const NewPassword = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    email: '',
-  });
+  const formRef = useRef(null);
+  const navigate = useNavigate()
 
-  const handleInputChange = (event) => {
-    localStorage.setItem("email", event.target.value)
-    setFormData({
-      ...formData,
-      email: event.target.value,
-    });
-  }
-
-  const resetPasswordHandle = async (event) => {
+  const changePasswordHandle = async (event) => {
     event.preventDefault();
-    // alert(' I am called from here')
+    const formData = new FormData(formRef.current);
+    const password = formData.get('password');
+    const confirmPassword = formData.get('confirm_password');
+    const searchParams = new URLSearchParams(window.location.search);
+    const resetPasswordToken = searchParams.get('reset_password_token');
+    const user_email = localStorage.getItem("email");
+
+    if (password !== confirmPassword) {
+      toast.error('Password and confirm password does not matched');
+      return;
+    }
     setLoading(true);
     try {
-      await dispatch(resetPasswordAsync(formData));
-      toast.success("Email sent successfully");
+      const sendData = {
+        token: resetPasswordToken,
+        user: {
+          password: password,
+          confirmPassword: confirmPassword,
+          email: user_email
+        }
+      }
+      await dispatch(changePasswordAsync(sendData));
+      toast.success("Password updated successfully");
+      navigate("/signin");
     } catch (error) {
       console.log("Error Forgot password Form:", error);
       toast.error(error?.response?.data?.error);
@@ -43,10 +52,9 @@ const ResetPassword = () => {
   }
 
   document.title =
-    "Reset Password | Petshelpful";
-  const {t} = useTranslation();
+    "Change Password | Pets HelpFul";
   return (
-   <React.Fragment>
+    <React.Fragment>
       <div>
         <div className="main-content">
           <div className="page-content">
@@ -63,13 +71,15 @@ const ResetPassword = () => {
                                 src={lightLogo}
                                 alt=""
                                 className="logo-light"
-                                style={{ height: "100px" }}
+                                style={{ 
+                                  height:"100px" }}
                               />
                               <img
                                 src={darkLogo}
                                 alt=""
                                 className="logo-dark"
-                                style={{ height: "100px" }}
+                                style={{ 
+                              height:"100px" }}
                               />
                             </Link>
                             <div className="mt-5">
@@ -84,51 +94,58 @@ const ResetPassword = () => {
                         <Col lg={6}>
                           <CardBody className="auth-content p-5 h-100 text-white">
                             <div className="text-center mb-4">
-                              <h5>{t("reset_password_heading")}</h5>
+                              <h5>Reset Password</h5>
                               <p className="text-white-50">
-                                {t("reset_password_subheading")}
+                                Reset your password with Jobcy.
                               </p>
                             </div>
-                            <Form className="auth-form text-white">
-                              <div
-                                className="alert alert-warning text-center mb-4"
-                                role="alert"
-                              >
-                                {t("reset_password_alert")}
+                            <Form
+                              ref={formRef}
+                              className="auth-form text-white"
+                            >
+                              <div className="mb-4">
+                                <label className="form-label" htmlFor="email">
+                                  Password
+                                </label>
+                                <Input
+                                  type="password"
+                                  className="form-control"
+                                  id="password"
+                                  name="password"
+                                  placeholder="Enter your new password"
+                                />
                               </div>
                               <div className="mb-4">
                                 <label className="form-label" htmlFor="email">
-                                  {t("reset_password_email_label")}
+                                  Confirm Password
                                 </label>
                                 <Input
-                                  type="email"
+                                  type="password"
                                   className="form-control"
-                                  id="email"
-                                  placeholder={t("reset_password_email_placeholder")}
-                                  value={formData.email}
-                                  onChange={handleInputChange}
-
+                                  id="confirm_password"
+                                  name="confirm_password"
+                                  placeholder="Enter your password again"
                                 />
                               </div>
                               <div className="mt-3">
                                 <button
                                   type="submit"
                                   className="btn btn-white w-100"
-                                  onClick={resetPasswordHandle}
+                                  onClick={changePasswordHandle}
                                 >
-                                  {t("reset_password_button")}
+                                  Change Password
                                 </button>
                               </div>
                             </Form>
                             <div className="mt-5 text-center text-white-50">
                               <p>
-                                {t("reset_password_remembered_question")}
+                                Remembered It ?{" "}
                                 <Link
                                   to="/signin"
                                   className="fw-medium text-white text-decoration-underline"
                                 >
                                   {" "}
-                                  {t("reset_password_login_link")}{" "}
+                                  Go to Login{" "}
                                 </Link>
                               </p>
                             </div>
@@ -147,4 +164,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default NewPassword;
