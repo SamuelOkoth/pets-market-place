@@ -40,7 +40,7 @@ const SignUp = () => {
         }
       }
       await dispatch(signUpAsync(sendData));
-      toast.success("User created successfully");
+      toast.success("User created successfully. Please check your email to activate your account. Link has been sent to your email.");
       navigate("/signin");
     } catch (error) {
       console.log("Error Sign Up Form:", error);

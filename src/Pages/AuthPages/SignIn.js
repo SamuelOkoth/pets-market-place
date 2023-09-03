@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, CardBody, Col, Container, Input, Row } from "reactstrap";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 //Import Image
 import lightLogo from "../../assets/images/main-logo.png";
@@ -14,13 +16,32 @@ import { signInSchema } from "../../utils/validations";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { Icon } from "@iconify/react";
-import { signInAsync } from "../../store/reducers/auth.reducer";
+import { signInAsync, UserAccountActivationAsync } from "../../store/reducers/auth.reducer";
 import { useTranslation } from "react-i18next";
+
+
+function AcountActivationModal({ isOpen, onRequestClose }) {
+  return (
+    <Modal show={isOpen} onHide={onRequestClose}>
+    <Modal.Header>
+      <Modal.Title>User account activation</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>Please click the okay button to activate your account.</Modal.Body>
+    <Modal.Footer>
+      <Button variant="primary" onClick={onRequestClose}>
+        Okay
+      </Button>
+    </Modal.Footer>
+  </Modal>
+  );
+}
 
 const SignIn = () => {
   document.title = "Sign In | Petshelpful";
 
   const [loading, setLoading] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   const { handleSubmit, control, formState: { errors } } = useForm({
@@ -28,14 +49,39 @@ const SignIn = () => {
   });
 
   const searchParams = new URLSearchParams(window.location.search);
-  const resetPasswordToken = searchParams.get('account_activation_token');
+  const userConfirmationToken = searchParams.get('confirmation_token');
   const [activeuser, setActiveUser] = useState(false);
 
+
   useEffect(() => {
-    if(resetPasswordToken) {
-      setActiveUser(true)
+
+    if (userConfirmationToken) {
+      setActiveUser(true);
+      setModalIsOpen(true);
     }
-  }, [resetPasswordToken]);
+  }, []);
+
+  const closeModal = async data =>  {
+    setLoading(true);
+    try {
+      const userAccountActivationToken = {
+        user: {
+          confirmation_token: userConfirmationToken
+        }
+      }
+      const response = await dispatch(UserAccountActivationAsync(userAccountActivationToken));
+      const message = response.message;
+      toast.success(message);
+
+      navigate("/signin");
+    } catch (error) {
+      console.log("User Account Activation Error:", error);
+      toast.error(error?.response?.data?.error);
+    } finally {
+      setLoading(false);
+    }
+    setModalIsOpen(false);
+  };
 
   const onSubmit = async data => {
 
@@ -65,7 +111,7 @@ const SignIn = () => {
         <div className="main-content">
           <div className="page-content">
           {activeuser ? (
-            <div>Your account has been activated.</div>
+            <AcountActivationModal isOpen={modalIsOpen} onRequestClose={closeModal} />
           ) : null}
             <section className="bg-auth">
               <Container>

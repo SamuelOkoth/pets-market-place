@@ -34,3 +34,10 @@ export function changePasswordAsync(data) {
     return res;
   }
 }
+
+export function UserAccountActivationAsync(data) {
+  return async (dispatch, _getState) => {
+    const res = await postRequest("account_confirmation", data)
+    return res;
+  }
+}
