@@ -416,12 +416,12 @@ const PostForm = () => {
                       name="ad_type"
                     >
                        
-                        <option value="20">{t("ad_type_missing")}</option>
-                        <option value="25">{t("ad_type_temporary_adoption")}</option>
-                        <option value="30">{t("ad_type_mating")}</option>
-                        <option value="0">{t("ad_type_free_rescue")}</option>
-                        <option value="30">{t("ad_type_sale")}</option>
-                        <option value="20">{t("ad_type_adoption")}</option>
+                        <option value="Missing">{t("ad_type_missing")}</option>
+                        <option value="Temporary adoption">{t("ad_type_temporary_adoption")}</option>
+                        <option value="Mating">{t("ad_type_mating")}</option>
+                        <option value="Free rescue">{t("ad_type_free_rescue")}</option>
+                        <option value="Sale">{t("ad_type_sale")}</option>
+                        <option value="Adoption">{t("ad_type_adoption")}</option>
 
 
                     </select>
