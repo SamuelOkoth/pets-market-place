@@ -1,4 +1,4 @@
-import { postRequest } from "../../config/axiosConfig"
+import { postRequest, putRequest, getRequest } from "../../config/axiosConfig"
 import { setToken } from "../slices/auth.slice";
 
 export function signInAsync(data) {
@@ -38,6 +38,20 @@ export function changePasswordAsync(data) {
 export function UserAccountActivationAsync(data) {
   return async (dispatch, _getState) => {
     const res = await postRequest("account_confirmation", data)
+    return res;
+  }
+}
+
+export function UpdateUserProfileAsync(data) {
+  return async (dispatch, _getState) => {
+    const res = await putRequest("api/v1/profiles/update_profile", data)
+    return res;
+  }
+}
+
+export function GetUserProfileAsync(data) {
+  return async (dispatch, _getState) => {
+    const res = await getRequest("api/v1/profiles/show_profile")
     return res;
   }
 }

@@ -10,8 +10,9 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import withRouter from "./withRouter";
+import { useSelector, useDispatch } from "react-redux";
 
 //import images
 // Import flag images
@@ -24,6 +25,8 @@ import { useTranslation } from "react-i18next";
 
 import lightLogo from "../assets/images/main-logo.png";
 import profileImage from "../assets/images/profile.jpg";
+import { signOutAsync } from "../store/reducers/auth.reducer";
+import { toast } from "react-toastify";
 
 const changeLang = (l) => {
   return () => {
@@ -33,7 +36,11 @@ const changeLang = (l) => {
 };
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const token = useSelector((state) => state.auth?.token);
 
   //Notification Dropdown
   const [notification, setNotification] = useState(false);
@@ -62,6 +69,21 @@ const NavBar = (props) => {
       setnavClass("");
     }
   }
+
+  const handleSignOut = async () => {
+    try {
+      await dispatch(signOutAsync());
+      toast.success("User sign out successfully");
+      navigate("/signin");
+
+    } catch (error) {
+      console.log("Error Sign Up Form:", error);
+      toast.error(error?.response?.data?.status?.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   //menu activation
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -198,10 +220,15 @@ const {t} = useTranslation();
                 </Link>
               </NavItem>
               <NavItem>
-                <Link className="nav-link" to="/signup">
-                  <i className="uil uil-lock"></i>
+              {token?
+                <Link to="/signin" onClick={handleSignOut} className="nav-link">
+                  {t("logout")}
+                </Link>
+                :
+                <Link to="/signup" className="nav-link">
                   {t("signup_sign_up")}
                 </Link>
+                }
               </NavItem>
             </ul>
           </Collapse>

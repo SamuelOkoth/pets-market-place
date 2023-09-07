@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch} from "react-redux";
+import { toast } from "react-toastify";
 import {
   Col,
   Row,
@@ -6,7 +8,6 @@ import {
   TabPane,
   Card,
   Input,
-  Form,
   CardBody,
   Label
 } from "reactstrap";
@@ -16,10 +17,65 @@ import userImage2 from "../../../../assets/images/user/img-02.jpg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+// Component
+import { UpdateUserProfileAsync, GetUserProfileAsync } from "../../../../store/reducers/auth.reducer";
+import { countryOptions } from "../../../../../src/commonComponents/options"
+
 const RightSideContent = () => {
   const [activeTab, setActiveTab] = useState("1");
+  const formRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [profileData, setProfileData] = useState({});
+  const dispatch = useDispatch();
 
   const { t } = useTranslation();
+  const accountOptions = [
+    { value: "0", label: "seller" },
+    { value: "1", label: "buyer" },]
+
+  const handleUpdateProfile = async  (event) => {
+    event.preventDefault();
+    const formData = new FormData(formRef.current);
+    const formDataObject = {};
+    formData.forEach((value, key) => {
+      formDataObject[key] = value;
+    });
+
+    try {
+      const sendData = {
+        profile: formDataObject
+      }
+      await dispatch(UpdateUserProfileAsync(sendData));
+      toast.success("User profile updated successfully");
+      // navigate("/signin");
+    } catch (error) {
+      console.log("Error On Profile Form:", error);
+      console.log('erorr-----------------------', error?.response?.data?.error);
+      toast.error(error?.response?.data?.error);
+    } finally {
+      setLoading(false);
+    }
+
+    console.log(' the value of all fileds-----------', formDataObject);
+
+  }
+
+  useEffect(() => {
+     getProfileDat()
+  }, []);
+
+  const getProfileDat = async (event) => {
+    setLoading(true);
+    try {
+      const response = await dispatch(GetUserProfileAsync());
+      console.log(response)
+      setProfileData(response)
+    } catch (error) {
+      toast.error(error?.response?.data?.error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <React.Fragment>
@@ -28,7 +84,7 @@ const RightSideContent = () => {
           <CardBody className="p-4">
             <TabContent activeTab={activeTab}>
               <TabPane tabId="1">
-                <Form action="#">
+                <form ref={formRef} action="#">
                   <div>
                     <h5 className="fs-17 fw-semibold mb-3 mb-0">{t("my_account")}</h5>
                     <div className="text-center">
@@ -64,6 +120,8 @@ const RightSideContent = () => {
                             type="text"
                             className="form-control"
                             id="firstName"
+                            name="first_name"
+                            defaultValue={profileData?.first_name}
                           />
                         </div>
                       </Col>
@@ -76,6 +134,8 @@ const RightSideContent = () => {
                             type="text"
                             className="form-control"
                             id="lastName"
+                            name="last_name"
+                            defaultValue={profileData?.last_name}
                           />
                         </div>
                       </Col>
@@ -88,15 +148,32 @@ const RightSideContent = () => {
                           >
                             {t("account_type")}
                           </label>
+                          {/* <select
+                            className="form-select"
+                            data-trigger
+                            name="account_type"
+                            id="choices-single-categories"
+                            aria-label="Default select example"
+                            defaultValue={profileData?.account_type}
+                          >
+                            {accountOptions.map((option) => (
+                              <option key={option.value} value={option.label} defaultValue={profileData?.account_type}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select> */}
                           <select
                             className="form-select"
                             data-trigger
-                            name="choices-single-categories"
+                            name="account_type"
                             id="choices-single-categories"
                             aria-label="Default select example"
                           >
-                            <option value="4">{t("seller")}</option>
-                            <option value="1">{t("buyer")}</option>
+                            {accountOptions.map((option) => (
+                              <option key={option.value} value={option.label} selected={profileData?.account_type === option.label}>
+                                {option.label}
+                              </option>
+                            ))}
                           </select>
                         </div>
                       </Col>
@@ -109,6 +186,7 @@ const RightSideContent = () => {
                             type="text"
                             className="form-control"
                             id="email"
+                            name="email"
                           />
                         </div>
                       </Col>
@@ -126,8 +204,8 @@ const RightSideContent = () => {
                           >
                             {t("introduce_yourself")}
                           </Label>
-                          <textarea className="form-control" rows="5">
-                            Yourself
+                          <textarea className="form-control" rows="5" name="bio">
+                            {profileData?.bio}
                           </textarea>
                         </div>
                       </Col>
@@ -141,6 +219,8 @@ const RightSideContent = () => {
                             type="text"
                             className="form-control"
                             id="languages"
+                            name="language"
+                            defaultValue={profileData?.language}
                           />
                         </div>
                       </Col>
@@ -156,14 +236,16 @@ const RightSideContent = () => {
                           <select
                             className="form-select"
                             data-trigger
-                            name="choices-single-location"
+                            name="location"
                             id="choices-single-location"
                             aria-label="Default select example"
+                            defaultValue={profileData?.location}
                           >
-                            <option value="ME">Montenegro</option>
-                            <option value="MS">Montserrat</option>
-                            <option value="MA">Morocco</option>
-                            <option value="MZ">Mozambique</option>
+                            {countryOptions.map((option) => (
+                              <option key={option.value} value={option.label}>
+                                {option.label}
+                              </option>
+                            ))}
                           </select>
                         </div>
                       </Col>
@@ -183,6 +265,8 @@ const RightSideContent = () => {
                             className="form-control"
                             id="facebook"
                             to="https://www.facebook.com"
+                            name="facebook_url"
+                            defaultValue={profileData?.facebook_url}
                           />
                         </div>
                       </Col>
@@ -197,6 +281,8 @@ const RightSideContent = () => {
                             className="form-control"
                             id="twitter"
                             to="https://www.twitter.com"
+                            name="twitter_url"
+                            defaultValue={profileData?.twitter_url}
                           />
                         </div>
                       </Col>
@@ -211,6 +297,8 @@ const RightSideContent = () => {
                             className="form-control"
                             id="linkedin"
                             to="https://www.linkedin.com"
+                            name="linkedin_url"
+                            defaultValue={profileData?.linkedin_url}
                           />
                         </div>
                       </Col>
@@ -225,6 +313,8 @@ const RightSideContent = () => {
                             className="form-control"
                             id="whatsapp"
                             to="https://www.whatsapp.com"
+                            name="whatsapp_url"
+                            defaultValue={profileData?.whatsapp_url}
                           />
                         </div>
                       </Col>
@@ -305,18 +395,18 @@ const RightSideContent = () => {
                     </Row>
                   </div>
                   <div className="mt-4 text-end">
-                    <Link to="#" className="btn btn-primary">
+                  <Link to="#" onClick={handleUpdateProfile} className="btn btn-primary">
                       {t("update")}
                     </Link>
                   </div>
-                </Form>
+                </form>
               </TabPane>
             </TabContent>
           </CardBody>
         </Card>
       </Col>
     </React.Fragment>
-  );
+  )
 };
 
 export default RightSideContent;

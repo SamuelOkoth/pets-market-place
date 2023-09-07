@@ -224,7 +224,7 @@
   "pet_type_label": "Pet Type",
   "pet_type_placeholder": "Pet type",
   "ad_type_label": "Type of Ad",
-  "pet_price_label": "Pet Price (optional)",
+  "pet_price_label": "Pet Price*",
   "pet_price_placeholder": "Pet Price",
   "country_label": "Country",
   "country_montenegro": "Montenegro",
@@ -243,7 +243,7 @@
   "ad_type_adoption": "Adoption",
 "post_new_ad":" Post New Ad",
 
-"logout":"Logout",
+"logout":"Log Out",
 
 "company":"Company",
 "for_ads":"For Ads",
