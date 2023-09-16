@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Label, Row, Modal, ModalBody } from "reactstrap";
-import {getAdsAsync} from '../../../store/reducers/ads.reducer'
+import {getAdsAsync, deleteAdsAsync} from '../../../store/reducers/ads.reducer'
 import { useDispatch, useSelector } from "react-redux";
 import timeAgo from "../../../utils/timeAgo";
 //Images Import
@@ -11,8 +11,7 @@ import adImage1 from "../../../assets/images/pet-ad.jpg";
 
 const Ad = () => {
 
-  const ads = useSelector(state => state.ads.ads); // This path depends on your store structure and combined reducers
-  //Apply Now Model
+  const ads = useSelector(state => state.ads.ads);
   const [modal, setModal] = useState(false);
   const openModal = () => setModal(!modal);
   const dispatch = useDispatch()
@@ -20,6 +19,9 @@ const Ad = () => {
     const response = await dispatch(getAdsAsync());
 };
 
+const deleteAd = async (id) => {
+  const response = await dispatch(deleteAdsAsync(id));
+};
   useEffect(()=>{
     fetchData()
   },[])
@@ -113,22 +115,29 @@ const Ad = () => {
       age: "2 - 3 years",
     },
   ];
+  console.log(ads)
   return (
     <React.Fragment>
       <div>
-        {ads && ads.map((petAdDetail, key) => (
+        {ads.length > 0 && ads.map((petAdDetail, key) => (
           <div
             key={key}
             className={
-              petAdDetail.addclassNameBookmark === true
-                ? "job-box bookmark-post card mt-4"
-                : "job-box card mt-4"
+              // petAdDetail.addclassNameBookmark === true
+              //   ? "job-box bookmark-post card mt-4"
+              //   : "job-box card mt-4"
+              "job-box bookmark-post card mt-4"
             }
           >
             <div className="favorite-icon">
               <Link to="#">
                 <i className="uil uil-heart-alt fs-18"></i>
               </Link>
+            </div>
+            <div className="delete-icon">
+              <div onClick={() => deleteAd(petAdDetail.id)}>
+                <i className="uil uil-trash-alt fs-18"></i>
+              </div>
             </div>
             <div className="p-4">
               <Row className="align-items-center">
