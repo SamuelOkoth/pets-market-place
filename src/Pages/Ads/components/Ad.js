@@ -1,17 +1,28 @@
 
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Label, Row, Modal, ModalBody } from "reactstrap";
-
+import {getAdsAsync} from '../../../store/reducers/ads.reducer'
+import { useDispatch, useSelector } from "react-redux";
+import timeAgo from "../../../utils/timeAgo";
 //Images Import
 import adImage1 from "../../../assets/images/pet-ad.jpg";
 
 const Ad = () => {
+
+  const ads = useSelector(state => state.ads.ads); // This path depends on your store structure and combined reducers
   //Apply Now Model
   const [modal, setModal] = useState(false);
   const openModal = () => setModal(!modal);
+  const dispatch = useDispatch()
+  const fetchData = async () => {
+    const response = await dispatch(getAdsAsync());
+};
 
+  useEffect(()=>{
+    fetchData()
+  },[])
   const petAdList = [
     {
       id: 1,
@@ -105,7 +116,7 @@ const Ad = () => {
   return (
     <React.Fragment>
       <div>
-        {petAdList.map((petAdDetail, key) => (
+        {ads && ads.map((petAdDetail, key) => (
           <div
             key={key}
             className={
@@ -125,7 +136,7 @@ const Ad = () => {
                   <div className="text-center mb-4 mb-md-0">
                     <Link to="/AdDetails">
                       <img
-                        src={petAdDetail.petImg}
+                        src={petAdDetail.pet_image_url}
                         alt=""
                         className="img-fluid rounded-3"
                         style={{ height: "95px" }}
@@ -138,11 +149,11 @@ const Ad = () => {
                   <div className="mb-2 mb-md-0">
                     <h5 className="fs-18 mb-0">
                       <Link to="/AdDetails" className="text-dark">
-                        {petAdDetail.petName}
+                        {petAdDetail.name}
                       </Link>
                     </h5>
                     <p className="text-muted fs-14 mb-0">
-                      {petAdDetail.petOwner}
+                      {petAdDetail.email}
                     </p>
                   </div>
                 </Col>
@@ -153,7 +164,7 @@ const Ad = () => {
                       <i className="mdi mdi-map-marker text-primary me-1"></i>
                     </div>
                     <p className="text-muted mb-0">
-                      {petAdDetail.location}
+                      {petAdDetail.country}
                     </p>
                   </div>
                 </Col>
@@ -165,7 +176,7 @@ const Ad = () => {
                     </div>
                     <p className="text-muted mb-0">
                       {" "}
-                      {petAdDetail.adPostTime}
+                      {timeAgo(petAdDetail.updated_at)}
                     </p>
                   </div>
                 </Col>
@@ -178,7 +189,7 @@ const Ad = () => {
                     </div>
                     <p className="text-muted mb-0">
                       {" "}
-                      {petAdDetail.petPrice}
+                      {petAdDetail.ad_price}
                     </p>
                   </div>
                 </Col>
