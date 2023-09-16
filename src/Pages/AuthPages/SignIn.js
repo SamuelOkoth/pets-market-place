@@ -188,7 +188,7 @@ const SignIn = () => {
                                     htmlFor="usernameInput"
                                     className="form-label"
                                   >
-                                    {t("signin_username_label")}
+                                    {t("signin_email_label")}
                                   </label>
                                   <Controller
                                     name="username"
@@ -200,7 +200,7 @@ const SignIn = () => {
                                         type="text"
                                         className="form-control"
                                         id="usernameInput"
-                                        placeholder={t("signin_username_placeholder")}
+                                        placeholder={t("signin_email_placeholder")}
                                       />
                                     )}
                                   />
