@@ -15,7 +15,11 @@ import { signupSchema } from "../../utils/validations";
 import signUpImage from "../../assets/images/auth/sign-up.png";
 import { signUpAsync } from "../../store/reducers/auth.reducer";
 import { useTranslation } from "react-i18next";
-
+import FacebookLogin from 'react-facebook-login';
+import { LoginSocialFacebook } from "reactjs-social-login";
+import { FacebookLoginButton } from "react-social-login-buttons";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import LoginWithGoogle from './LoginWithGoogle';
 const SignUp = () => {
 
   const [loading, setLoading] = useState(false);
@@ -37,6 +41,7 @@ const SignUp = () => {
         user: {
           email: data.email,
           password: data.password,
+          user_name: data.username
         }
       }
       await dispatch(signUpAsync(sendData));
@@ -49,6 +54,12 @@ const SignUp = () => {
       setLoading(false);
     }
   };
+ 
+  const responseFacebook = (response) => {
+    console.log("facebook console");
+    console.log(response);
+    // this.signup(response, 'facebook');
+  }
 
   document.title = "Sign Up | Petshelpful";
   const { t } = useTranslation();
@@ -102,22 +113,29 @@ const SignUp = () => {
                                 </p>
                               </div>
                               <div>
-                              <ul className="blog-social-menu list-inline mb-0 text-center">
+                                <ul className="blog-social-menu list-inline mb-0 text-center">
                                   <li className="list-inline-item">
-                                    <Link
-                                      to="#"
-                                      className="social-link bg-primary-subtle text-primary"
+                                    <LoginSocialFacebook
+                                      appId=""
+                                      fields="name,email,picture"
+                                      onResolve={(response) => {console.log('tttttttttttttttttttttttttttt',response)}}
+                                      onReject={(error) => { console.log(error)}}
                                     >
-                                      <Icon icon="ri:facebook-fill" />
-                                    </Link>
+                                      <FacebookLoginButton/>
+                                    </LoginSocialFacebook>
+                                    {/* <FacebookLogin
+                                      appId=""
+                                      autoLoad={true}
+                                      fields="name,email,picture"
+                                      // onClick={componentClicked}
+                                      callback={responseFacebook} /> */}
                                   </li>
                                   <li className="list-inline-item">
-                                    <Link
-                                      to="#"
-                                      className="social-link bg-danger-subtle text-danger"
-                                    >
-                                      <Icon icon="grommet-icons:google" />
-                                    </Link>
+                                    <GoogleOAuthProvider clientId="995531737791-b7ro0j22bd3ogfoa8896o80nb8gm1h3m.apps.googleusercontent.com">
+                                        <React.StrictMode>
+                                            <LoginWithGoogle />
+                                        </React.StrictMode>
+                                    </GoogleOAuthProvider>
                                   </li>
                                 </ul>
                               </div>
