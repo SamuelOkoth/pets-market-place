@@ -94,7 +94,7 @@ const SignIn = () => {
         }
       }
       await dispatch(signInAsync(sendData));
-      toast.success("Log in");
+      toast.success("User login successfully");
     } catch (error) {
       console.log("Error Sign Up Form:", error);
       toast.error(error?.response?.data?.error);

@@ -55,3 +55,10 @@ export function GetUserProfileAsync(data) {
     return res;
   }
 }
+
+export function signInWitGoogleAsync(data) {
+  return async (dispatch, _getState) => {
+    const res = await postRequest("api/v1/social_login/social_login", data);
+    dispatch(setToken(res?.status?.user_token));
+  }
+}

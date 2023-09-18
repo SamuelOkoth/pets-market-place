@@ -14,18 +14,18 @@ import {
 
 //Images Import
 import userImage2 from "../../../../assets/images/user/img-02.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // Component
 import { UpdateUserProfileAsync, GetUserProfileAsync } from "../../../../store/reducers/auth.reducer";
 import { countryOptions } from "../../../../../src/commonComponents/options"
 
-const RightSideContent = () => {
+const RightSideContent = ({ profileData }) => {
   const [activeTab, setActiveTab] = useState("1");
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [profileData, setProfileData] = useState({});
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
@@ -47,7 +47,7 @@ const RightSideContent = () => {
       }
       await dispatch(UpdateUserProfileAsync(sendData));
       toast.success("User profile updated successfully");
-      // navigate("/signin");
+      navigate("/myprofile");
     } catch (error) {
       console.log("Error On Profile Form:", error);
       console.log('erorr-----------------------', error?.response?.data?.error);
@@ -60,20 +60,18 @@ const RightSideContent = () => {
 
   }
 
-  useEffect(() => {
-     getProfileDat()
-  }, []);
-
-  const getProfileDat = async (event) => {
-    setLoading(true);
-    try {
-      const response = await dispatch(GetUserProfileAsync());
-      console.log(response)
-      setProfileData(response)
-    } catch (error) {
-      toast.error(error?.response?.data?.error);
-    } finally {
-      setLoading(false);
+  function handleImageChange(event) {
+    const fileInput = event.target;
+    const profileImage = document.getElementById("profile-img");
+  
+    if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+  
+      reader.onload = function (e) {
+        profileImage.src = e.target.result;
+      };
+  
+      reader.readAsDataURL(fileInput.files[0]);
     }
   }
 
@@ -90,7 +88,7 @@ const RightSideContent = () => {
                     <div className="text-center">
                       <div className="mb-4 profile-user">
                         <img
-                          src={userImage2}
+                          src={profileData?.profile_image ? profileData.profile_image : userImage2}
                           className="rounded-circle img-thumbnail profile-img"
                           id="profile-img"
                           alt=""
@@ -100,6 +98,8 @@ const RightSideContent = () => {
                             id="profile-img-file-input"
                             type="file"
                             className="profile-img-file-input"
+                            onChange={handleImageChange}
+                            name="profile_image"
                           />
                           <Label
                             htmlFor="profile-img-file-input"
@@ -179,14 +179,15 @@ const RightSideContent = () => {
                       </Col>
                       <Col lg={6}>
                         <div className="mb-3">
-                          <Label htmlFor="email" className="form-label">
-                            {t("email")}
+                          <Label htmlFor="phone_number" className="form-label">
+                            {t("simple_phone_number")}
                           </Label>
                           <Input
                             type="text"
                             className="form-control"
-                            id="email"
-                            name="email"
+                            id="phone_number"
+                            name="phone_number"
+                            defaultValue={profileData?.phone_number}
                           />
                         </div>
                       </Col>
@@ -204,8 +205,7 @@ const RightSideContent = () => {
                           >
                             {t("introduce_yourself")}
                           </Label>
-                          <textarea className="form-control" rows="5" name="bio">
-                            {profileData?.bio}
+                          <textarea className="form-control" rows="5" name="bio" value={profileData.bio} >
                           </textarea>
                         </div>
                       </Col>

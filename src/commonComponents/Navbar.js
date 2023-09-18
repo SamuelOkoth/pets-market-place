@@ -10,7 +10,8 @@ import {
 } from "reactstrap";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import withRouter from "./withRouter";
 
@@ -23,13 +24,16 @@ import profileImage from "../assets/images/profile.jpg";
 import { signOutAsync } from "../store/reducers/auth.reducer";
 
 import { useTranslation, initReactI18next } from "react-i18next";
+import { GetUserProfileAsync } from "../../src/store/reducers/auth.reducer";
 
 const NavBar = (props) => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const token = useSelector((state) => state.auth?.token);
+  const [loading, setLoading] = useState(false);
+  const [profileData, setProfileData] = useState({});
 
   //Notification Dropdown
   const [notification, setNotification] = useState(false);
@@ -45,6 +49,25 @@ const NavBar = (props) => {
   useEffect(() => {
     window.addEventListener("scroll", scrollNavigation, true);
   });
+
+
+
+  useEffect(() => {
+    getProfileDat()
+ }, []);
+
+ const getProfileDat = async (event) => {
+   setLoading(true);
+   try {
+     const response = await dispatch(GetUserProfileAsync());
+     console.log(response)
+     setProfileData(response)
+   } catch (error) {
+     toast.error(error?.response?.data?.error);
+   } finally {
+     setLoading(false);
+   }
+ }
 
   function scrollNavigation() {
     var scrollup = window.pageYOffset;
@@ -117,10 +140,11 @@ const NavBar = (props) => {
   }
 
   const handleLogout = async () => {
-    await dispatch(signOutAsync())
-    navigate("/signout")
-  }
-const { t } = useTranslation();
+    await dispatch(signOutAsync());
+    navigate("/signout");
+  };
+
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <nav
@@ -149,160 +173,29 @@ const { t } = useTranslation();
             <ul className="navbar-nav mx-auto navbar-center">
               <NavItem>
                 <Link className="nav-link" to="/">
-                   {t('home')}
+                  {t("home")}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/about">
-                   {t('about')}
+                  {t("about")}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/blogs">
-                   {t('blog')}
+                  {t("blog")}
                 </Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/contact">
-                   {t('contact')}
+                  {t("contact")}
                 </Link>
               </NavItem>
             </ul>
           </Collapse>
 
+          {token &&
           <ul className="header-menu list-inline d-flex align-items-center mb-0">
-            {/* <Dropdown
-              isOpen={notification}
-              toggle={dropDownnotification}
-              className="list-inline-item  me-4"
-            >
-              <DropdownToggle
-                href="#"
-                className="header-item noti-icon position-relative"
-                id="notification"
-                type="button"
-                tag="a"
-              >
-                <i className="mdi mdi-bell fs-22"></i>
-                <i className="mdi mdi-message-processing fs-22"></i>
-                <div className="count position-absolute">3</div>
-              </DropdownToggle>
-              <DropdownMenu
-                className="dropdown-menu-sm dropdown-menu-end p-0"
-                aria-labelledby="notification"
-                end
-              >
-                <div className="notification-header border-bottom bg-light">
-                  <h6 className="mb-1"> Notification </h6>
-                  <p className="text-muted fs-13 mb-0">
-                    You have 4 unread Notification
-                  </p>
-                </div>
-                <div className="notification-wrapper dropdown-scroll">
-                  <Link
-                    to="#"
-                    className="text-dark notification-item d-block active"
-                  >
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <div className="avatar-xs bg-primary text-white rounded-circle text-center">
-                          <i className="uil uil-user-check"></i>
-                        </div>
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">
-                          22 verified registrations
-                        </h6>
-                        <p className="mb-0 fs-12 text-muted">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>3 min ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={userImage2}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">James Lemire</h6>
-                        <p className="text-muted fs-12 mb-0">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>15 min ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={jobImage4}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">
-                          Applications has been approved
-                        </h6>
-                        <p className="text-muted mb-0 fs-12">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>45 min ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={userImage1}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-14">Kevin Stewart</h6>
-                        <p className="text-muted mb-0 fs-12">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>1 hour ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link to="#" className="text-dark notification-item d-block">
-                    <div className="d-flex align-items-center">
-                      <div className="flex-shrink-0 me-3">
-                        <img
-                          src={jobImage}
-                          className="rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                      </div>
-                      <div className="flex-grow-1">
-                        <h6 className="mt-0 mb-1 fs-15">Creative Agency</h6>
-                        <p className="text-muted mb-0 fs-12">
-                          <i className="mdi mdi-clock-outline"></i>{" "}
-                          <span>2 hour ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-                <div className="notification-footer border-top text-center">
-                  <Link className="primary-link fs-13" to="#">
-                    <i className="mdi mdi-arrow-right-circle me-1"></i>{" "}
-                    <span>View More..</span>
-                  </Link>
-                </div>
-              </DropdownMenu>
-            </Dropdown> */}
             <Link className=" list-inline-item  me-4" to="/chat">
               <div className="header-item noti-icon position-relative">
                 <i className="mdi mdi-message-processing fs-22"></i>
@@ -323,16 +216,13 @@ const { t } = useTranslation();
                 tag="a"
                 aria-expanded="false"
               >
-                <img
-                  src={profileImage}
-                  alt="mdo"
+                <img src={profileData?.profile_image ? profileData.profile_image : profileImage} alt="mdo"
                   width="35"
                   height="35"
-                  className="rounded-circle me-1"
-                />{" "}
+                  className="rounded-circle me-1"/>{" "}
                 {/* <span className="d-none d-md-inline-block fw-medium">
-                  Hi, Jennifer
-                </span> */}
+                    Hi, Jennifer
+                  </span> */}
               </DropdownToggle>
               <DropdownMenu
                 className="dropdown-menu-end"
@@ -354,19 +244,24 @@ const { t } = useTranslation();
                     {t("my_profile")}
                   </Link>
                 </li>
+
                 <li>
-                  <button type="button" className="dropdown-item" to="" onClick={handleLogout}>
+                  <button
+                    type="button"
+                    className="dropdown-item"
+                    to=""
+                    onClick={handleLogout}
+                  >
                     {t("logout")}
                   </button>
                 </li>
               </DropdownMenu>
             </Dropdown>
             <Link to="/postyourad" className="btn btn-primary w-100">
-         
-             
-              {t('post_your_ad')}
+              {t("post_your_ad")}
             </Link>
           </ul>
+          }
         </Container>
       </nav>
     </React.Fragment>
