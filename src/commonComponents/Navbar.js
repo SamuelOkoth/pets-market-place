@@ -144,6 +144,7 @@ const NavBar = (props) => {
   const handleLogout = async () => {
     await dispatch(signOutAsync());
     navigate("/signout");
+    setProfileData({})
   };
 
   const { t } = useTranslation();
@@ -219,14 +220,11 @@ const NavBar = (props) => {
                 tag="a"
                 aria-expanded="false"
               >
-                <i className="uil uil-user fs-18 rounded-circle me-1"></i>
-                {/* <img src={profileData?.profile_image ? profileData.profile_image : profileImage} alt="mdo"
-                  width="35"
-                  height="35"
-                  className="rounded-circle me-1"/>{" "} */}
-                {/* <span className="d-none d-md-inline-block fw-medium">
-                    Hi, Jennifer
-                  </span> */}
+                { profileData?.profile_image ?
+                                (<img src={profileData?.profile_image ? profileData.profile_image : profileImage} alt="mdo"
+                                width="35"
+                                height="35"
+                                className="rounded-circle me-1"/>) : <i className="uil uil-user fs-18 rounded-circle me-1"></i> }
               </DropdownToggle>
               {token &&
                 <DropdownMenu
