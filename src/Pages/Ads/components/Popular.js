@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-const Popular = () => {
+const Popular = ({ads}) => {
   const popular = [
     {
       id: 1,

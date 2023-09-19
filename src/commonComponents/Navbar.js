@@ -53,7 +53,9 @@ const NavBar = (props) => {
 
 
   useEffect(() => {
-    getProfileDat()
+    if (token) {
+      getProfileDat()
+    }
  }, []);
 
  const getProfileDat = async (event) => {
@@ -194,14 +196,15 @@ const NavBar = (props) => {
             </ul>
           </Collapse>
 
-          {token &&
           <ul className="header-menu list-inline d-flex align-items-center mb-0">
-            <Link className=" list-inline-item  me-4" to="/chat">
-              <div className="header-item noti-icon position-relative">
-                <i className="mdi mdi-message-processing fs-22"></i>
-                <div className="count position-absolute">3</div>
-              </div>
-            </Link>
+            {token &&
+              <Link className=" list-inline-item  me-4" to="/chat">
+                <div className="header-item noti-icon position-relative">
+                  <i className="mdi mdi-message-processing fs-22"></i>
+                  <div className="count position-absolute">3</div>
+                </div>
+              </Link>
+            }
             <Dropdown
               onClick={() => setUserProfile(!userProfile)}
               isOpen={userProfile}
@@ -216,52 +219,56 @@ const NavBar = (props) => {
                 tag="a"
                 aria-expanded="false"
               >
-                <img src={profileData?.profile_image ? profileData.profile_image : profileImage} alt="mdo"
+                <i className="uil uil-user fs-18 rounded-circle me-1"></i>
+                {/* <img src={profileData?.profile_image ? profileData.profile_image : profileImage} alt="mdo"
                   width="35"
                   height="35"
-                  className="rounded-circle me-1"/>{" "}
+                  className="rounded-circle me-1"/>{" "} */}
                 {/* <span className="d-none d-md-inline-block fw-medium">
                     Hi, Jennifer
                   </span> */}
               </DropdownToggle>
-              <DropdownMenu
-                className="dropdown-menu-end"
-                aria-labelledby="userdropdown"
-                end
-              >
-                <li>
-                  <Link className="dropdown-item" to="/manageads">
-                    {t("manage_ads")}
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/favoriteads">
-                    {t("favorite_ads")}
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/myprofile">
-                    {t("my_profile")}
-                  </Link>
-                </li>
+              {token &&
+                <DropdownMenu
+                  className="dropdown-menu-end"
+                  aria-labelledby="userdropdown"
+                  end
+                >
+                  <li>
+                    <Link className="dropdown-item" to="/">
+                      {t("manage_ads")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/">
+                      {t("favorite_ads")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/myprofile">
+                      {t("my_profile")}
+                    </Link>
+                  </li>
 
-                <li>
-                  <button
-                    type="button"
-                    className="dropdown-item"
-                    to=""
-                    onClick={handleLogout}
-                  >
-                    {t("logout")}
-                  </button>
-                </li>
-              </DropdownMenu>
+                  <li>
+                    <button
+                      type="button"
+                      className="dropdown-item"
+                      to=""
+                      onClick={handleLogout}
+                    >
+                      {t("logout")}
+                    </button>
+                  </li>
+                </DropdownMenu>
+              }
             </Dropdown>
-            <Link to="/postyourad" className="btn btn-primary w-100">
-              {t("post_your_ad")}
-            </Link>
+            {token &&
+              <Link to="/postyourad" className="btn btn-primary w-100">
+                {t("post_your_ad")}
+              </Link>
+            }
           </ul>
-          }
         </Container>
       </nav>
     </React.Fragment>

@@ -3,119 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Label, Row, Modal, ModalBody } from "reactstrap";
-import {getAdsAsync, deleteAdsAsync} from '../../../store/reducers/ads.reducer'
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import timeAgo from "../../../utils/timeAgo";
-//Images Import
-import adImage1 from "../../../assets/images/pet-ad.jpg";
 
-const Ad = () => {
-
-  const ads = useSelector(state => state.ads.ads);
+const Ad = ({deleteAd, ads}) => {
   const [modal, setModal] = useState(false);
   const openModal = () => setModal(!modal);
-  const dispatch = useDispatch()
-  const fetchData = async () => {
-    const response = await dispatch(getAdsAsync());
-};
 
-const deleteAd = async (id) => {
-  const response = await dispatch(deleteAdsAsync(id));
-};
-  useEffect(()=>{
-    fetchData()
-  },[])
-  const petAdList = [
-    {
-      id: 1,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-    {
-      id: 2,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-    {
-      id: 3,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-    {
-      id: 4,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-    {
-      id: 5,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-    {
-      id: 6,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-    {
-      id: 7,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-    {
-      id: 8,
-      petImg: adImage1,
-      petName: "Creative Agency",
-      petOwner: "Product Director",
-      location: " Escondido,California",
-      adPostTime: "3 min ago",
-      petPrice:"12",
-      addclassNameBookmark: false,
-      age: "2 - 3 years",
-    },
-  ];
-  console.log(ads)
   return (
     <React.Fragment>
       <div>

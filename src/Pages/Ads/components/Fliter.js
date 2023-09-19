@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Input, Row } from "reactstrap";
@@ -8,6 +8,13 @@ import { useTranslation } from "react-i18next";
 
 const Fliter = () => {
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState({search_query: '', country_options: '', pet_type: ''});
+
+  const handleInputChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  console.log('the value of state------------------', searchValue);
   return (
     <React.Fragment>
       <div className="job-list-header">
@@ -22,13 +29,14 @@ const Fliter = () => {
                   id="exampleFormControlInput1"
                   placeholder="Search for goods .. "
                   style={{ marginTop: "-10px" }}
+                  onChange={handleInputChange}
                 />
               </div>
             </Col>
             <Col lg={3} md={6}>
               <div className="filler-job-form">
                 <i className="uil uil-location-point"></i>
-                <CountryOptions />
+                <CountryOptions setSearchValue={setSearchValue} />
               </div>
             </Col>
             <Col lg={3} md={6}>
