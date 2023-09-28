@@ -118,7 +118,13 @@
     justify-content: center;
   }
 }
-
+.delete-icon {
+  div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 //Profile status Icon
 .profile-active {
   padding: 5px;

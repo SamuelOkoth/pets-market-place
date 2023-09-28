@@ -196,7 +196,26 @@
     }
   }
 }
+.delete-icon {
+  div {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid var(--#{$prefix}border-color);
+    border-radius: 6px;
+    color: rgba($gray-500, 0.55);
+    transition: all 0.5s ease;
 
+    &:hover {
+      color: $white;
+      background-color: $danger;
+      border-color: $danger;
+    }
+  }
+}
 .bookmark-post,
 .job-box.bookmark-post {
   .bookmark-label {
@@ -210,6 +229,13 @@
       border-color: $danger;
     }
   }
+  .delete-icon {
+    a {
+      background-color: $danger;
+      color: $white;
+      border-color: $danger;
+    }
+  }
 }
 
 .job-box {
@@ -217,6 +243,11 @@
     position: absolute;
     top: 15px;
     right: 15px;
+  }
+  .delete-icon {
+    position: absolute;
+    top: 15px;
+    right: 50px;
   }
 }
 
